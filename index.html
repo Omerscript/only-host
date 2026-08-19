@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZONE HOSTING</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="toast"></div>
+
+  <section id="loginView" class="auth-screen">
+    <div class="auth-card">
+      <div class="brand-mark">Z</div>
+      <h1>ZONE HOSTING</h1>
+      <p class="muted">Private server control panel</p>
+      <form id="loginForm">
+        <label>API Key</label>
+        <input id="loginToken" type="password" placeholder="Enter your API key" autocomplete="off" required>
+        <button class="primary wide" type="submit">Connect</button>
+      </form>
+      <p class="hint">The key is kept only in this browser session.</p>
+    </div>
+  </section>
+
+  <div id="app" class="hidden">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-mark small">Z</div>
+        <div><strong>ZONE HOSTING</strong><span>Private Panel</span></div>
+      </div>
+      <nav>
+        <button class="nav-item active" data-page="dashboard">⌂ <span>Dashboard</span></button>
+        <button class="nav-item" data-page="servers">▣ <span>Servers</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <button id="settingsBtn" class="nav-item">⚙ <span>Settings</span></button>
+        <button id="logoutBtn" class="nav-item danger">↪ <span>Disconnect</span></button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <div class="eyebrow">CONTROL PANEL</div>
+          <h2 id="pageTitle">Dashboard</h2>
+        </div>
+        <div class="top-actions">
+          <span id="apiStatus" class="status-pill offline">API offline</span>
+          <button id="refreshBtn" class="icon-btn" title="Refresh">↻</button>
+        </div>
+      </header>
+
+      <section id="dashboardPage" class="page">
+        <div class="hero">
+          <div>
+            <div class="eyebrow">WELCOME BACK</div>
+            <h1>Your servers, one place.</h1>
+            <p>Manage files, Python processes, console output and server status from one panel.</p>
+          </div>
+          <button class="primary" id="dashboardRefresh">Refresh servers</button>
+        </div>
+        <div id="serverCards" class="server-grid"></div>
+      </section>
+
+      <section id="serversPage" class="page hidden">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">INFRASTRUCTURE</div>
+            <h3>Servers</h3>
+          </div>
+          <button class="primary" id="serversRefresh">Refresh</button>
+        </div>
+        <div id="serversTable" class="panel"></div>
+      </section>
+
+      <section id="serverPage" class="page hidden">
+        <div class="server-header">
+          <button id="backToServers" class="ghost">← Servers</button>
+          <div class="server-title">
+            <span id="serverDot" class="dot"></span>
+            <div><h2 id="selectedServerName">Server</h2><span id="selectedServerMeta" class="muted">Loading...</span></div>
+          </div>
+          <div class="server-actions">
+            <button id="serverRefresh" class="ghost">↻ Refresh</button>
+          </div>
+        </div>
+
+        <div id="stats" class="stats-grid"></div>
+
+        <div class="tabs">
+          <button class="tab active" data-tab="files">Files</button>
+          <button class="tab" data-tab="console">Console</button>
+          <button class="tab" data-tab="processes">Processes</button>
+          <button class="tab" data-tab="packages">Packages</button>
+          <button class="tab" data-tab="logs">Logs</button>
+        </div>
+
+        <div id="filesTab" class="tab-panel">
+          <div class="panel file-manager">
+            <div class="file-toolbar">
+              <div class="breadcrumb" id="breadcrumb">/</div>
+              <div class="toolbar-actions">
+                <button id="newFileBtn" class="ghost">+ File</button>
+                <button id="newFolderBtn" class="ghost">+ Folder</button>
+                <label class="ghost upload-label">↑ Upload<input id="uploadInput" type="file" multiple hidden></label>
+                <button id="refreshFilesBtn" class="ghost">↻</button>
+              </div>
+            </div>
+            <div id="fileList" class="file-list"></div>
+          </div>
+        </div>
+
+        <div id="consoleTab" class="tab-panel hidden">
+          <div class="panel console-panel">
+            <div class="console-head"><span>Live console</span><span id="consoleState" class="muted">Disconnected</span></div>
+            <pre id="consoleOutput" class="console-output"></pre>
+            <form id="commandForm" class="command-form">
+              <span>›</span><input id="commandInput" autocomplete="off" placeholder="Type a command..."><button class="primary">Send</button>
+            </form>
+          </div>
+        </div>
+
+        <div id="processesTab" class="tab-panel hidden">
+          <div class="panel">
+            <div class="section-head compact"><h3>Python processes</h3><button id="refreshProcesses" class="ghost">Refresh</button></div>
+            <div id="processList" class="empty">No process data yet.</div>
+          </div>
+        </div>
+
+        <div id="packagesTab" class="tab-panel hidden">
+          <div class="panel">
+            <h3>Python packages</h3>
+            <p class="muted">Install packages through the worker once the Worker API is connected.</p>
+            <form id="packageForm" class="inline-form"><input id="packageInput" placeholder="requests"><button class="primary">Install</button></form>
+            <div id="packageOutput" class="result-box"></div>
+          </div>
+        </div>
+
+        <div id="logsTab" class="tab-panel hidden">
+          <div class="panel">
+            <div class="section-head compact"><h3>Logs</h3><button id="refreshLogs" class="ghost">Refresh</button></div>
+            <pre id="logsOutput" class="logs-output">No logs loaded.</pre>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="editorModal" class="modal hidden">
+    <div class="modal-card editor-card">
+      <div class="modal-head"><div><div class="eyebrow">FILE EDITOR</div><h3 id="editorTitle">Edit file</h3></div><button class="close" data-close="editorModal">×</button></div>
+      <textarea id="editorContent" spellcheck="false"></textarea>
+      <div class="modal-actions"><button class="ghost" data-close="editorModal">Cancel</button><button id="saveFileBtn" class="primary">Save</button></div>
+    </div>
+  </div>
+
+  <div id="simpleModal" class="modal hidden">
+    <div class="modal-card small-modal">
+      <div class="modal-head"><h3 id="simpleTitle">Create</h3><button class="close" data-close="simpleModal">×</button></div>
+      <input id="simpleInput" placeholder="Name">
+      <div class="modal-actions"><button class="ghost" data-close="simpleModal">Cancel</button><button id="simpleSubmit" class="primary">Create</button></div>
+    </div>
+  </div>
+
+  <div id="settingsModal" class="modal hidden">
+    <div class="modal-card small-modal">
+      <div class="modal-head"><h3>Connection settings</h3><button class="close" data-close="settingsModal">×</button></div>
+      <label>Manager API URL</label>
+      <input id="apiUrlInput" placeholder="https://your-api.example.com">
+      <p class="hint">Use the public HTTPS URL of your Manager API. No trailing slash.</p>
+      <div class="modal-actions"><button class="ghost" data-close="settingsModal">Cancel</button><button id="saveSettingsBtn" class="primary">Save</button></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
