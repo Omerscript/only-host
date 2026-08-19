@@ -7,8 +7,496 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>ZONE HOSTING - لوحة التحكم</title>
     <style>
-        /* ... كل الستايل نفسه كما هو، لا تغيير ... */
-        /* (حافظ على الـ CSS الموجود بالكامل) */
+:root {
+    --bg: #080a0f;
+    --panel: #10131a;
+    --panel2: #171b24;
+    --bd: #262b36;
+    --txt: #f4f6fb;
+    --muted: #9199a8;
+    --a: #7c5cff;
+    --g: #32d583;
+    --r: #ff6c82
+}
+* {
+    box-sizing: border-box
+}
+body {
+    margin: 0;
+    background: radial-gradient(circle at 90% 0, #21184a, #080a0f 35%);
+    color: var(--txt);
+    font-family: Inter, system-ui, sans-serif
+}
+button,
+input,
+textarea {
+    font: inherit
+}
+button {
+    cursor: pointer
+}
+label {
+    display: block;
+    color: #c8ced9;
+    font-size: 13px;
+    margin: 12px 0 7px
+}
+input,
+textarea {
+    width: 100%;
+    border: 1px solid var(--bd);
+    background: #0b0e14;
+    color: var(--txt);
+    border-radius: 10px;
+    padding: 11px;
+    outline: none
+}
+input:focus,
+textarea:focus {
+    border-color: var(--a)
+}
+.hidden {
+    display: none !important
+}
+.grow {
+    flex: 1
+}
+.muted,
+small {
+    color: var(--muted)
+}
+.primary,
+.ghost,
+.icon {
+    border: 1px solid var(--bd);
+    background: var(--panel2);
+    color: var(--txt);
+    padding: 10px 14px;
+    border-radius: 10px
+}
+.primary {
+    background: var(--a);
+    border-color: var(--a);
+    font-weight: 700
+}
+.full {
+    width: 100%;
+    margin-top: 16px
+}
+.auth {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 20px
+}
+.auth-card {
+    width: min(430px, 100%);
+    background: #11141b;
+    border: 1px solid var(--bd);
+    border-radius: 20px;
+    padding: 36px
+}
+.auth-card h1 {
+    margin: 0 0 6px
+}
+.auth-card p {
+    color: var(--muted)
+}
+.logo {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, var(--a), #4b35d8);
+    font-size: 25px;
+    font-weight: 900;
+    margin-bottom: 18px
+}
+.logo.sm {
+    width: 36px;
+    height: 36px;
+    font-size: 17px;
+    margin: 0
+}
+aside {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: 240px;
+    background: #0b0d12ee;
+    border-right: 1px solid var(--bd);
+    padding: 18px 12px;
+    display: flex;
+    flex-direction: column
+}
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 8px 25px
+}
+.brand b {
+    display: block;
+    font-size: 13px
+}
+.brand small {
+    font-size: 10px
+}
+.nav {
+    width: 100%;
+    text-align: left;
+    border: 1px solid transparent;
+    background: transparent;
+    color: #9ea6b6;
+    padding: 12px;
+    border-radius: 10px;
+    margin: 2px 0
+}
+.nav.active,
+.nav:hover {
+    background: #181c26;
+    border-color: var(--bd);
+    color: #fff
+}
+.danger {
+    color: #ff8b9a
+}
+main {
+    margin-left: 240px;
+    padding: 28px 32px;
+    min-height: 100vh
+}
+header,
+.section,
+.serverbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px
+}
+.section h3,
+header h2,
+.serverbar h2 {
+    margin: 3px 0
+}
+header {
+    margin-bottom: 25px
+}
+.pill {
+    padding: 7px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--bd);
+    font-size: 11px
+}
+.pill.on {
+    color: #9cf0bf;
+    border-color: #245d42;
+    background: #102219
+}
+.pill.off {
+    color: #ff9cac
+}
+.hero {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: end;
+    background: linear-gradient(120deg, #17152a, #11141c 60%);
+    border: 1px solid var(--bd);
+    padding: 28px;
+    border-radius: 18px;
+    margin-bottom: 20px
+}
+.hero h1 {
+    font-size: 30px;
+    margin: 6px 0
+}
+.hero p {
+    color: var(--muted)
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px
+}
+.server-card,
+.panel,
+.stat {
+    background: var(--panel);
+    border: 1px solid var(--bd);
+    border-radius: 15px
+}
+.server-card {
+    padding: 20px;
+    cursor: pointer
+}
+.server-card:hover {
+    border-color: #414856
+}
+.server-card h3 {
+    margin: 14px 0 5px
+}
+.server-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+    background: #1a1e28;
+    display: grid;
+    place-items: center
+}
+.meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 16px
+}
+.mini {
+    background: #0b0e14;
+    border: 1px solid var(--bd);
+    border-radius: 9px;
+    padding: 9px
+}
+.mini span {
+    display: block;
+    font-size: 10px;
+    color: var(--muted)
+}
+.mini b {
+    font-size: 13px
+}
+.panel {
+    overflow: hidden
+}
+.table {
+    width: 100%;
+    border-collapse: collapse
+}
+.table th,
+.table td {
+    text-align: left;
+    padding: 14px;
+    border-bottom: 1px solid var(--bd);
+    font-size: 13px
+}
+.table th {
+    font-size: 10px;
+    color: var(--muted)
+}
+.serverbar {
+    margin-bottom: 18px
+}
+.dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #667085
+}
+.dot.on {
+    background: var(--g);
+    box-shadow: 0 0 12px #32d58366
+}
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 18px
+}
+.stat {
+    padding: 16px
+}
+.stat span {
+    display: block;
+    color: var(--muted);
+    font-size: 11px
+}
+.stat b {
+    display: block;
+    margin-top: 5px;
+    font-size: 19px
+}
+.tabs {
+    display: flex;
+    gap: 4px;
+    border-bottom: 1px solid var(--bd);
+    margin-bottom: 14px;
+    overflow: auto
+}
+.tab {
+    padding: 11px 14px;
+    background: none;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    color: var(--muted)
+}
+.tab.active {
+    color: #fff;
+    border-color: var(--a)
+}
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 1px solid var(--bd);
+    gap: 10px
+}
+.toolbar>div {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap
+}
+.file {
+    display: grid;
+    grid-template-columns: 30px 1fr 90px 140px;
+    gap: 8px;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid var(--bd)
+}
+.file:last-child {
+    border: 0
+}
+.file:hover {
+    background: #141821
+}
+.file-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+.click {
+    cursor: pointer
+}
+.act {
+    text-align: right
+}
+.act button {
+    padding: 6px 8px;
+    font-size: 11px
+}
+.empty {
+    text-align: center;
+    padding: 36px;
+    color: var(--muted)
+}
+pre {
+    margin: 0;
+    white-space: pre-wrap;
+    background: #06080c;
+    color: #cad2e1;
+    padding: 16px;
+    min-height: 350px;
+    overflow: auto;
+    font: 12px/1.6 Consolas, monospace
+}
+.console-form,
+#cmd,
+.inline {
+    display: flex;
+    gap: 8px;
+    padding: 10px;
+    border-top: 1px solid var(--bd)
+}
+.console-form input,
+#cmd input {
+    border: 0;
+    background: transparent
+}
+.right {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 14px
+}
+.modal {
+    position: fixed;
+    inset: 0;
+    background: #000b;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    z-index: 20
+}
+.modal-card {
+    width: min(800px, 100%);
+    background: #11141b;
+    border: 1px solid var(--bd);
+    border-radius: 16px;
+    padding: 18px
+}
+.modal-card textarea {
+    height: 55vh;
+    font: 12px/1.55 Consolas, monospace
+}
+.toast {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background: #171b24;
+    border: 1px solid var(--bd);
+    padding: 11px 14px;
+    border-radius: 10px;
+    z-index: 100
+}
+.toast.err {
+    color: #ffadba
+}
+.upload {
+    display: inline-flex;
+    align-items: center
+}
+.icon {
+    font-size: 20px;
+    width: 42px;
+    height: 42px;
+    padding: 0
+}
+@media(max-width:900px) {
+    aside {
+        width: 70px
+    }
+    .brand>div:last-child,
+    .nav {
+        font-size: 0
+    }
+    .nav:before {
+        font-size: 17px
+    }
+    .brand {
+        justify-content: center
+    }
+    main {
+        margin-left: 70px;
+        padding: 18px
+    }
+    .grid {
+        grid-template-columns: 1fr 1fr
+    }
+    .stats {
+        grid-template-columns: 1fr 1fr
+    }
+}
+@media(max-width:650px) {
+    .grid,
+    .stats {
+        grid-template-columns: 1fr
+    }
+    .hero {
+        display: block
+    }
+    .hero button {
+        margin-top: 15px
+    }
+    .file {
+        grid-template-columns: 25px 1fr 70px
+    }
+    .act {
+        display: none
+    }
+    .main {
+        padding: 13px
+    }
+}
     </style>
 </head>
 <body>
