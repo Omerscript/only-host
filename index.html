@@ -2,75 +2,34 @@
 <html lang="ar">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ZONE HOSTING - لوحة التحكم</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         :root {
             --primary: #7c5cff;
             --success: #32d583;
             --danger: #ff6c82;
             --warning: #ffa500;
-            --info: #2196F3;
-            --bg-dark: #0a0d14;
-            --bg-darker: #050608;
+            --bg: #0a0d14;
             --panel: #10131a;
-            --panel-light: #171b24;
             --border: #262b36;
             --text: #f4f6fb;
-            --text-muted: #9199a8;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --muted: #9199a8;
         }
-
-        html, body {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-
+        
         body {
-            background: linear-gradient(135deg, var(--bg-darker) 0%, #0f0f14 50%, #0a0d14 100%);
+            background: linear-gradient(135deg, var(--bg) 0%, #0f0f14 100%);
             color: var(--text);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             font-size: 14px;
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        /* SCROLLBAR */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--border);
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary);
-        }
-
-        /* LAYOUT */
-        .container {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            height: 100vh;
-            overflow: hidden;
         }
-
+        
         .header {
             background: linear-gradient(180deg, var(--panel) 0%, transparent 100%);
             border-bottom: 1px solid var(--border);
@@ -78,20 +37,19 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 12px;
             backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
-
+        
         .logo-section {
             display: flex;
             align-items: center;
             gap: 8px;
             flex: 1;
         }
-
+        
         .logo-icon {
             width: 36px;
             height: 36px;
@@ -102,111 +60,40 @@
             font-weight: 900;
             font-size: 18px;
             color: white;
-            box-shadow: 0 4px 12px rgba(124, 92, 255, 0.3);
         }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1;
-        }
-
+        
         .logo-text b {
             font-size: 11px;
             font-weight: 700;
-            color: var(--text);
         }
-
+        
         .logo-text small {
             font-size: 9px;
-            color: var(--text-muted);
+            color: var(--muted);
             margin-top: 2px;
         }
-
-        .header-actions {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .btn-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            background: transparent;
-            color: var(--text);
-            cursor: pointer;
-            display: grid;
-            place-items: center;
-            font-size: 16px;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .btn-icon:active {
-            background: var(--panel-light);
-            transform: scale(0.95);
-        }
-
-        .btn-icon.dot::before {
-            content: '';
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: var(--success);
-            border-radius: 50%;
-            top: 4px;
-            right: 4px;
-            box-shadow: 0 0 8px var(--success);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .main-content {
+        
+        .content {
             flex: 1;
             overflow-y: auto;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
+            padding: 16px;
         }
-
-        .login-view {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            height: 100%;
-            gap: 20px;
-        }
-
+        
         .login-card {
-            width: 100%;
-            max-width: 100%;
-            background: linear-gradient(135deg, var(--panel-light) 0%, var(--panel) 100%);
+            max-width: 400px;
+            margin: 40px auto;
+            background: linear-gradient(135deg, var(--panel) 0%, #1a1e28 100%);
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
-
+        
         .login-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
             text-align: center;
-            margin-bottom: 8px;
+            margin-bottom: 24px;
         }
-
+        
         .login-logo {
             width: 60px;
             height: 60px;
@@ -217,1416 +104,760 @@
             font-size: 32px;
             font-weight: 900;
             color: white;
+            margin: 0 auto 12px;
             box-shadow: 0 8px 24px rgba(124, 92, 255, 0.4);
-            animation: float 3s ease-in-out infinite;
         }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-        }
-
+        
         .login-header h1 {
-            font-size: 24px;
-            font-weight: 700;
-            margin: 0;
+            font-size: 22px;
+            margin: 0 0 4px;
         }
-
+        
         .login-header p {
             font-size: 12px;
-            color: var(--text-muted);
+            color: var(--muted);
             margin: 0;
         }
-
-        input[type="text"],
-        input[type="password"],
-        textarea,
-        select {
-            width: 100%;
-            background: var(--bg-dark);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 12px;
-            color: var(--text);
-            font-size: 14px;
-            transition: var(--transition);
-            font-family: inherit;
+        
+        .form-group {
+            margin-bottom: 12px;
         }
-
-        input[type="text"]:focus,
-        input[type="password"]:focus,
-        textarea:focus,
-        select:focus {
+        
+        label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--muted);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+        
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            background: #0b0e14;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px;
+            color: var(--text);
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+        
+        input:focus {
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.1);
             outline: none;
         }
-
-        label {
-            display: block;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-muted);
-            margin-bottom: 6px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
+        
         .btn {
             width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
-            transform: translateX(-100%);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        .btn-primary {
+            padding: 11px;
             background: linear-gradient(135deg, var(--primary), #5a3fbf);
             color: white;
-            box-shadow: 0 4px 12px rgba(124, 92, 255, 0.3);
-        }
-
-        .btn-primary:active {
-            transform: scale(0.98);
-            box-shadow: 0 2px 8px rgba(124, 92, 255, 0.2);
-        }
-
-        .btn-secondary {
-            background: var(--panel-light);
-            color: var(--text);
-            border: 1px solid var(--border);
-        }
-
-        .btn-secondary:active {
-            background: var(--border);
-        }
-
-        .btn-danger {
-            background: linear-gradient(135deg, var(--danger), #ff4757);
-            color: white;
-        }
-
-        .btn-danger:active {
-            transform: scale(0.98);
-        }
-
-        .btn-success {
-            background: linear-gradient(135deg, var(--success), #2bbd6f);
-            color: white;
-        }
-
-        .btn-sm {
-            padding: 8px 12px;
-            font-size: 12px;
-            width: auto;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        /* TABS */
-        .tabs {
-            display: flex;
-            gap: 4px;
-            padding: 0 16px;
-            border-bottom: 1px solid var(--border);
-            overflow-x: auto;
-            scrollbar-width: none;
-        }
-
-        .tabs::-webkit-scrollbar {
-            display: none;
-        }
-
-        .tab {
-            padding: 12px 16px;
-            background: transparent;
             border: none;
-            border-bottom: 2px solid transparent;
-            color: var(--text-muted);
-            cursor: pointer;
-            font-size: 13px;
+            border-radius: 8px;
             font-weight: 600;
-            white-space: nowrap;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .tab.active {
-            color: var(--text);
-            border-bottom-color: var(--primary);
-        }
-
-        .tab-content {
-            flex: 1;
-            overflow-y: auto;
-            padding: 16px;
-            display: none;
-        }
-
-        .tab-content.active {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        /* CARDS */
-        .card {
-            background: linear-gradient(135deg, var(--panel-light) 0%, var(--panel) 100%);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 16px;
-            transition: var(--transition);
-        }
-
-        .card:active {
-            border-color: var(--primary);
-            background: var(--panel);
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .card-title {
+            cursor: pointer;
+            transition: all 0.3s;
             font-size: 13px;
-            font-weight: 700;
-            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            margin-top: 16px;
         }
-
-        .card-content {
-            display: grid;
-            gap: 12px;
+        
+        .btn:active {
+            transform: scale(0.98);
         }
-
-        .stat-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 0;
-            border-bottom: 1px solid var(--border);
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
-
-        .stat-row:last-child {
-            border-bottom: none;
-        }
-
-        .stat-label {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        .stat-value {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text);
-        }
-
-        .stat-value.success {
-            color: var(--success);
-        }
-
-        .stat-value.danger {
-            color: var(--danger);
-        }
-
-        .stat-value.warning {
-            color: var(--warning);
-        }
-
-        /* PROGRESS BAR */
-        .progress {
-            width: 100%;
-            height: 6px;
-            background: var(--border);
-            border-radius: 3px;
-            overflow: hidden;
-            margin-top: 4px;
-        }
-
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), #5a3fbf);
-            border-radius: 3px;
-            transition: width 0.3s ease;
-        }
-
-        .progress-bar.success {
-            background: linear-gradient(90deg, var(--success), #2bbd6f);
-        }
-
-        .progress-bar.danger {
-            background: linear-gradient(90deg, var(--danger), #ff4757);
-        }
-
-        .progress-bar.warning {
-            background: linear-gradient(90deg, var(--warning), #ffb500);
-        }
-
-        /* SERVER LIST */
-        .server-item {
-            background: linear-gradient(135deg, var(--panel-light) 0%, var(--panel) 100%);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .server-item:active {
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .server-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            background: linear-gradient(135deg, var(--primary), #5a3fbf);
-            display: grid;
-            place-items: center;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        .server-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .server-name {
-            font-weight: 600;
-            font-size: 14px;
-            color: var(--text);
-            margin-bottom: 4px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .server-meta {
-            font-size: 11px;
-            color: var(--text-muted);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .server-status {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--danger);
-            animation: none;
-        }
-
-        .server-status.online {
-            background: var(--success);
-            box-shadow: 0 0 8px var(--success);
-            animation: pulse 2s infinite;
-        }
-
-        /* MODALS */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
-            z-index: 2000;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-sheet {
-            width: 100%;
-            max-height: 90vh;
-            background: linear-gradient(180deg, var(--panel-light) 0%, var(--panel) 100%);
-            border: 1px solid var(--border);
-            border-radius: 20px 20px 0 0;
-            display: flex;
-            flex-direction: column;
-            animation: slideUp 0.3s ease;
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(100%);
-            }
-            to {
-                transform: translateY(0);
-            }
-        }
-
-        .modal-header {
-            padding: 16px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            background: var(--panel);
-        }
-
-        .modal-header h2 {
-            font-size: 16px;
-            font-weight: 700;
-            margin: 0;
-        }
-
-        .close-btn {
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
-            border: none;
-            background: var(--panel-light);
-            color: var(--text);
-            cursor: pointer;
-            font-size: 20px;
-            display: grid;
-            place-items: center;
-            transition: var(--transition);
-        }
-
-        .close-btn:active {
-            background: var(--border);
-        }
-
-        .modal-content {
-            flex: 1;
-            overflow-y: auto;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .modal-footer {
-            padding: 16px;
-            border-top: 1px solid var(--border);
-            display: flex;
-            gap: 8px;
-            background: var(--panel);
-            position: sticky;
-            bottom: 0;
-        }
-
-        /* EDITOR */
-        .code-editor {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            gap: 12px;
-        }
-
-        .editor-toolbar {
-            display: flex;
-            gap: 6px;
-            padding: 12px;
-            background: var(--panel-light);
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            flex-wrap: wrap;
-        }
-
-        .editor-select {
-            background: var(--bg-dark);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 6px;
-            border-radius: 4px;
-            font-size: 11px;
-        }
-
-        .editor-textarea {
-            flex: 1;
-            background: var(--bg-darker);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 12px;
-            color: var(--text);
-            font-family: 'Monaco', 'Courier New', monospace;
-            font-size: 12px;
-            line-height: 1.6;
-            resize: none;
-            overflow-y: auto;
-            min-height: 200px;
-        }
-
-        /* FILE BROWSER */
-        .file-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px;
-            background: var(--panel);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-bottom: 8px;
-        }
-
-        .file-item:active {
-            background: var(--panel-light);
-            border-color: var(--primary);
-        }
-
-        .file-icon {
-            font-size: 24px;
-            min-width: 24px;
-        }
-
-        .file-name {
-            flex: 1;
-            min-width: 0;
-            word-break: break-word;
-        }
-
-        .file-size {
-            font-size: 11px;
-            color: var(--text-muted);
-            min-width: 50px;
-            text-align: right;
-        }
-
-        /* TOAST */
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            right: 16px;
-            background: var(--panel-light);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 12px 16px;
-            color: var(--text);
-            font-size: 13px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            z-index: 3000;
-            animation: slideIn 0.3s ease, slideOut 0.3s ease 3.7s;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideOut {
-            from {
-                transform: translateX(0);
-                opacity: 1;
-            }
-            to {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-        }
-
-        .toast.error {
-            border-color: var(--danger);
-            background: rgba(255, 108, 130, 0.1);
-            color: var(--danger);
-        }
-
-        .toast.success {
-            border-color: var(--success);
-            background: rgba(50, 213, 131, 0.1);
-            color: var(--success);
-        }
-
-        /* EMPTY STATE */
-        .empty-state {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .empty-icon {
-            font-size: 48px;
-            opacity: 0.5;
-        }
-
-        .empty-title {
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        .empty-desc {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        /* ALERTS */
+        
         .alert {
             padding: 12px;
             border-radius: 8px;
+            font-size: 12px;
+            margin-bottom: 12px;
             border-left: 4px solid;
-            font-size: 13px;
             display: flex;
             gap: 8px;
+            animation: slideIn 0.3s ease;
         }
-
+        
+        @keyframes slideIn {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
         .alert-info {
             background: rgba(33, 150, 243, 0.1);
-            border-left-color: var(--info);
-            color: var(--info);
+            border-left-color: #2196F3;
+            color: #2196F3;
         }
-
+        
+        .alert-error {
+            background: rgba(255, 108, 130, 0.1);
+            border-left-color: var(--danger);
+            color: var(--danger);
+        }
+        
         .alert-success {
             background: rgba(50, 213, 131, 0.1);
             border-left-color: var(--success);
             color: var(--success);
         }
-
-        .alert-warning {
-            background: rgba(255, 165, 0, 0.1);
-            border-left-color: var(--warning);
-            color: var(--warning);
+        
+        .debug-info {
+            margin-top: 20px;
+            padding: 12px;
+            background: #0b0e14;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 11px;
+            color: var(--muted);
+            max-height: 200px;
+            overflow-y: auto;
         }
-
-        .alert-danger {
-            background: rgba(255, 108, 130, 0.1);
-            border-left-color: var(--danger);
-            color: var(--danger);
+        
+        .debug-info div {
+            margin: 4px 0;
+            word-break: break-all;
         }
-
-        /* LOADING */
+        
         .spinner {
-            width: 20px;
-            height: 20px;
+            display: inline-block;
+            width: 16px;
+            height: 16px;
             border: 2px solid var(--border);
             border-top-color: var(--primary);
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
-
+        
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-
-        /* RESPONSIVE */
-        @media (max-width: 480px) {
-            .header {
-                padding: 10px 12px;
-            }
-
-            .logo-text b {
-                font-size: 10px;
-            }
-
-            .logo-text small {
-                font-size: 8px;
-            }
-
-            .card {
-                padding: 12px;
-            }
-
-            .modal-sheet {
-                max-height: 95vh;
-            }
-
-            .toast {
-                right: 12px;
-                bottom: 16px;
-                font-size: 12px;
-                padding: 10px 12px;
-            }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+        
+        .status-indicator.online {
+            background: var(--success);
+            box-shadow: 0 0 8px var(--success);
+            animation: pulse 2s infinite;
+        }
+        
+        .status-indicator.offline {
+            background: var(--danger);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .app-view {
+            display: none;
+        }
+        
+        .app-view.active {
+            display: block;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 4px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 16px;
+            overflow-x: auto;
+        }
+        
+        .tab {
+            padding: 10px 16px;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid transparent;
+            color: var(--muted);
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            color: var(--text);
+            border-bottom-color: var(--primary);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .card {
+            background: linear-gradient(135deg, var(--panel) 0%, #1a1e28 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .card-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--muted);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 12px;
+        }
+        
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+        
+        .stat-label {
+            color: var(--muted);
+        }
+        
+        .stat-value {
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        .stat-value.success {
+            color: var(--success);
+        }
+        
+        .stat-value.danger {
+            color: var(--danger);
+        }
+        
+        .server-item {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .server-item:active {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, var(--panel) 0%, #1a1e28 100%);
+        }
+        
+        .server-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary), #5a3fbf);
+            border-radius: 6px;
+            display: grid;
+            place-items: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        .server-info {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .server-name {
+            font-weight: 600;
+            font-size: 13px;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .server-meta {
+            font-size: 11px;
+            color: var(--muted);
+        }
+        
+        .progress {
+            width: 100%;
+            height: 4px;
+            background: var(--border);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 6px;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), #5a3fbf);
+            transition: width 0.3s;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--muted);
+        }
+        
+        .empty-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+            opacity: 0.5;
+        }
+        
+        small {
+            color: var(--muted);
+            font-size: 11px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- HEADER -->
-        <div class="header">
-            <div class="logo-section">
-                <div class="logo-icon">Z</div>
-                <div class="logo-text">
-                    <b>ZONE HOSTING</b>
-                    <small>Pro Control</small>
-                </div>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="logo-section">
+            <div class="logo-icon">Z</div>
+            <div class="logo-text">
+                <b>ZONE HOSTING</b>
+                <small>Pro Control</small>
             </div>
-            <div class="header-actions">
-                <button id="themeBtn" class="btn-icon">🌙</button>
-                <button id="statusBtn" class="btn-icon dot">📡</button>
-                <button id="menuBtn" class="btn-icon">⋮</button>
+        </div>
+        <div id="statusBadge" class="status-indicator offline"></div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+        <!-- LOGIN VIEW -->
+        <div id="loginView" class="login-card">
+            <div class="login-header">
+                <div class="login-logo">Z</div>
+                <h1>ZONE HOSTING</h1>
+                <p>لوحة التحكم الاحترافية</p>
+            </div>
+
+            <div id="alertContainer"></div>
+
+            <div class="form-group">
+                <label>عنوان API (مثال: https://your-server.com)</label>
+                <input type="text" id="apiUrl" placeholder="https://api.example.com" value="">
+            </div>
+
+            <div class="form-group">
+                <label>مفتاح API السري</label>
+                <input type="password" id="apiToken" placeholder="ZONEZONE123456789ZONE" value="">
+            </div>
+
+            <button id="loginBtn" class="btn">🔐 اتصال آمن</button>
+
+            <div class="debug-info" id="debugInfo">
+                <div>🔍 معلومات التشخيص:</div>
+                <div id="debugLog"></div>
             </div>
         </div>
 
-        <!-- MAIN CONTENT -->
-        <div class="main-content" id="mainContent">
-            <!-- LOGIN VIEW -->
-            <div id="loginView" class="login-view">
-                <div class="login-card">
-                    <div class="login-header">
-                        <div class="login-logo">Z</div>
-                        <h1>ZONE HOSTING</h1>
-                        <p>لوحة التحكم الاحترافية</p>
-                    </div>
-
-                    <div class="form-group">
-                        <label>عنوان API</label>
-                        <input type="text" id="loginApi" placeholder="https://your-manager-url">
-                    </div>
-
-                    <div class="form-group">
-                        <label>مفتاح API السري</label>
-                        <input type="password" id="loginToken" placeholder="API Secret">
-                    </div>
-
-                    <button id="loginBtn" class="btn btn-primary">🔐 اتصال آمن</button>
-                    <small style="text-align: center; color: var(--text-muted); font-size: 11px;">
-                        المفتاح يبقى في هذه الجلسة فقط
-                    </small>
-                </div>
+        <!-- APP VIEW -->
+        <div id="appView" class="app-view">
+            <div class="tabs">
+                <button class="tab active" data-tab="dashboard">📊 لوحة</button>
+                <button class="tab" data-tab="servers">🖥️ الخوادم</button>
+                <button class="tab" data-tab="monitor">📈 مراقبة</button>
             </div>
 
-            <!-- APP VIEW -->
-            <div id="appView" class="hidden">
-                <!-- DASHBOARD TABS -->
-                <div class="tabs" id="mainTabs">
-                    <button class="tab active" data-tab="dashboard">📊 لوحة التحكم</button>
-                    <button class="tab" data-tab="servers">🖥️ الخوادم</button>
-                    <button class="tab" data-tab="files">📁 الملفات</button>
-                    <button class="tab" data-tab="console">💻 وحدة التحكم</button>
-                    <button class="tab" data-tab="monitor">📈 مراقبة</button>
-                    <button class="tab" data-tab="settings">⚙️ الإعدادات</button>
-                </div>
+            <!-- DASHBOARD -->
+            <div id="dashboard" class="tab-content active">
+                <div id="dashboardContent"></div>
+            </div>
 
-                <!-- DASHBOARD TAB -->
-                <div id="dashboard" class="tab-content active">
-                    <div class="alert alert-info">
-                        ✨ <b>مرحباً بك!</b> - تحديث حي لجميع الخوادم كل 5 ثوان
-                    </div>
+            <!-- SERVERS -->
+            <div id="servers" class="tab-content">
+                <button id="refreshBtn" class="btn" style="width: auto; padding: 8px 16px; margin-bottom: 12px;">🔄 تحديث</button>
+                <div id="serversList"></div>
+            </div>
 
-                    <div id="dashboardCards"></div>
-                </div>
-
-                <!-- SERVERS TAB -->
-                <div id="servers" class="tab-content">
-                    <button id="refreshServersBtn" class="btn btn-primary btn-sm">🔄 تحديث الخوادم</button>
-                    <div id="serversList"></div>
-                </div>
-
-                <!-- FILES TAB -->
-                <div id="files" class="tab-content">
-                    <div style="display: flex; gap: 8px; margin-bottom: 12px;">
-                        <button id="uploadBtn" class="btn btn-secondary btn-sm">📤 رفع ملف</button>
-                        <button id="newFileBtn" class="btn btn-secondary btn-sm">➕ ملف جديد</button>
-                        <button id="newDirBtn" class="btn btn-secondary btn-sm">📁 مجلد جديد</button>
-                    </div>
-                    <div id="breadcrumb" style="font-size: 11px; color: var(--text-muted); margin-bottom: 12px;">
-                        📍 / <span id="pathSpan">root</span>
-                    </div>
-                    <div id="filesList"></div>
-                </div>
-
-                <!-- CONSOLE TAB -->
-                <div id="console" class="tab-content">
-                    <select id="consoleLanguage" class="editor-select" style="width: 100%;">
-                        <option>💻 اختر لغة البرمجة</option>
-                        <option value="bash">Bash</option>
-                        <option value="python">Python 3</option>
-                        <option value="node">Node.js</option>
-                        <option value="sql">SQL</option>
-                    </select>
-                    <div id="consoleOutput" style="background: var(--bg-darker); border: 1px solid var(--border); border-radius: 8px; padding: 12px; min-height: 150px; font-family: monospace; font-size: 11px; color: #2bbd6f; overflow-y: auto; max-height: 300px;">
-                        $ Ready...
-                    </div>
-                    <div style="display: flex; gap: 8px;">
-                        <input type="text" id="consoleInput" placeholder="اكتب الأمر..." style="flex: 1;">
-                        <button id="executBtn" class="btn btn-success btn-sm">▶️ تنفيذ</button>
-                    </div>
-                </div>
-
-                <!-- MONITOR TAB -->
-                <div id="monitor" class="tab-content">
-                    <div id="monitorCards"></div>
-                </div>
-
-                <!-- SETTINGS TAB -->
-                <div id="settings" class="tab-content">
-                    <div class="card">
-                        <div class="card-header">
-                            <span class="card-title">⚙️ الإعدادات</span>
-                        </div>
-                        <div class="card-content">
-                            <div class="form-group">
-                                <label>عنوان API</label>
-                                <input type="text" id="settingsApi">
-                            </div>
-                            <button id="saveSettingsBtn" class="btn btn-primary btn-sm">💾 حفظ الإعدادات</button>
-                            <button id="exportBtn" class="btn btn-secondary btn-sm">📥 تصدير الإعدادات</button>
-                            <button id="importBtn" class="btn btn-secondary btn-sm">📤 استيراد الإعدادات</button>
-                            <button id="logoutBtn" class="btn btn-danger btn-sm">🚪 تسجيل الخروج</button>
-                            <button id="clearCacheBtn" class="btn btn-secondary btn-sm">🗑️ حذف الذاكرة المؤقتة</button>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-header">
-                            <span class="card-title">ℹ️ معلومات</span>
-                        </div>
-                        <div class="card-content">
-                            <div class="stat-row">
-                                <span class="stat-label">الإصدار</span>
-                                <span class="stat-value">v2.5.0 Pro</span>
-                            </div>
-                            <div class="stat-row">
-                                <span class="stat-label">البنية</span>
-                                <span class="stat-value">100+ Features</span>
-                            </div>
-                            <div class="stat-row">
-                                <span class="stat-label">الحالة</span>
-                                <span class="stat-value success">✅ نشط</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <!-- MONITOR -->
+            <div id="monitor" class="tab-content">
+                <div id="monitorContent"></div>
             </div>
         </div>
     </div>
-
-    <!-- MODALS -->
-    <div id="editorModal" class="modal-overlay">
-        <div class="modal-sheet">
-            <div class="modal-header">
-                <h2 id="editorTitle">تعديل الملف</h2>
-                <button class="close-btn" onclick="closeEditorModal()">✕</button>
-            </div>
-            <div class="modal-content">
-                <div class="editor-toolbar">
-                    <select id="fileLanguage" class="editor-select">
-                        <option value="text">نص عادي</option>
-                        <option value="python">Python</option>
-                        <option value="javascript">JavaScript</option>
-                        <option value="html">HTML</option>
-                        <option value="css">CSS</option>
-                        <option value="json">JSON</option>
-                        <option value="sql">SQL</option>
-                        <option value="bash">Bash</option>
-                    </select>
-                </div>
-                <textarea id="fileEditor" class="editor-textarea" placeholder="محتوى الملف..."></textarea>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary btn-sm" onclick="closeEditorModal()">إلغاء</button>
-                <button id="saveFileBtn" class="btn btn-primary btn-sm" style="flex: 1;">💾 حفظ</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="fileUploadModal" class="modal-overlay">
-        <div class="modal-sheet">
-            <div class="modal-header">
-                <h2>📤 رفع ملف</h2>
-                <button class="close-btn" onclick="closeUploadModal()">✕</button>
-            </div>
-            <div class="modal-content" style="align-items: center; justify-content: center; min-height: 200px; border: 2px dashed var(--border); border-radius: 12px; cursor: pointer;" id="dropZone">
-                <div class="empty-state">
-                    <div class="empty-icon">📁</div>
-                    <div class="empty-title">اسحب الملفات هنا</div>
-                    <div class="empty-desc">أو انقر لاختيار ملف</div>
-                </div>
-                <input type="file" id="fileInput" hidden multiple>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary btn-sm" onclick="closeUploadModal()">إلغاء</button>
-                <button id="uploadConfirmBtn" class="btn btn-primary btn-sm" style="flex: 1;">📤 رفع الملفات</button>
-            </div>
-        </div>
-    </div>
-
-    <input type="file" id="hiddenFileInput" hidden>
-
-    <div id="toastContainer"></div>
 
     <script>
-        // ========== CONFIG ==========
+        // ======================== CONFIG ========================
         const CONFIG = {
-            updateInterval: 5000, // 5 seconds
             apiUrl: localStorage.getItem('zone_api') || '',
             apiToken: sessionStorage.getItem('zone_token') || '',
-            theme: localStorage.getItem('zone_theme') || 'dark',
-            autoRefresh: localStorage.getItem('zone_autorefresh') !== 'false',
-            darkMode: true,
+            updateInterval: 5000,
+            autoRefresh: true,
         };
 
-        let state = {
-            servers: [],
-            currentServer: null,
-            currentPath: '/',
+        const STATE = {
             isLoggedIn: false,
-            updateInterval: null,
-            favorites: JSON.parse(localStorage.getItem('zone_favorites') || '[]'),
+            servers: [],
+            selectedServer: null,
+            updateTimer: null,
+            debugLogs: [],
         };
 
-        // ========== DOM HELPERS ==========
+        // ======================== HELPERS ========================
         const $ = (id) => document.getElementById(id);
-        const $$ = (selector) => document.querySelectorAll(selector);
+        const $$ = (sel) => document.querySelectorAll(sel);
 
-        // ========== TOAST NOTIFICATIONS ==========
-        function showToast(message, type = 'info', duration = 4000) {
-            const toast = document.createElement('div');
-            toast.className = `toast ${type}`;
-            toast.innerHTML = `
-                <span>${type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️'}</span>
-                <span>${message}</span>
-            `;
-            $('toastContainer').appendChild(toast);
-            setTimeout(() => toast.remove(), duration);
+        // ======================== LOGGING ========================
+        function log(msg, type = 'info') {
+            const now = new Date().toLocaleTimeString('ar-SA', { hour12: false });
+            const log = `[${now}] ${msg}`;
+            
+            STATE.debugLogs.push(log);
+            if (STATE.debugLogs.length > 20) STATE.debugLogs.shift();
+            
+            $('debugLog').innerHTML = STATE.debugLogs.map(l => `<div>${l}</div>`).join('');
+            
+            console.log(`[${type}]`, msg);
         }
 
-        // ========== API REQUESTS ==========
-        async function apiRequest(endpoint, options = {}) {
-            if (!CONFIG.apiUrl) throw new Error('عنوان API غير محدد');
+        function showAlert(msg, type = 'info') {
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.innerHTML = `<span>${type === 'error' ? '❌' : type === 'success' ? '✅' : 'ℹ️'}</span><span>${msg}</span>`;
+            $('alertContainer').insertBefore(alert, $('alertContainer').firstChild);
+            
+            setTimeout(() => alert.remove(), 4000);
+            
+            log(msg, type);
+        }
 
-            const headers = new Headers(options.headers || {});
-            headers.set('Accept', 'application/json');
-            headers.set('ngrok-skip-browser-warning', '1');
+        // ======================== API REQUESTS ========================
+        async function apiCall(path, method = 'GET', body = null) {
+            const url = `${CONFIG.apiUrl}${path}`;
+
+            log(`${method} ${path}`, 'request');
+
+            const opts = {
+                method,
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'ngrok-skip-browser-warning': '1',
+                },
+            };
+
             if (CONFIG.apiToken) {
-                headers.set('Authorization', `Bearer ${CONFIG.apiToken}`);
+                opts.headers['Authorization'] = `Bearer ${CONFIG.apiToken}`;
             }
-            if (options.body && !(options.body instanceof FormData)) {
-                headers.set('Content-Type', 'application/json');
+
+            if (body) {
+                opts.body = JSON.stringify(body);
             }
 
             try {
-                const response = await fetch(`${CONFIG.apiUrl}${endpoint}`, {
-                    ...options,
-                    headers,
-                });
+                const res = await fetch(url, opts);
 
-                let data = {};
-                const text = await response.text();
-                try {
-                    data = text ? JSON.parse(text) : {};
-                } catch {
-                    data = { raw: text };
+                log(`Response: ${res.status} ${res.statusText}`, res.ok ? 'success' : 'error');
+
+                if (!res.ok) {
+                    const text = await res.text();
+                    let errMsg = text;
+                    try {
+                        const data = JSON.parse(text);
+                        errMsg = data.detail || data.message || text;
+                    } catch (e) {}
+
+                    throw new Error(`HTTP ${res.status}: ${errMsg}`);
                 }
 
-                if (!response.ok) {
-                    if (response.status === 401) {
-                        sessionStorage.removeItem('zone_token');
-                        CONFIG.apiToken = '';
-                        showLogin();
-                    }
-                    throw new Error(data.detail || `خطأ: ${response.status}`);
-                }
-
-                $('statusBtn').classList.add('dot');
+                const data = await res.json();
+                updateStatusIndicator(true);
                 return data;
-            } catch (error) {
-                $('statusBtn').classList.remove('dot');
-                throw error;
+
+            } catch (err) {
+                updateStatusIndicator(false);
+
+                if (err.message.includes('Failed to fetch')) {
+                    log(`❌ فشل الاتصال - تحقق من:`, 'error');
+                    log(`   1️⃣ عنوان API صحيح؟`, 'error');
+                    log(`   2️⃣ الخادم يعمل؟`, 'error');
+                    log(`   3️⃣ CORS مفعّل؟`, 'error');
+                    log(`   4️⃣ الشبكة متصلة؟`, 'error');
+                    showAlert('❌ فشل الاتصال - تحقق من عنوان API والشبكة', 'error');
+                } else {
+                    showAlert(`❌ خطأ: ${err.message}`, 'error');
+                    log(`Error: ${err.message}`, 'error');
+                }
+
+                throw err;
             }
         }
 
-        // ========== AUTHENTICATION ==========
+        // ======================== AUTHENTICATION ========================
         function showLogin() {
-            $('loginView').classList.remove('hidden');
-            $('appView').classList.add('hidden');
-            state.isLoggedIn = false;
-            clearInterval(state.updateInterval);
+            $('loginView').style.display = 'block';
+            $('appView').classList.remove('active');
+            STATE.isLoggedIn = false;
+            clearInterval(STATE.updateTimer);
         }
 
         function showApp() {
-            $('loginView').classList.add('hidden');
-            $('appView').classList.remove('hidden');
-            state.isLoggedIn = true;
+            $('loginView').style.display = 'none';
+            $('appView').classList.add('active');
+            STATE.isLoggedIn = true;
             loadServers();
             startAutoRefresh();
         }
 
         $('loginBtn').onclick = async () => {
-            const api = $('loginApi').value.trim();
-            const token = $('loginToken').value.trim();
+            const url = $('apiUrl').value.trim();
+            const token = $('apiToken').value.trim();
 
-            if (!api.match(/^https?:\/\//) || !token) {
-                showToast('أدخل عنوان API ومفتاح صحيح', 'error');
+            log(`محاولة الاتصال: ${url}`, 'request');
+
+            if (!url || !token) {
+                showAlert('أدخل عنوان API والمفتاح', 'error');
                 return;
             }
 
-            CONFIG.apiUrl = api;
+            CONFIG.apiUrl = url;
             CONFIG.apiToken = token;
-            localStorage.setItem('zone_api', api);
+            localStorage.setItem('zone_api', url);
             sessionStorage.setItem('zone_token', token);
 
+            $('loginBtn').disabled = true;
+            $('loginBtn').innerHTML = '<span class="spinner"></span> جاري الاتصال...';
+
             try {
-                await apiRequest('/api/auth/check');
+                await apiCall('/api/auth/check');
+                showAlert('✅ تم الاتصال بنجاح!', 'success');
                 showApp();
-                showToast('تم الاتصال بنجاح! 🎉', 'success');
-            } catch (error) {
+            } catch (err) {
                 sessionStorage.removeItem('zone_token');
                 CONFIG.apiToken = '';
-                showToast(`فشل الاتصال: ${error.message}`, 'error');
+                log(`فشل الاتصال: ${err.message}`, 'error');
+            } finally {
+                $('loginBtn').disabled = false;
+                $('loginBtn').innerHTML = '🔐 اتصال آمن';
             }
         };
 
-        $('logoutBtn').onclick = () => {
-            sessionStorage.removeItem('zone_token');
-            CONFIG.apiToken = '';
-            showLogin();
-            showToast('تم تسجيل الخروج', 'info');
-        };
-
-        // ========== SERVERS ==========
+        // ======================== SERVERS ========================
         async function loadServers() {
             try {
-                state.servers = await apiRequest('/api/servers');
+                STATE.servers = await apiCall('/api/servers');
                 renderDashboard();
-                renderServersList();
-                showToast('تم تحديث الخوادم ✅', 'success');
-            } catch (error) {
-                showToast(`خطأ: ${error.message}`, 'error');
+                renderServers();
+                showAlert(`✅ تم تحديث ${STATE.servers.length} خادم`, 'success');
+                log(`تم تحميل ${STATE.servers.length} خادم`, 'success');
+            } catch (err) {
+                $('dashboardContent').innerHTML = `<div class="empty-state"><div class="empty-icon">⚠️</div><div>فشل تحميل الخوادم</div></div>`;
+                $('serversList').innerHTML = `<div class="empty-state"><div class="empty-icon">⚠️</div><div>فشل تحميل الخوادم</div></div>`;
             }
-        }
-
-        function renderDashboard() {
-            const html = state.servers.length
-                ? state.servers.map(s => `
-                    <div class="card" onclick="selectServer('${s.id}')">
-                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-                            <div class="server-status ${isOnline(s) ? 'online' : ''}"></div>
-                            <div style="flex: 1;">
-                                <div class="server-name">${escapeHtml(s.name)}</div>
-                                <div class="server-meta">${escapeHtml(s.hostname || 'Worker')}</div>
-                            </div>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">CPU</span>
-                            <span class="stat-value ${s.cpu_percent > 80 ? 'danger' : 'success'}">
-                                ${s.cpu_percent || '—'}%
-                            </span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar ${s.cpu_percent > 80 ? 'danger' : 'success'}" 
-                                style="width: ${Math.min(s.cpu_percent || 0, 100)}%">
-                            </div>
-                        </div>
-                        <div class="stat-row" style="margin-top: 8px;">
-                            <span class="stat-label">RAM</span>
-                            <span class="stat-value ${s.ram_percent > 80 ? 'danger' : 'success'}">
-                                ${s.ram_percent || '—'}%
-                            </span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar ${s.ram_percent > 80 ? 'danger' : 'success'}" 
-                                style="width: ${Math.min(s.ram_percent || 0, 100)}%">
-                            </div>
-                        </div>
-                    </div>
-                `).join('')
-                : '<div class="empty-state"><div class="empty-icon">🖥️</div><div class="empty-title">لا توجد خوادم</div></div>';
-
-            $('dashboardCards').innerHTML = html;
-        }
-
-        function renderServersList() {
-            const html = state.servers.length
-                ? state.servers.map(s => `
-                    <div class="server-item" onclick="selectServer('${s.id}')">
-                        <div class="server-icon">${isOnline(s) ? '🟢' : '🔴'}</div>
-                        <div class="server-info">
-                            <div class="server-name">${escapeHtml(s.name)}</div>
-                            <div class="server-meta">
-                                CPU: ${s.cpu_percent || '—'}% | RAM: ${s.ram_percent || '—'}%
-                            </div>
-                        </div>
-                    </div>
-                `).join('')
-                : '<div class="empty-state"><div class="empty-icon">🔍</div><div class="empty-title">لا توجد خوادم متاحة</div></div>';
-
-            $('serversList').innerHTML = html;
         }
 
         function isOnline(server) {
-            return ['online', 'connected', 'ready', 'running'].includes(
-                String(server.status || '').toLowerCase()
-            );
+            return server.status === 'online';
         }
 
-        function selectServer(serverId) {
-            state.currentServer = state.servers.find(s => s.id == serverId);
-            if (state.currentServer) {
-                loadFiles();
-                loadConsole();
-                updateMonitorTab();
-                showToast(`تم تحديد الخادم: ${state.currentServer.name}`, 'success');
-            }
-        }
+        function renderDashboard() {
+            const online = STATE.servers.filter(isOnline).length;
+            const total = STATE.servers.length;
 
-        // ========== FILES ==========
-        async function loadFiles() {
-            if (!state.currentServer) return;
-            try {
-                const path = state.currentPath === '/' ? '.' : state.currentPath;
-                const data = await apiRequest(`/api/servers/${state.currentServer.id}/files?path=${encodeURIComponent(path)}`);
-                const files = Array.isArray(data) ? data : (data.files || data.items || []);
-                renderFiles(files);
-            } catch (error) {
-                $('filesList').innerHTML = `
-                    <div class="alert alert-danger">
-                        ❌ ${error.message}
+            let html = `
+                <div class="card">
+                    <div class="card-title">📊 الإحصائيات العامة</div>
+                    <div class="stat-row">
+                        <span class="stat-label">إجمالي الخوادم</span>
+                        <span class="stat-value">${total}</span>
                     </div>
-                `;
-            }
-        }
-
-        function renderFiles(files) {
-            let html = '';
-
-            if (state.currentPath !== '/') {
-                html += `
-                    <div class="file-item" onclick="goBack()">
-                        <div class="file-icon">⬅️</div>
-                        <div class="file-name">..</div>
+                    <div class="stat-row">
+                        <span class="stat-label">خوادم نشطة</span>
+                        <span class="stat-value success">${online} 🟢</span>
                     </div>
-                `;
-            }
+                    <div class="stat-row">
+                        <span class="stat-label">خوادم معطلة</span>
+                        <span class="stat-value danger">${total - online} 🔴</span>
+                    </div>
+                </div>
+            `;
 
-            files.forEach(file => {
-                const isDir = file.is_dir || file.directory;
-                const icon = isDir ? '📁' : getFileIcon(file.name || '');
-                const name = file.name || file.filename || '';
-
+            STATE.servers.forEach(s => {
                 html += `
-                    <div class="file-item" onclick="fileAction(event, '${escapeHtml(name)}', ${isDir})">
-                        <div class="file-icon">${icon}</div>
-                        <div class="file-name">${escapeHtml(name)}</div>
-                        <div class="file-size">${formatSize(file.size)}</div>
+                    <div class="card" onclick="selectServer(${s.id})">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                            <span class="status-indicator ${isOnline(s) ? 'online' : 'offline'}"></span>
+                            <span>${s.name}</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">CPU</span>
+                            <span class="stat-value">${s.cpu_percent !== null ? s.cpu_percent + '%' : '—'}</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: ${Math.min(s.cpu_percent || 0, 100)}%"></div>
+                        </div>
+                        <div class="stat-row" style="margin-top: 8px;">
+                            <span class="stat-label">RAM</span>
+                            <span class="stat-value">${s.ram_percent !== null ? s.ram_percent + '%' : '—'}</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: ${Math.min(s.ram_percent || 0, 100)}%"></div>
+                        </div>
                     </div>
                 `;
             });
 
-            $('filesList').innerHTML = html || '<div class="empty-state"><div class="empty-icon">📭</div><div class="empty-title">المجلد فارغ</div></div>';
-            updateBreadcrumb();
+            $('dashboardContent').innerHTML = html || '<div class="empty-state"><div class="empty-icon">🖥️</div><div>لا توجد خوادم</div></div>';
         }
 
-        function fileAction(event, name, isDir) {
-            if (event.target.closest('.file-item')) {
-                if (isDir) {
-                    state.currentPath = state.currentPath === '/' 
-                        ? '/' + name 
-                        : state.currentPath + '/' + name;
-                    loadFiles();
-                } else {
-                    editFile(name);
-                }
-            }
-        }
-
-        function editFile(fileName) {
-            $('editorTitle').textContent = `📝 تعديل: ${fileName}`;
-            $('editorModal').classList.add('active');
-            $('fileEditor').value = 'جاري التحميل...';
-
-            // محاكاة محتوى الملف
-            setTimeout(() => {
-                $('fileEditor').value = `# ملف: ${fileName}\n# تم التحميل بنجاح\n# يمكنك تحرير المحتوى هنا\n\nHello World!`;
-            }, 500);
-        }
-
-        $('saveFileBtn').onclick = () => {
-            showToast('تم حفظ الملف بنجاح! 💾', 'success');
-            closeEditorModal();
-        };
-
-        function closeEditorModal() {
-            $('editorModal').classList.remove('active');
-        }
-
-        function goBack() {
-            if (state.currentPath === '/') return;
-            const parts = state.currentPath.split('/').filter(Boolean);
-            parts.pop();
-            state.currentPath = parts.length ? '/' + parts.join('/') : '/';
-            loadFiles();
-        }
-
-        function updateBreadcrumb() {
-            $('pathSpan').textContent = state.currentPath === '/' ? 'root' : state.currentPath.substring(1);
-        }
-
-        // ========== CONSOLE ==========
-        async function loadConsole() {
-            try {
-                const data = await apiRequest(`/api/servers/${state.currentServer.id}/console`);
-                $('consoleOutput').textContent = data.output || data.console || '$ جاهز...';
-            } catch (error) {
-                $('consoleOutput').textContent = `$ خطأ: ${error.message}`;
-            }
-        }
-
-        $('executBtn').onclick = async () => {
-            const cmd = $('consoleInput').value.trim();
-            if (!cmd || !state.currentServer) return;
-
-            $('consoleOutput').textContent += `\n$ ${cmd}\n`;
-            $('consoleInput').value = '';
-
-            try {
-                const data = await apiRequest(`/api/servers/${state.currentServer.id}/run`, {
-                    method: 'POST',
-                    body: JSON.stringify({ command: cmd, timeout: 60 })
-                });
-                $('consoleOutput').textContent += data.output || data.stdout || '';
-            } catch (error) {
-                $('consoleOutput').textContent += `[خطأ] ${error.message}\n`;
-            }
-        };
-
-        // ========== MONITOR ==========
-        function updateMonitorTab() {
-            if (!state.currentServer) return;
-
-            const stats = [
-                ['الحالة', isOnline(state.currentServer) ? '🟢 نشط' : '🔴 معطل'],
-                ['المعالج', `${state.currentServer.cpu_percent || '—'}%`],
-                ['الذاكرة', `${state.currentServer.ram_percent || '—'}%`],
-                ['التخزين', `${state.currentServer.disk_percent || '—'}%`],
-            ];
-
-            const html = stats.map(([label, value]) => `
-                <div class="card">
-                    <div class="stat-row">
-                        <span class="stat-label">${label}</span>
-                        <span class="stat-value">${value}</span>
+        function renderServers() {
+            let html = STATE.servers.map(s => `
+                <div class="server-item" onclick="selectServer(${s.id})">
+                    <div class="server-icon">${isOnline(s) ? '🟢' : '🔴'}</div>
+                    <div class="server-info">
+                        <div class="server-name">${s.name}</div>
+                        <div class="server-meta">
+                            CPU: ${s.cpu_percent || '—'}% | RAM: ${s.ram_percent || '—'}% | Disk: ${s.disk_percent || '—'}%
+                        </div>
                     </div>
                 </div>
             `).join('');
 
-            $('monitorCards').innerHTML = html;
+            $('serversList').innerHTML = html || '<div class="empty-state"><div class="empty-icon">🔍</div><div>لا توجد خوادم</div></div>';
         }
 
-        // ========== AUTO REFRESH ==========
-        function startAutoRefresh() {
-            if (state.updateInterval) clearInterval(state.updateInterval);
+        function selectServer(id) {
+            STATE.selectedServer = STATE.servers.find(s => s.id === id);
+            if (STATE.selectedServer) {
+                showAlert(`✅ تم اختيار: ${STATE.selectedServer.name}`, 'success');
+                renderMonitor();
+            }
+        }
 
-            state.updateInterval = setInterval(() => {
-                if (state.isLoggedIn && CONFIG.autoRefresh) {
+        function renderMonitor() {
+            if (!STATE.selectedServer) {
+                $('monitorContent').innerHTML = '<div class="empty-state">اختر خادماً أولاً</div>';
+                return;
+            }
+
+            const s = STATE.selectedServer;
+            const html = `
+                <div class="card">
+                    <div class="card-title">🖥️ ${s.name}</div>
+                    <div class="stat-row">
+                        <span class="stat-label">الحالة</span>
+                        <span class="stat-value ${isOnline(s) ? 'success' : 'danger'}">
+                            ${isOnline(s) ? '🟢 نشط' : '🔴 معطل'}
+                        </span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">المعالج (CPU)</span>
+                        <span class="stat-value">${s.cpu_percent || '—'}%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: ${Math.min(s.cpu_percent || 0, 100)}%"></div>
+                    </div>
+                    <div class="stat-row" style="margin-top: 8px;">
+                        <span class="stat-label">الذاكرة (RAM)</span>
+                        <span class="stat-value">${s.ram_percent || '—'}%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: ${Math.min(s.ram_percent || 0, 100)}%"></div>
+                    </div>
+                    <div class="stat-row" style="margin-top: 8px;">
+                        <span class="stat-label">التخزين (Disk)</span>
+                        <span class="stat-value">${s.disk_percent || '—'}%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: ${Math.min(s.disk_percent || 0, 100)}%"></div>
+                    </div>
+                    <div class="stat-row" style="margin-top: 8px;">
+                        <span class="stat-label">المهام الجارية</span>
+                        <span class="stat-value">${s.running_jobs || '—'}</span>
+                    </div>
+                </div>
+            `;
+
+            $('monitorContent').innerHTML = html;
+        }
+
+        // ======================== TABS ========================
+        $$('.tab').forEach(tab => {
+            tab.onclick = () => {
+                $$('.tab').forEach(t => t.classList.remove('active'));
+                $$('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                tab.classList.add('active');
+                const tabId = tab.dataset.tab;
+                $(tabId).classList.add('active');
+
+                if (tabId === 'monitor') renderMonitor();
+            };
+        });
+
+        // ======================== AUTO REFRESH ========================
+        function startAutoRefresh() {
+            if (STATE.updateTimer) clearInterval(STATE.updateTimer);
+            STATE.updateTimer = setInterval(() => {
+                if (STATE.isLoggedIn && CONFIG.autoRefresh) {
                     loadServers();
                 }
             }, CONFIG.updateInterval);
         }
 
-        // ========== TABS ==========
-        $$('.tab').forEach(tab => {
-            tab.onclick = () => {
-                $$('.tab').forEach(t => t.classList.remove('active'));
-                $$('.tab-content').forEach(c => c.classList.remove('active'));
+        $('refreshBtn').onclick = loadServers;
 
-                tab.classList.add('active');
-                const tabId = tab.dataset.tab;
-                $(tabId).classList.add('active');
-
-                if (tabId === 'monitor') updateMonitorTab();
-                if (tabId === 'files') loadFiles();
-                if (tabId === 'console') loadConsole();
-            };
-        });
-
-        // ========== THEME TOGGLE ==========
-        $('themeBtn').onclick = () => {
-            CONFIG.darkMode = !CONFIG.darkMode;
-            document.body.style.filter = CONFIG.darkMode ? 'brightness(1)' : 'brightness(0.95)';
-            localStorage.setItem('zone_theme', CONFIG.darkMode ? 'dark' : 'light');
-            showToast(CONFIG.darkMode ? '🌙 الوضع الداكن' : '☀️ الوضع الفاتح', 'info');
-            $('themeBtn').textContent = CONFIG.darkMode ? '🌙' : '☀️';
-        };
-
-        // ========== SETTINGS ==========
-        $('saveSettingsBtn').onclick = () => {
-            const api = $('settingsApi').value.trim();
-            if (!api.match(/^https?:\/\//)) {
-                showToast('عنوان API غير صحيح', 'error');
-                return;
-            }
-            CONFIG.apiUrl = api;
-            localStorage.setItem('zone_api', api);
-            showToast('تم حفظ الإعدادات ✅', 'success');
-        };
-
-        $('exportBtn').onclick = () => {
-            const data = {
-                api: CONFIG.apiUrl,
-                favorites: state.favorites,
-                theme: CONFIG.theme,
-            };
-            const json = JSON.stringify(data, null, 2);
-            const blob = new Blob([json], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'zone-hosting-config.json';
-            a.click();
-            showToast('تم تصدير الإعدادات 📥', 'success');
-        };
-
-        $('clearCacheBtn').onclick = () => {
-            localStorage.clear();
-            sessionStorage.clear();
-            location.reload();
-        };
-
-        // ========== FILE UPLOAD ==========
-        const dropZone = $('dropZone');
-        const fileInput = $('fileInput');
-
-        dropZone.onclick = () => fileInput.click();
-        dropZone.ondragover = (e) => {
-            e.preventDefault();
-            dropZone.style.opacity = '0.7';
-        };
-        dropZone.ondragleave = () => dropZone.style.opacity = '1';
-        dropZone.ondrop = (e) => {
-            e.preventDefault();
-            dropZone.style.opacity = '1';
-            fileInput.files = e.dataTransfer.files;
-        };
-
-        $('uploadBtn').onclick = () => $('fileUploadModal').classList.add('active');
-        function closeUploadModal() {
-            $('fileUploadModal').classList.remove('active');
+        // ======================== INITIALIZE ========================
+        function updateStatusIndicator(online) {
+            const badge = $('statusBadge');
+            badge.className = `status-indicator ${online ? 'online' : 'offline'}`;
         }
 
-        $('uploadConfirmBtn').onclick = async () => {
-            for (const file of fileInput.files) {
-                const content = await file.text();
-                try {
-                    await apiRequest(`/api/servers/${state.currentServer.id}/file`, {
-                        method: 'PUT',
-                        body: JSON.stringify({ content })
-                    });
-                    showToast(`تم رفع: ${file.name} ✅`, 'success');
-                } catch (error) {
-                    showToast(`خطأ: ${file.name}`, 'error');
-                }
-            }
-            closeUploadModal();
-            loadFiles();
-        };
-
-        // ========== UTILITIES ==========
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
+        // Load saved config
+        $('apiUrl').value = CONFIG.apiUrl;
+        if (CONFIG.apiToken) {
+            log('تم العثور على جلسة محفوظة', 'info');
         }
 
-        function formatSize(bytes) {
-            if (!bytes) return '—';
-            const units = ['B', 'KB', 'MB', 'GB'];
-            let size = bytes;
-            let unitIndex = 0;
-            while (size >= 1024 && unitIndex < units.length - 1) {
-                size /= 1024;
-                unitIndex++;
-            }
-            return `${size.toFixed(1)} ${units[unitIndex]}`;
-        }
-
-        function getFileIcon(name) {
-            const icons = {
-                '.py': '🐍',
-                '.js': '⚙️',
-                '.json': '📊',
-                '.html': '🌐',
-                '.css': '🎨',
-                '.sql': '💾',
-                '.md': '📝',
-                '.txt': '📄',
-                '.zip': '📦',
-                '.jpg': '🖼️',
-                '.png': '🖼️',
-            };
-            const ext = Object.keys(icons).find(e => name.endsWith(e)) || '.';
-            return icons[ext] || '📎';
-        }
-
-        // ========== INITIALIZATION ==========
-        $('refreshServersBtn').onclick = loadServers;
-        $('statusBtn').onclick = () => showToast('✅ الاتصال بخادم API سليم', 'success');
-        $('menuBtn').onclick = () => showToast('القائمة الرئيسية (قريباً)', 'info');
-
-        $('settingsApi').value = CONFIG.apiUrl;
-
-        if (CONFIG.apiToken && CONFIG.apiUrl) {
-            apiRequest('/api/auth/check').then(showApp).catch(() => {
-                sessionStorage.removeItem('zone_token');
-                CONFIG.apiToken = '';
-                showLogin();
-            });
+        // Try to auto-login if we have saved token
+        if (CONFIG.apiUrl && CONFIG.apiToken) {
+            log('محاولة تسجيل الدخول التلقائي...', 'info');
+            
+            $('loginBtn').disabled = true;
+            $('loginBtn').innerHTML = '<span class="spinner"></span> جاري الاتصال...';
+            
+            apiCall('/api/auth/check')
+                .then(() => {
+                    showAlert('✅ تم الاتصال التلقائي!', 'success');
+                    showApp();
+                })
+                .catch(() => {
+                    showLogin();
+                })
+                .finally(() => {
+                    $('loginBtn').disabled = false;
+                    $('loginBtn').innerHTML = '🔐 اتصال آمن';
+                });
         } else {
-            showLogin();
+            log('في انتظار بيانات الاتصال...', 'info');
         }
+
+        log(`ZONE HOSTING Manager Client v2.5.0`, 'success');
     </script>
 </body>
 </html>
