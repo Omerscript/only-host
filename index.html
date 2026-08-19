@@ -11,12 +11,12 @@
     :root{--bg:#080a0f;--panel:#10131a;--panel2:#171b24;--bd:#262b36;--txt:#f4f6fb;--muted:#9199a8;--a:#7c5cff;--g:#32d583;--r:#ff6c82;--radius:14px;--shadow:0 8px 24px rgba(0,0,0,0.6)}
     button,input,textarea{font:inherit}button{cursor:pointer;background:0;border:0;color:inherit}
     .hidden{display:none!important}.flex{display:flex;align-items:center;gap:8px}.grow{flex:1}.muted,small{color:var(--muted)}
-    .toast{background:var(--panel2);border:1px solid var(--bd);padding:10px 16px;border-radius:10px;backdrop-filter:blur(6px);box-shadow:var(--shadow);animation:slideIn .25s ease;margin-bottom:6px}
+    .toast{background:var(--panel2);border:1px solid var(--bd);padding:10px 16px;border-radius:10px;box-shadow:var(--shadow);animation:slideIn .25s ease;margin-bottom:6px;font-size:13px;z-index:9999}
     .toast.err{border-color:var(--r);color:#ffadba}
     @keyframes slideIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
     .auth{min-height:100vh;display:grid;place-items:center;padding:20px}
     .auth-card{width:min(400px,100%);background:var(--panel);border:1px solid var(--bd);border-radius:var(--radius);padding:32px 28px;box-shadow:var(--shadow)}
-    .auth-card h1{font-size:24px;margin:4px 0 6px;letter-spacing:-.5px}
+    .auth-card h1{font-size:24px;margin:4px 0 6px}
     .auth-card p{color:var(--muted);margin-bottom:18px}
     .logo{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--a),#4b35d8);font-size:26px;font-weight:900;margin-bottom:16px;overflow:hidden}
     .logo img{width:100%;height:100%;object-fit:cover;border-radius:14px}
@@ -25,15 +25,12 @@
     label{display:block;color:#c8ced9;font-size:13px;margin:14px 0 6px}
     input,textarea{width:100%;border:1px solid var(--bd);background:#0b0e14;color:var(--txt);border-radius:10px;padding:12px 14px;outline:0;transition:border .2s}
     input:focus,textarea:focus{border-color:var(--a)}
-    select{width:100%;border:1px solid var(--bd);background:#0b0e14;color:var(--txt);border-radius:10px;padding:12px 14px;outline:0;transition:border .2s}
-    select:focus{border-color:var(--a)}
-    .primary,.ghost,.icon{border:1px solid var(--bd);background:var(--panel2);color:var(--txt);padding:10px 18px;border-radius:10px;font-weight:500;transition:.15s}
-    .primary{background:var(--a);border-color:var(--a);font-weight:600}
-    .danger-btn{background:#ff6c8222;border-color:var(--r);color:var(--r)}
-    .danger-btn:hover{background:#ff6c8244}
-    .full{width:100%;margin-top:14px}
-    #toast{position:fixed;bottom:20px;right:20px;z-index:999;display:flex;flex-direction:column;gap:6px;max-width:90%}
-    aside{position:fixed;top:0;left:0;bottom:0;width:260px;background:#0b0d12ee;backdrop-filter:blur(12px);border-right:1px solid var(--bd);padding:18px 14px;display:flex;flex-direction:column;transform:translateX(-100%);transition:transform .25s cubic-bezier(.4,0,.2,1);z-index:100;box-shadow:4px 0 30px rgba(0,0,0,.5)}
+    select{width:100%;border:1px solid var(--bd);background:#0b0e14;color:var(--txt);border-radius:10px;padding:12px 14px;outline:0}
+    .primary{width:100%;background:var(--a);border:1px solid var(--a);color:#fff;padding:12px;border-radius:10px;font-weight:600;margin-top:14px;font-size:16px}
+    .primary:hover{background:#6b4bff}
+    #toast{position:fixed;bottom:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:6px;max-width:90%}
+    /* باقي الستايل */
+    aside{position:fixed;top:0;left:0;bottom:0;width:260px;background:#0b0d12ee;border-right:1px solid var(--bd);padding:18px 14px;display:flex;flex-direction:column;transform:translateX(-100%);transition:transform .25s;z-index:100}
     aside.open{transform:translateX(0)}
     .brand{display:flex;align-items:center;gap:12px;padding:6px 6px 24px}
     .brand b{font-size:15px;display:block}.brand small{font-size:11px}
@@ -45,18 +42,15 @@
     main{flex:1;padding:16px 14px 30px;margin-left:0;min-height:100vh}
     header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px}
     header h2{font-size:20px;margin:0}
-    header small{font-size:11px;display:block;color:var(--muted)}
     .header-left{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-    .hamburger{font-size:26px;background:var(--panel2);border:1px solid var(--bd);border-radius:10px;padding:4px 10px;line-height:1}
+    .hamburger{font-size:26px;background:var(--panel2);border:1px solid var(--bd);border-radius:10px;padding:4px 10px}
     .header-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-    .pill{padding:5px 12px;border-radius:999px;border:1px solid var(--bd);font-size:11px;font-weight:500;transition:.3s}
-    .pill.on{color:#9cf0bf;border-color:#245d42;background:#102219;box-shadow:0 0 10px #32d58333}
+    .pill{padding:5px 12px;border-radius:999px;border:1px solid var(--bd);font-size:11px}
+    .pill.on{color:#9cf0bf;border-color:#245d42;background:#102219}
     .pill.off{color:#ff9cac;border-color:#6b2a36;background:#2a1016}
-    .icon{font-size:20px;width:40px;height:40px;padding:0;display:grid;place-items:center}
-    .page{animation:fade .2s ease}@keyframes fade{from{opacity:.4}to{opacity:1}}
-    .hero{display:flex;flex-direction:column;gap:16px;background:linear-gradient(120deg,#17152a,#11141c 60%);border:1px solid var(--bd);padding:20px 18px;border-radius:var(--radius);margin-bottom:20px}
+    .icon{font-size:20px;width:40px;height:40px;padding:0;display:grid;place-items:center;border:1px solid var(--bd);background:var(--panel2);border-radius:10px}
+    .hero{display:flex;flex-direction:column;gap:16px;background:linear-gradient(120deg,#17152a,#11141c 60%);border:1px solid var(--bd);padding:20px;border-radius:var(--radius);margin-bottom:20px}
     .hero h1{font-size:26px;margin:4px 0}
-    .hero p{color:var(--muted);margin:0}
     .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
     .server-card{background:var(--panel);border:1px solid var(--bd);border-radius:var(--radius);padding:16px;cursor:pointer;transition:.15s}
     .server-card:hover{border-color:#414856}
@@ -68,104 +62,67 @@
     .mini span{display:block;font-size:10px;color:var(--muted)}
     .mini b{font-size:14px}
     .panel{background:var(--panel);border:1px solid var(--bd);border-radius:var(--radius);overflow:hidden}
-    .table{width:100%;border-collapse:collapse;font-size:13px}
-    .table th,.table td{padding:10px 12px;border-bottom:1px solid var(--bd);text-align:left}
-    .table th{font-size:10px;color:var(--muted);text-transform:uppercase}
-    .table .server-icon-sm{width:28px;height:28px;border-radius:6px;overflow:hidden;display:inline-block;vertical-align:middle}
-    .table .server-icon-sm img{width:100%;height:100%;object-fit:cover}
     .serverbar{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
     .serverbar h2{font-size:20px;margin:0}
-    .dot{width:10px;height:10px;border-radius:50%;background:#667085;display:inline-block;transition:background .3s,box-shadow .3s}
+    .dot{width:10px;height:10px;border-radius:50%;background:#667085;display:inline-block}
     .dot.on{background:var(--g);box-shadow:0 0 14px #32d58377}
     .stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
-    .stat{background:var(--panel);border:1px solid var(--bd);border-radius:10px;padding:12px 14px;position:relative;overflow:hidden}
+    .stat{background:var(--panel);border:1px solid var(--bd);border-radius:10px;padding:12px;position:relative;overflow:hidden}
     .stat span{display:block;font-size:11px;color:var(--muted)}
     .stat b{display:block;font-size:18px;margin-top:2px}
-    .stat .bar-bg{position:absolute;bottom:0;left:0;height:3px;width:100%;background:#1a1e28;border-radius:0 0 10px 10px;overflow:hidden}
-    .stat .bar-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--a),var(--g));border-radius:0 0 10px 10px;transition:width .5s cubic-bezier(.4,0,.2,1)}
-    .stat.flash{border-color:var(--a);background:#1f1838}
-    .stat.flash b{color:#c8bfff}
-    .tabs{display:flex;gap:2px;border-bottom:1px solid var(--bd);margin-bottom:14px;overflow-x:auto;padding-bottom:2px}
-    .tab{padding:10px 14px;background:0;border:0;border-bottom:2px solid transparent;color:var(--muted);font-weight:500;white-space:nowrap;transition:color .2s,border-color .2s}
+    .tabs{display:flex;gap:2px;border-bottom:1px solid var(--bd);margin-bottom:14px;overflow-x:auto}
+    .tab{padding:10px 14px;background:0;border:0;border-bottom:2px solid transparent;color:var(--muted);white-space:nowrap}
     .tab.active{color:#fff;border-color:var(--a)}
-    .tab:hover{color:#ddd}
     .toolbar{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--bd);flex-wrap:wrap;gap:8px}
     .toolbar>div{display:flex;gap:4px;flex-wrap:wrap}
-    .file{display:grid;grid-template-columns:28px 1fr 70px auto;gap:6px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--bd);font-size:14px;transition:background .15s;cursor:default}
-    .file:last-child{border:0}
-    .file:hover{background:#141821}
-    .file-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-    .click{cursor:pointer}
-    .act{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
-    .act button{padding:4px 8px;font-size:11px;border-radius:6px;transition:.15s}
-    .run-btn{background:#32d58322;border-color:var(--g);color:var(--g)}
-    .run-btn:hover{background:#32d58344}
-    .run-btn.running{background:#ff6c8222;border-color:var(--r);color:var(--r)}
-    .run-btn.running:hover{background:#ff6c8244}
-    .del-btn{background:#ff6c8222;border-color:var(--r);color:var(--r)}
-    .del-btn:hover{background:#ff6c8244}
+    .ghost{border:1px solid var(--bd);background:var(--panel2);color:var(--txt);padding:6px 10px;border-radius:8px;font-size:12px}
+    .file-row{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--bd);transition:background .15s}
+    .file-row:hover{background:#141821}
+    .file-row.selected{background:#1a1e2a;border-left:3px solid var(--a)}
+    .file-checkbox{width:18px;height:18px;cursor:pointer;accent-color:var(--a);flex-shrink:0}
+    .file-icon{width:36px;height:36px;border-radius:8px;display:grid;place-items:center;font-size:18px;flex-shrink:0}
+    .file-info{flex:1;min-width:0}
+    .file-name{font-size:14px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .file-size{font-size:11px;color:var(--muted)}
+    .file-actions{display:flex;gap:4px;flex-wrap:wrap}
+    .file-actions button{padding:5px 8px;font-size:11px;border-radius:6px;border:1px solid var(--bd)}
+    .edit-btn{background:#7c5cff22;border-color:var(--a)!important;color:#b8aaff}
+    .run-btn{background:#32d58322;border-color:var(--g)!important;color:var(--g)}
+    .run-btn.running{background:#ff6c8222;border-color:var(--r)!important;color:var(--r)}
+    .del-btn{background:#ff6c8222;border-color:var(--r)!important;color:var(--r)}
+    .unzip-btn{background:#60a5fa22;border-color:#60a5fa!important;color:#60a5fa}
     .empty{text-align:center;padding:30px;color:var(--muted)}
     pre{margin:0;white-space:pre-wrap;background:#06080c;color:#cad2e1;padding:14px;min-height:200px;max-height:400px;overflow:auto;font:13px/1.5 Consolas,monospace}
     #cmd{display:flex;gap:6px;padding:10px;border-top:1px solid var(--bd)}
     #cmd input{border:0;background:transparent;flex:1;padding:8px 0}
-    #cmd button{flex-shrink:0}
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:grid;place-items:center;padding:16px;z-index:200;backdrop-filter:blur(6px);animation:fadeIn .2s ease}
-    @keyframes fadeIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:grid;place-items:center;padding:16px;z-index:200}
     .modal-card{width:min(520px,100%);background:#11141b;border:1px solid var(--bd);border-radius:var(--radius);padding:28px 24px;max-height:90vh;overflow-y:auto}
     .modal-card h3{font-size:20px;margin-bottom:8px}
-    .modal-card p{color:var(--muted);margin-bottom:20px;font-size:14px}
-    .modal-card .icon-big{font-size:48px;text-align:center;display:block;margin-bottom:12px}
-    .modal-card textarea{height:50vh;font:13px/1.5 monospace}
     .right{display:flex;justify-content:flex-end;gap:10px;margin-top:14px}
-    .right .btn{min-width:100px}
-    .live-badge{background:#32d58322;border:1px solid var(--g);color:var(--g);font-size:10px;padding:2px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:4px;animation:glowPulse 1.2s infinite}
-    .live-badge .pulse{width:6px;height:6px;background:var(--g);border-radius:50%;display:inline-block;animation:pulse .6s infinite}
-    @keyframes pulse{0%{opacity:.3;transform:scale(.9)}50%{opacity:1;transform:scale(1.2)}100%{opacity:.3;transform:scale(.9)}}
-    @keyframes glowPulse{0%,100%{box-shadow:0 0 6px #32d58333}50%{box-shadow:0 0 18px #32d58366}}
-    .file .running-indicator{display:inline-block;width:8px;height:8px;background:var(--g);border-radius:50%;margin-left:6px;animation:pulse .6s infinite;vertical-align:middle}
-    .back-folder{font-size:18px!important;font-weight:700!important;padding:12px 16px!important;background:#1a1e2a!important;border-radius:10px!important;border:1px solid var(--bd)!important;cursor:pointer!important;transition:background .2s;display:flex!important;align-items:center!important;gap:8px;grid-template-columns:1fr!important;justify-content:center!important}
-    .back-folder:hover{background:#262d3d!important}
-    .back-folder .icon-large{font-size:24px}
-    .no-select{-webkit-touch-callout:none!important;-webkit-user-select:none!important;-khtml-user-select:none!important;-moz-user-select:none!important;-ms-user-select:none!important;user-select:none!important}
-    .icon-folder{color:#fbbf24}.icon-file{color:#60a5fa}.icon-py{color:#facc15}.icon-process{color:#34d399}.icon-server{color:#a78bfa}
-    .settings-group{margin-bottom:20px;border-bottom:1px solid var(--bd);padding-bottom:16px}
-    .settings-group:last-child{border-bottom:0;margin-bottom:0}
-    .settings-group label{font-weight:500;color:#c8ced9;margin-bottom:4px}
-    .settings-group .desc{font-size:12px;color:var(--muted);margin-top:4px}
-    .settings-group .flex-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-    .toggle{position:relative;width:50px;height:28px;background:#262b36;border-radius:999px;cursor:pointer;transition:.3s;flex-shrink:0}
-    .toggle.active{background:var(--a)}
-    .toggle::after{content:'';position:absolute;top:3px;left:3px;width:22px;height:22px;background:#fff;border-radius:50%;transition:.3s}
-    .toggle.active::after{left:25px}
-    .sys-info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;padding:10px 14px}
-    .sys-info-item{background:#0b0e14;border:1px solid var(--bd);border-radius:8px;padding:10px 14px;cursor:pointer;transition:.2s;user-select:none}
-    .sys-info-item:hover{background:#1a1e2a;border-color:var(--a);transform:translateY(-2px)}
-    .sys-info-item:active{transform:scale(.97)}
-    .sys-info-item .label{font-size:11px;color:var(--muted);display:block;margin-bottom:2px}
-    .sys-info-item .value{font-size:15px;font-weight:600;word-break:break-all;color:var(--txt)}
-    .sys-info-item.copied{border-color:var(--g);background:#102219}
-    .sys-info-item.copied .value{color:var(--g)}
-    .sys-info-actions{display:flex;justify-content:flex-end;gap:8px;padding:6px 14px 10px}
-    #dashboardBtn{display:none}
-    .page-server #dashboardBtn{display:inline-flex}
-    @media(min-width:768px){aside{transform:translateX(0)!important;position:fixed;width:220px;backdrop-filter:none;background:#0b0d12ee}.overlay{display:none!important}.hamburger{display:none!important}main{margin-left:220px;padding:24px 28px}.grid{grid-template-columns:repeat(3,1fr)}.stats{grid-template-columns:repeat(4,1fr)}}
-    @media(max-width:480px){.grid{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.file{grid-template-columns:24px 1fr 60px}.act{grid-column:span 3;justify-content:flex-start}.hero h1{font-size:22px}.table th,.table td{padding:8px 10px;font-size:12px}.sys-info-grid{grid-template-columns:1fr 1fr}}
-    @media(max-width:380px){.grid{grid-template-columns:1fr}.sys-info-grid{grid-template-columns:1fr}}
+    .selected-actions{display:flex;gap:8px;padding:10px 14px;background:#1a1e2a;border-bottom:1px solid var(--bd);flex-wrap:wrap;align-items:center}
+    .selected-actions span{font-size:13px;color:var(--a);font-weight:600}
+    .back-folder{display:flex;align-items:center;gap:8px;padding:12px 14px;background:#1a1e2a;border-bottom:1px solid var(--bd);cursor:pointer;font-weight:600;font-size:15px}
+    .back-folder:hover{background:#262d3d}
+    .danger-btn{background:#ff6c8222;border:1px solid var(--r);color:var(--r);padding:10px 24px;border-radius:10px}
+    .icon-folder{color:#fbbf24}.icon-file{color:#60a5fa}.icon-py{color:#facc15}.icon-zip{color:#fbbf24}
+    @media(min-width:768px){aside{transform:translateX(0)!important;width:220px}.overlay{display:none!important}.hamburger{display:none!important}main{margin-left:220px;padding:24px 28px}.grid{grid-template-columns:repeat(3,1fr)}.stats{grid-template-columns:repeat(4,1fr)}}
+    @media(max-width:600px){.file-row{flex-wrap:wrap}.file-actions{width:100%}.file-actions button{flex:1;font-size:10px}.stats{grid-template-columns:1fr 1fr}}
   </style>
 </head>
 <body>
 <div id="toast"></div>
+
 <section id="loginView" class="auth">
   <div class="auth-card">
     <div class="logo"><img src="https://i.pinimg.com/736x/9f/a3/cd/9fa3cd1bf874ca2dbbfc0034d3eadfcc.jpg" alt="ZONE HOST"></div>
     <h1>ZONE HOST</h1>
     <p>Private server control panel</p>
     <label>Manager API URL</label>
-    <input id="loginApi" placeholder="https://your-manager-url">
+    <input id="loginApi" placeholder="https://your-manager-url" autocomplete="off">
     <label>Manager API Secret</label>
-    <input id="loginToken" type="password" placeholder="API secret">
-    <button id="loginBtn" class="primary full">Connect</button>
-    <small>The secret stays in this browser session.</small>
+    <input id="loginToken" type="password" placeholder="API secret" autocomplete="off">
+    <button id="loginBtn" class="primary">اتصال / Connect</button>
+    <small style="display:block;margin-top:10px;text-align:center;">المفتاح يبقى في هذه الجلسة</small>
   </div>
 </section>
 
@@ -179,26 +136,23 @@
     <button class="nav active" data-page="dashboard">⌂ Dashboard</button>
     <div class="grow"></div>
     <button id="settingsBtn" class="nav">⚙ Settings</button>
-    <button id="logout" class="nav danger">↪ Disconnect</button>
+    <button id="logout" class="nav danger">↪ خروج</button>
   </aside>
   <main>
     <header>
       <div class="header-left">
         <button class="hamburger" id="menuToggle">☰</button>
         <button id="dashboardBtn" class="ghost">⌂ Dashboard</button>
-        <div>
-          <small>CONTROL PANEL</small>
-          <h2 id="title">Dashboard</h2>
-        </div>
+        <div><small>CONTROL PANEL</small><h2 id="title">Dashboard</h2></div>
       </div>
       <div class="header-right">
         <span id="apiState" class="pill off">⛔ API offline</span>
-        <button id="refresh" class="icon" title="تحديث">↻</button>
-        <button id="reconnectBtn" class="icon" title="إعادة الاتصال">🔌</button>
+        <button id="refresh" class="icon">↻</button>
+        <button id="reconnectBtn" class="icon">🔌</button>
       </div>
     </header>
     <section id="dashboard" class="page">
-      <div class="hero"><div><small>ZONE HOST</small><h1>Your servers, one place.</h1><p>Manage your private Workers from one dashboard.</p></div><button id="dashRefresh" class="primary">Refresh</button></div>
+      <div class="hero"><div><small>ZONE HOST</small><h1>Your servers, one place.</h1><p>Manage your private Workers from one dashboard.</p></div><button id="dashRefresh" class="primary" style="width:auto;padding:10px 20px;">تحديث</button></div>
       <div id="cards" class="grid"></div>
     </section>
     <section id="server" class="page hidden">
@@ -209,141 +163,110 @@
         <button id="openRefresh" class="ghost">↻</button>
       </div>
       <div id="stats" class="stats"></div>
-      <div class="tabs"><button class="tab active" data-tab="files">📂 Files</button><button class="tab" data-tab="console">💻 Console</button><button class="tab" data-tab="processes">⚙️ Processes</button><button class="tab" data-tab="packages">📦 Packages</button><button class="tab" data-tab="logs">📋 Logs</button></div>
-      <div id="files" class="tabpanel"><div class="panel"><div class="toolbar"><span id="path">/</span><div><button id="newFile" class="ghost">📄 + File</button><button id="newDir" class="ghost">📁 + Folder</button><label class="ghost upload">⬆ Upload<input id="upload" type="file" multiple hidden></label><button id="reloadFiles" class="ghost">↻</button></div></div><div id="fileList" class="no-select"><div class="empty">⏳ جاري تحميل الملفات...</div></div></div></div>
+      <div class="tabs"><button class="tab active" data-tab="files">📂 الملفات</button><button class="tab" data-tab="console">💻 الكونسول</button><button class="tab" data-tab="processes">⚙️ العمليات</button><button class="tab" data-tab="packages">📦 الحزم</button><button class="tab" data-tab="logs">📋 السجلات</button></div>
+      <div id="files" class="tabpanel">
+        <div class="panel">
+          <div class="toolbar">
+            <span id="path" style="font-weight:600;font-size:13px;">/</span>
+            <div>
+              <button id="selectAll" class="ghost">☑️ الكل</button>
+              <button id="deselectAll" class="ghost">⬜ إلغاء</button>
+              <button id="newFile" class="ghost">📄 + ملف</button>
+              <button id="newDir" class="ghost">📁 + مجلد</button>
+              <label class="ghost">⬆ رفع<input id="upload" type="file" multiple hidden></label>
+              <button id="reloadFiles" class="ghost">↻</button>
+            </div>
+          </div>
+          <div id="selectedActions" class="selected-actions hidden">
+            <span id="selectedCount">0 محدد</span>
+            <button id="compressSelected" class="primary" style="width:auto;padding:6px 12px;font-size:13px;margin:0;">🗜️ ضغط</button>
+            <button id="clearSelected" class="ghost">✖ مسح</button>
+          </div>
+          <div id="fileList" class="no-select"><div class="empty">⏳ جاري التحميل...</div></div>
+        </div>
+      </div>
       <div id="console" class="tabpanel hidden">
         <div class="panel">
           <div class="toolbar"><span>Console</span><span id="consoleState">—</span></div>
           <pre id="consoleOut"></pre>
-          <form id="cmd"><input id="cmdInput" placeholder="Type a command..."><button class="primary">Send</button></form>
-          <div style="border-top:1px solid var(--bd);padding:10px 14px 0">
-            <div id="sysInfoGrid" class="sys-info-grid">
-              <div style="grid-column:1/-1;text-align:center;color:var(--muted);padding:16px">⏳ جلب معلومات النظام...</div>
-            </div>
-            <div class="sys-info-actions">
-              <button id="fetchSysInfo" class="ghost" style="padding:4px 12px;font-size:12px;">🔄 Refresh</button>
-              <button id="copyAllSysInfo" class="ghost" style="padding:4px 12px;font-size:12px;">📋 Copy All</button>
-            </div>
-          </div>
+          <form id="cmd"><input id="cmdInput" placeholder="اكتب أمر..."><button class="primary" style="width:auto;margin:0;">إرسال</button></form>
         </div>
       </div>
-      <div id="processes" class="tabpanel hidden"><div class="panel"><div class="flex" style="justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--bd)"><h3 style="margin:0">⚙️ Running processes</h3><button id="reloadProc" class="ghost">Refresh</button></div><div id="procList" class="empty no-select">⏳ جاري تحميل العمليات...</div></div></div>
-      <div id="packages" class="tabpanel hidden"><div class="panel" style="padding:16px"><h3>📦 Install package</h3><form id="pkg" style="display:flex;gap:8px;margin:10px 0"><input id="pkgName" placeholder="requests" style="flex:1"><button class="primary">Install</button></form><pre id="pkgOut"></pre></div></div>
-      <div id="logs" class="tabpanel hidden"><div class="panel"><div class="flex" style="justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--bd)"><h3 style="margin:0">📋 Logs</h3><button id="reloadLogs" class="ghost">Refresh</button></div><pre id="logsOut">⏳ جاري تحميل السجلات...</pre></div></div>
+      <div id="processes" class="tabpanel hidden"><div class="panel"><div class="flex" style="justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--bd)"><h3 style="margin:0">⚙️ العمليات</h3><button id="reloadProc" class="ghost">تحديث</button></div><div id="procList" class="empty no-select">⏳ جاري التحميل...</div></div></div>
+      <div id="packages" class="tabpanel hidden"><div class="panel" style="padding:16px"><h3>📦 تثبيت حزمة</h3><form id="pkg" style="display:flex;gap:8px;margin:10px 0"><input id="pkgName" placeholder="requests" style="flex:1"><button class="primary" style="width:auto;margin:0;">تثبيت</button></form><pre id="pkgOut"></pre></div></div>
+      <div id="logs" class="tabpanel hidden"><div class="panel"><div class="flex" style="justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--bd)"><h3 style="margin:0">📋 السجلات</h3><button id="reloadLogs" class="ghost">تحديث</button></div><pre id="logsOut">⏳ جاري التحميل...</pre></div></div>
     </section>
   </main>
 </div>
 
-<!-- Confirm Modal -->
+<!-- Modals -->
 <div id="confirmModal" class="modal hidden">
   <div class="modal-card">
-    <div class="icon-big">⚠️</div>
-    <h3 id="confirmTitle">تأكيد الحذف</h3>
-    <p id="confirmMessage">هل أنت متأكد من حذف هذا العنصر؟ لا يمكن التراجع عن هذا الإجراء.</p>
+    <h3 id="confirmTitle">تأكيد</h3>
+    <p id="confirmMessage">هل أنت متأكد؟</p>
     <div class="right">
-      <button id="confirmCancel" class="ghost btn" style="min-width:100px;">إلغاء</button>
-      <button id="confirmOk" class="danger-btn btn" style="min-width:100px;padding:10px 24px;">تأكيد الحذف</button>
+      <button id="confirmCancel" class="ghost">إلغاء</button>
+      <button id="confirmOk" class="danger-btn">تأكيد</button>
     </div>
   </div>
 </div>
 
-<!-- Edit/Create Modal -->
 <div id="modal" class="modal hidden">
   <div class="modal-card">
-    <div class="flex" style="justify-content:space-between;margin-bottom:10px"><h3 id="modalTitle">Create</h3><button id="modalClose" class="ghost">×</button></div>
-    <input id="modalInput" placeholder="Name">
+    <div class="flex" style="justify-content:space-between;margin-bottom:10px"><h3 id="modalTitle">إنشاء</h3><button id="modalClose" class="ghost">×</button></div>
+    <input id="modalInput" placeholder="الاسم">
     <textarea id="editor" class="hidden"></textarea>
-    <div class="right"><button id="modalCancel" class="ghost">Cancel</button><button id="modalOk" class="primary">OK</button></div>
+    <div class="right"><button id="modalCancel" class="ghost">إلغاء</button><button id="modalOk" class="primary" style="width:auto;margin:0;">موافق</button></div>
   </div>
 </div>
 
-<!-- Settings Modal with PIN Protection -->
-<div id="settings" class="modal hidden">
+<div id="compressModal" class="modal hidden">
   <div class="modal-card">
-    <div class="flex" style="justify-content:space-between;margin-bottom:16px"><h3>⚙️ Settings</h3><button id="setClose" class="ghost">×</button></div>
-    <div id="settingsContent">
-      <div id="settingsLock" style="display:none;text-align:center;padding:20px">
-        <div style="font-size:48px;margin-bottom:10px">🔒</div>
-        <h3>Enter PIN to access Settings</h3>
-        <input type="password" id="pinInput" placeholder="Enter PIN" style="max-width:200px;margin:10px auto;text-align:center">
-        <div style="margin-top:10px"><button id="pinUnlock" class="primary">Unlock</button></div>
-        <div id="pinError" style="color:var(--r);font-size:13px;margin-top:8px"></div>
-        <div style="margin-top:20px;font-size:12px;color:var(--muted)">Wrong PIN 5 times will logout.</div>
-      </div>
-      <div id="settingsUnlocked">
-        <div class="settings-group">
-          <label>🔗 Manager API URL</label>
-          <input id="setApi" placeholder="https://your-manager-url">
-          <div class="desc">تغيير رابط الـ API وإعادة الاتصال</div>
-        </div>
-        <div class="settings-group">
-          <label>⏱️ Live update interval (ms)</label>
-          <input id="setInterval" type="number" min="1000" max="30000" step="500" placeholder="6000">
-          <div class="desc">معدل تحديث الإحصائيات والعمليات (بالميلي ثانية)</div>
-        </div>
-        <div class="settings-group">
-          <div class="flex-row">
-            <label style="margin:0">🔴 Auto-refresh</label>
-            <div id="liveToggle" class="toggle active"></div>
-            <span id="liveStatus" style="font-size:13px;color:var(--g)">مفعل</span>
-          </div>
-          <div class="desc">تشغيل أو إيقاف التحديث التلقائي للبيانات</div>
-        </div>
-        <div class="settings-group">
-          <label>🔐 PIN Protection</label>
-          <div class="flex-row">
-            <label style="margin:0;font-size:13px">Enable PIN</label>
-            <div id="pinToggle" class="toggle"></div>
-          </div>
-          <div id="pinSettings" style="margin-top:10px;display:none">
-            <input type="password" id="newPin" placeholder="Set new PIN (4-8 digits)" style="max-width:200px">
-            <input type="password" id="confirmPin" placeholder="Confirm PIN" style="max-width:200px;margin-top:6px">
-            <button id="savePin" class="primary" style="margin-top:6px;padding:6px 16px;font-size:13px">Save PIN</button>
-            <div id="pinStatus" style="font-size:13px;margin-top:6px;color:var(--g)"></div>
-          </div>
-          <div class="desc">حماية الإعدادات برقم سري. بعد 5 محاولات خاطئة سيتم تسجيل الخروج.</div>
-        </div>
-        <div class="settings-group">
-          <label>📊 Connection status</label>
-          <div style="background:#0b0e14;border:1px solid var(--bd);border-radius:8px;padding:12px;font-size:13px">
-            <div>🔌 API: <span id="setApiStatus" style="color:var(--muted)">غير متصل</span></div>
-            <div>🔑 Token: <span id="setTokenStatus" style="color:var(--muted)">••••••••</span></div>
-            <div>🖥️ Server: <span id="setServerStatus" style="color:var(--muted)">—</span></div>
-          </div>
-        </div>
-        <div class="right">
-          <button id="setCancel" class="ghost">إلغاء</button>
-          <button id="setSave" class="primary">حفظ الإعدادات</button>
-        </div>
-      </div>
+    <h3>🗜️ ضغط الملفات</h3>
+    <label>اسم الملف الناتج</label>
+    <input id="compressOutput" placeholder="archive.zip" value="archive.zip">
+    <label>الصيغة</label>
+    <select id="compressFormat">
+      <option value="zip">ZIP (.zip)</option>
+      <option value="tar">TAR (.tar)</option>
+      <option value="tar.gz">TAR.GZ (.tar.gz)</option>
+      <option value="tar.bz2">TAR.BZ2 (.tar.bz2)</option>
+    </select>
+    <div class="right">
+      <button id="compressCancel" class="ghost">إلغاء</button>
+      <button id="compressOk" class="primary" style="width:auto;margin:0;">ضغط</button>
+    </div>
+  </div>
+</div>
+
+<div id="decompressModal" class="modal hidden">
+  <div class="modal-card">
+    <h3>📂 فك الضغط</h3>
+    <label>استخراج إلى</label>
+    <input id="decompressTo" placeholder="." value=".">
+    <div class="right">
+      <button id="decompressCancel" class="ghost">إلغاء</button>
+      <button id="decompressOk" class="primary" style="width:auto;margin:0;">فك</button>
     </div>
   </div>
 </div>
 
 <script>
 // ============================================================
-//  ZONE HOST - v14 (Fix: each server shows its own data)
+// الكود الكامل - جميع الدوال تعمل
 // ============================================================
+const $ = id => document.getElementById(id);
 const S = {
   api: localStorage.getItem('zone_api') || '',
   token: sessionStorage.getItem('zone_token') || '',
-  servers: [],
-  server: null,
-  cwd: '.',
-  editing: null,
-  liveInterval: null,
-  liveEnabled: true,
-  runningProcs: {},
-  liveRetries: 0,
-  preloaded: false,
-  abortController: null,
-  confirmCallback: null,
+  servers: [], server: null, currentServerId: null, cwd: '.',
+  editing: null, liveInterval: null, liveEnabled: true,
+  runningProcs: {}, liveRetries: 0, preloaded: false,
+  abortController: null, confirmCallback: null,
   intervalMs: parseInt(localStorage.getItem('zone_interval')) || 6000,
-  pin: localStorage.getItem('zone_pin') || null,
-  pinAttempts: 0,
-  sysInfoData: {}
+  pin: localStorage.getItem('zone_pin') || null, pinAttempts: 0,
+  sysInfoData: {}, selectedFiles: new Set(), decompressTarget: null
 };
-const $ = id => document.getElementById(id);
 const api = () => S.api.replace(/\/+$/, '');
 const SERVER_ICON = 'https://i.pinimg.com/1200x/40/a1/0f/40a10f73530c5dc94b9a07c12e5e3510.jpg';
 
@@ -356,44 +279,31 @@ function toast(msg, err = false) {
 }
 function esc(v) { return String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c])); }
 function online(s) { return ['online','connected','ready','running'].includes(String(s?.status||'').toLowerCase()); }
+function safe(p) { p=(p||'.').replaceAll('\\','/').trim(); if(!p||p==='/')return'.'; const out=[]; for(const part of p.split('/')){if(!part||part==='.')continue; if(part==='..'){if(!out.length)throw Error('Invalid path');out.pop();}else out.push(part);} return out.join('/')||'.'; }
+function join(a,b){return safe(a==='.'?b:a+'/'+b);}
+function fmt(n){n=Number(n);if(!Number.isFinite(n))return'—';if(n<1024)return n+' B';if(n<1048576)return(n/1024).toFixed(1)+' KB';if(n<1073741824)return(n/1048576).toFixed(1)+' MB';return(n/1073741824).toFixed(1)+' GB';}
 
-// --- Confirm Modal ---
-function showConfirm(title, message, callback) {
-  $('confirmTitle').textContent = title;
-  $('confirmMessage').textContent = message;
-  $('confirmModal').classList.remove('hidden');
-  S.confirmCallback = callback;
-}
-$('confirmOk').onclick = () => { if (S.confirmCallback) { S.confirmCallback(true); S.confirmCallback = null; } $('confirmModal').classList.add('hidden'); };
-$('confirmCancel').onclick = () => { if (S.confirmCallback) { S.confirmCallback(false); S.confirmCallback = null; } $('confirmModal').classList.add('hidden'); };
-$('confirmModal').onclick = (e) => { if (e.target === e.currentTarget) { if (S.confirmCallback) { S.confirmCallback(false); S.confirmCallback = null; } $('confirmModal').classList.add('hidden'); } };
-
-// --- API with Retry ---
-async function req(path, opt = {}, retries = 2, baseDelay = 600) {
-  if (!api()) throw Error('Manager API URL is empty.');
+// ============ API ============
+async function req(path, opt = {}, retries = 2) {
+  if (!api()) throw Error('API URL فارغ');
   let lastError = null;
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
-      const h = new Headers(opt.headers || {});
+      const h = new Headers();
       h.set('Accept', 'application/json');
       h.set('ngrok-skip-browser-warning', '1');
       if (S.token) h.set('Authorization', 'Bearer ' + S.token);
-      if (opt.body && !(opt.body instanceof FormData)) h.set('Content-Type', 'application/json');
+      if (opt.body) h.set('Content-Type', 'application/json');
       if (opt.signal) h.signal = opt.signal;
       let r;
-      try {
-        r = await fetch(api() + path, { ...opt, headers: h });
-      } catch (e) {
-        if (e.name === 'AbortError') throw e;
-        if (attempt < retries) { await new Promise(r=>setTimeout(r, baseDelay*attempt)); continue; }
-        throw e;
-      }
+      try { r = await fetch(api() + path, { ...opt, headers: h }); }
+      catch(e){ if(e.name==='AbortError')throw e; if(attempt<retries){await new Promise(r=>setTimeout(r,600*attempt));continue;} throw e; }
       const t = await r.text();
       let d = {};
       try { d = t ? JSON.parse(t) : {}; } catch { d = { raw: t }; }
       if (!r.ok) {
         const m = typeof d.detail === 'string' ? d.detail : d.detail ? JSON.stringify(d.detail) : d.raw || ('HTTP '+r.status);
-        if (r.status === 401) { sessionStorage.removeItem('zone_token'); S.token = ''; throw Error('🔑 غير مصرح'); }
+        if (r.status === 401) { sessionStorage.removeItem('zone_token'); S.token=''; }
         throw Error(m);
       }
       setApiStatus(true);
@@ -401,223 +311,77 @@ async function req(path, opt = {}, retries = 2, baseDelay = 600) {
     } catch (e) {
       if (e.name === 'AbortError') throw e;
       lastError = e;
-      if (attempt < retries) { await new Promise(r=>setTimeout(r, baseDelay*attempt)); }
+      if (attempt < retries) { await new Promise(r=>setTimeout(r,600*attempt)); }
       else { setApiStatus(false); throw lastError; }
     }
   }
-  setApiStatus(false);
-  throw lastError || Error('فشل الاتصال');
+  throw lastError;
 }
 
-function setApiStatus(online) {
+function setApiStatus(on) {
   const el = $('apiState');
-  if (online) { el.textContent = '✅ API online'; el.className = 'pill on'; }
+  if (on) { el.textContent = '✅ API online'; el.className = 'pill on'; }
   else { el.textContent = '⛔ API offline'; el.className = 'pill off'; }
 }
 
-// --- Navigation ---
-function showApp() { $('loginView').classList.add('hidden'); $('app').classList.remove('hidden'); loadServers(); }
-function showLogin() { $('app').classList.add('hidden'); $('loginView').classList.remove('hidden'); $('loginApi').value = S.api; }
-
-$('loginBtn').onclick = async () => {
+// ============ Auth ============
+$('loginBtn').addEventListener('click', async () => {
   const u = $('loginApi').value.trim().replace(/\/+$/, '');
   const t = $('loginToken').value.trim();
-  if (!/^https?:\/\//i.test(u) || !t) return toast('أدخل رابط API صحيح ومفتاح سري.', true);
+  if (!/^https?:\/\//i.test(u)) return toast('❌ رابط API غير صحيح', true);
+  if (!t) return toast('❌ أدخل المفتاح', true);
   S.api = u; S.token = t;
-  localStorage.setItem('zone_api', u);
-  sessionStorage.setItem('zone_token', t);
-  S.pinAttempts = 0;
   try {
-    await req('/api/auth/check', {}, 2);
+    toast('⏳ جاري الاتصال...');
+    await req('/api/auth/check');
+    localStorage.setItem('zone_api', u);
+    sessionStorage.setItem('zone_token', t);
     showApp();
-    toast('✅ تم الاتصال بنجاح');
-  } catch (e) {
-    sessionStorage.removeItem('zone_token'); S.token = '';
+    toast('✅ تم الاتصال');
+  } catch(e) {
+    sessionStorage.removeItem('zone_token'); S.token='';
     toast('❌ ' + e.message, true);
-    setApiStatus(false);
   }
+});
+
+$('logout').onclick = () => {
+  sessionStorage.removeItem('zone_token'); S.token='';
+  stopLive(); S.currentServerId=null;
+  $('app').classList.add('hidden');
+  $('loginView').classList.remove('hidden');
+  setApiStatus(false);
 };
 
-$('logout').onclick = () => { sessionStorage.removeItem('zone_token'); S.token = ''; showLogin(); stopLive(); setApiStatus(false); S.preloaded = false; S.pinAttempts = 0; };
+function showApp() { $('loginView').classList.add('hidden'); $('app').classList.remove('hidden'); loadServers(); }
 
-// --- Settings with PIN Protection ---
-function openSettings() {
-  const hasPin = S.pin && S.pin.length > 0;
-  const lockDiv = $('settingsLock');
-  const unlockedDiv = $('settingsUnlocked');
-  if (hasPin) {
-    lockDiv.style.display = 'block';
-    unlockedDiv.style.display = 'none';
-    $('pinInput').value = '';
-    $('pinError').textContent = '';
-    $('settings').classList.remove('hidden');
-    setTimeout(() => $('pinInput').focus(), 100);
-  } else {
-    lockDiv.style.display = 'none';
-    unlockedDiv.style.display = 'block';
-    loadSettingsData();
-    $('settings').classList.remove('hidden');
-  }
-}
-
-function loadSettingsData() {
-  $('setApi').value = S.api;
-  $('setInterval').value = S.intervalMs;
-  const toggle = $('liveToggle');
-  if (S.liveEnabled) { toggle.classList.add('active'); $('liveStatus').textContent = 'مفعل'; $('liveStatus').style.color = 'var(--g)'; }
-  else { toggle.classList.remove('active'); $('liveStatus').textContent = 'معطل'; $('liveStatus').style.color = 'var(--r)'; }
-  $('setApiStatus').textContent = S.api ? (S.token ? '✅ متصل' : '❌ غير متصل') : '—';
-  $('setTokenStatus').textContent = S.token ? '🔑 موجود' : '❌ غير موجود';
-  $('setServerStatus').textContent = S.server ? S.server.name || '—' : '—';
-  const pinToggle = $('pinToggle');
-  const pinSettings = $('pinSettings');
-  if (S.pin && S.pin.length > 0) {
-    pinToggle.classList.add('active');
-    pinSettings.style.display = 'block';
-    $('newPin').value = '';
-    $('confirmPin').value = '';
-    $('pinStatus').textContent = '✅ PIN مفعل';
-    $('pinStatus').style.color = 'var(--g)';
-  } else {
-    pinToggle.classList.remove('active');
-    pinSettings.style.display = 'none';
-  }
-}
-
-$('pinUnlock').onclick = () => {
-  const entered = $('pinInput').value.trim();
-  if (!entered) { $('pinError').textContent = 'الرجاء إدخال PIN'; return; }
-  if (entered === S.pin) {
-    S.pinAttempts = 0;
-    $('settingsLock').style.display = 'none';
-    $('settingsUnlocked').style.display = 'block';
-    loadSettingsData();
-    toast('🔓 تم فتح الإعدادات');
-  } else {
-    S.pinAttempts++;
-    const remaining = 5 - S.pinAttempts;
-    $('pinError').textContent = `❌ PIN خاطئ! ${remaining} محاولات متبقية.`;
-    if (S.pinAttempts >= 5) {
-      toast('🔒 تم تجاوز عدد المحاولات. سيتم تسجيل الخروج.', true);
-      sessionStorage.removeItem('zone_token');
-      S.token = '';
-      showLogin();
-      setApiStatus(false);
-      $('settings').classList.add('hidden');
-      S.pinAttempts = 0;
-    }
-  }
-};
-$('pinInput').addEventListener('keydown', (e) => { if (e.key === 'Enter') $('pinUnlock').click(); });
-
-$('pinToggle').onclick = function() {
-  const isActive = this.classList.contains('active');
-  const pinSettings = $('pinSettings');
-  if (isActive) {
-    if (confirm('هل أنت متأكد من إلغاء تفعيل PIN؟')) {
-      localStorage.removeItem('zone_pin');
-      S.pin = null;
-      this.classList.remove('active');
-      pinSettings.style.display = 'none';
-      toast('🔓 تم إلغاء تفعيل PIN');
-    }
-  } else {
-    this.classList.add('active');
-    pinSettings.style.display = 'block';
-    $('newPin').value = '';
-    $('confirmPin').value = '';
-    $('pinStatus').textContent = 'أدخل PIN الجديد';
-    $('pinStatus').style.color = 'var(--muted)';
-  }
-};
-
-$('savePin').onclick = () => {
-  const newPin = $('newPin').value.trim();
-  const confirmPin = $('confirmPin').value.trim();
-  if (!newPin || !confirmPin) { $('pinStatus').textContent = '❌ الرجاء ملء الحقلين'; $('pinStatus').style.color = 'var(--r)'; return; }
-  if (newPin.length < 4 || newPin.length > 8) { $('pinStatus').textContent = '❌ PIN يجب أن يكون 4-8 أرقام'; $('pinStatus').style.color = 'var(--r)'; return; }
-  if (!/^\d+$/.test(newPin)) { $('pinStatus').textContent = '❌ PIN يجب أن يحتوي على أرقام فقط'; $('pinStatus').style.color = 'var(--r)'; return; }
-  if (newPin !== confirmPin) { $('pinStatus').textContent = '❌ PIN غير متطابق'; $('pinStatus').style.color = 'var(--r)'; return; }
-  S.pin = newPin;
-  localStorage.setItem('zone_pin', newPin);
-  $('pinStatus').textContent = '✅ تم حفظ PIN بنجاح';
-  $('pinStatus').style.color = 'var(--g)';
-  toast('🔐 تم تفعيل PIN');
-};
-
-$('settingsBtn').onclick = openSettings;
-$('setClose').onclick = $('setCancel').onclick = () => { $('settings').classList.add('hidden'); };
-
-$('setSave').onclick = async () => {
-  const u = $('setApi').value.trim().replace(/\/+$/, '');
-  const interval = parseInt($('setInterval').value);
-  if (!/^https?:\/\//i.test(u)) return toast('رابط API غير صحيح', true);
-  if (isNaN(interval) || interval < 500) return toast('القيمة يجب أن تكون 500 على الأقل', true);
-  S.api = u; S.intervalMs = interval;
-  localStorage.setItem('zone_api', u);
-  localStorage.setItem('zone_interval', String(interval));
-  $('settings').classList.add('hidden');
-  try { await req('/api/auth/check', {}, 2); await loadServers(); toast('✅ تم تحديث الإعدادات'); setApiStatus(true); }
-  catch (e) { toast('❌ '+e.message, true); setApiStatus(false); }
-  if (S.server) { stopLive(); startLive(); }
-};
-
-$('liveToggle').onclick = function() {
-  const isActive = this.classList.contains('active');
-  if (isActive) {
-    this.classList.remove('active');
-    S.liveEnabled = false;
-    $('liveStatus').textContent = 'معطل';
-    $('liveStatus').style.color = 'var(--r)';
-    stopLive();
-    toast('⏸️ تم إيقاف التحديث التلقائي');
-  } else {
-    this.classList.add('active');
-    S.liveEnabled = true;
-    $('liveStatus').textContent = 'مفعل';
-    $('liveStatus').style.color = 'var(--g)';
-    if (S.server) startLive();
-    toast('▶️ تم تشغيل التحديث التلقائي');
-  }
-};
-
-// --- Navigation controls ---
-$('refresh').onclick = () => { if (S.server) loadServer(S.server.id); else loadServers(); };
-$('dashRefresh').onclick = loadServers;
-$('reconnectBtn').onclick = async () => {
-  toast('🔄 جاري إعادة الاتصال...', false);
-  try { await req('/api/auth/check', {}, 2); toast('✅ تم إعادة الاتصال'); setApiStatus(true); if (S.server) loadServer(S.server.id); else loadServers(); }
-  catch (e) { toast('❌ '+e.message, true); setApiStatus(false); }
-};
-$('dashboardBtn').onclick = () => { page('dashboard'); stopLive(); };
-
+// ============ Navigation ============
 function page(p) {
   document.querySelectorAll('.page').forEach(x => x.classList.add('hidden'));
   if (p === 'dashboard') {
     $('dashboard').classList.remove('hidden');
     $('title').textContent = 'Dashboard';
-    document.getElementById('app').classList.remove('page-server');
     stopLive();
   } else {
     $('server').classList.remove('hidden');
     $('title').textContent = S.server?.name || 'Server';
-    document.getElementById('app').classList.add('page-server');
     if (S.liveEnabled) startLive();
   }
   document.querySelectorAll('.nav[data-page]').forEach(x => x.classList.toggle('active', x.dataset.page === p));
   closeSidebar();
 }
 document.querySelectorAll('.nav[data-page]').forEach(x => x.onclick = () => page(x.dataset.page));
+$('dashboardBtn').onclick = () => { page('dashboard'); S.currentServerId=null; };
+$('menuToggle').onclick = () => { $('sidebar').classList.toggle('open'); $('overlay').classList.toggle('active'); };
+$('overlay').onclick = () => { $('sidebar').classList.remove('open'); $('overlay').classList.remove('active'); };
+function closeSidebar(){ $('sidebar').classList.remove('open'); $('overlay').classList.remove('active'); }
+$('refresh').onclick = () => { if(S.currentServerId) loadServer(S.currentServerId); else loadServers(); };
+$('dashRefresh').onclick = loadServers;
+$('openRefresh').onclick = () => { if(S.currentServerId) loadServer(S.currentServerId); };
 
-function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('overlay').classList.toggle('active'); }
-function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('overlay').classList.remove('active'); }
-document.getElementById('menuToggle').onclick = toggleSidebar;
-document.getElementById('overlay').onclick = closeSidebar;
-
-// --- Servers ---
+// ============ Servers ============
 async function loadServers() {
-  try { S.servers = await req('/api/servers'); renderCards(); toast('✅ تم تحديث السيرفرات'); setApiStatus(true); }
-  catch (e) { toast('❌ '+e.message, true); setApiStatus(false); }
+  try { S.servers = await req('/api/servers'); renderCards(); setApiStatus(true); }
+  catch(e) { toast('❌ '+e.message, true); }
 }
 
 function renderCards() {
@@ -628,61 +392,50 @@ function renderCards() {
       <small>${esc(s.hostname||'Worker')}</small>
       <div class="meta"><div class="mini"><span>Status</span><b>${online(s)?'🟢 Online':'🔴 Offline'}</b></div><div class="mini"><span>CPU</span><b>${s.cpu_percent==null?'—':s.cpu_percent+'%'}</b></div></div>
     </article>
-  `).join('') : `<div class="panel empty">No Workers registered yet.</div>`;
-  document.querySelectorAll('.server-card').forEach(x => x.onclick = () => loadServer(Number(x.dataset.id)));
+  `).join('') : '<div class="panel empty">لا يوجد سيرفرات</div>';
+  document.querySelectorAll('.server-card').forEach(x => x.onclick = () => loadServer(x.dataset.id));
 }
 
-// --- Load single server + PRELOAD ALL (fix: clear old data) ---
 async function loadServer(id) {
-  // Clear previous data
-  S.sysInfoData = {};
-  S.cwd = '.';
-  S.runningProcs = {};
-  $('fileList').innerHTML = '<div class="empty">⏳ جاري تحميل الملفات...</div>';
-  $('procList').innerHTML = '<div class="empty">⏳ جاري تحميل العمليات...</div>';
-  $('logsOut').textContent = '⏳ جاري تحميل السجلات...';
+  id = String(id);
+  S.currentServerId = id;
+  S.cwd = '.'; S.runningProcs = {}; S.selectedFiles.clear();
+  updateSelectedActions();
+  $('fileList').innerHTML = '<div class="empty">⏳ جاري التحميل...</div>';
+  $('procList').innerHTML = '<div class="empty">⏳ جاري التحميل...</div>';
+  $('logsOut').textContent = '⏳ جاري التحميل...';
   $('consoleOut').textContent = '';
-  $('sysInfoGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--muted);padding:16px">⏳ جلب معلومات النظام...</div>';
   $('consoleState').textContent = '—';
-
-  S.server = S.servers.find(x => Number(x.id) === id) || { id };
-  S.preloaded = false;
+  S.server = S.servers.find(x => String(x.id) === id) || { id };
   page('server');
   $('serverName').textContent = S.server.name || `Server ${id}`;
-  $('serverMeta').textContent = S.server.hostname || S.server.base_url || '';
+  $('serverMeta').textContent = S.server.hostname || '';
   $('dot').className = 'dot ' + (online(S.server) ? 'on' : '');
   try {
     const d = await req(`/api/servers/${id}`);
     S.server = { ...S.server, ...d };
     $('serverName').textContent = S.server.name;
-    $('serverMeta').textContent = S.server.hostname || S.server.base_url || '';
+    $('serverMeta').textContent = S.server.hostname || '';
     $('dot').className = 'dot ' + (online(S.server) ? 'on' : '');
-    setApiStatus(true);
-  } catch (e) { toast('❌ '+e.message, true); setApiStatus(false); }
+  } catch(e) { toast('❌ '+e.message, true); }
   renderStats(S.server);
-
   try {
-    const [filesData, consoleData, procData, logsData] = await Promise.allSettled([
-      req(`/api/servers/${S.server.id}/files?path=${encodeURIComponent(S.cwd)}`),
-      req(`/api/servers/${S.server.id}/console`),
-      req(`/api/servers/${S.server.id}/processes`),
-      req(`/api/servers/${S.server.id}/logs`)
+    const [f,c,p,l] = await Promise.allSettled([
+      req(`/api/servers/${id}/files?path=${encodeURIComponent(S.cwd)}`),
+      req(`/api/servers/${id}/console`),
+      req(`/api/servers/${id}/processes`),
+      req(`/api/servers/${id}/logs`)
     ]);
-    if (filesData.status === 'fulfilled') renderFiles(Array.isArray(filesData.value) ? filesData.value : (filesData.value.files || filesData.value.items || []));
-    else $('fileList').innerHTML = `<div class="empty">${esc(filesData.reason?.message||'فشل تحميل الملفات')}</div>`;
-    if (consoleData.status === 'fulfilled') { $('consoleOut').textContent = consoleData.value.output ?? consoleData.value.console ?? ''; $('consoleState').textContent = 'Connected'; }
-    else { $('consoleOut').textContent = '[Manager] '+ (consoleData.reason?.message||'فشل'); $('consoleState').textContent = 'Unavailable'; }
-    if (procData.status === 'fulfilled') { const a = Array.isArray(procData.value) ? procData.value : (procData.value.processes || []); renderProcesses(a); }
-    else $('procList').innerHTML = `<div class="empty">${esc(procData.reason?.message||'فشل')}</div>`;
-    if (logsData.status === 'fulfilled') $('logsOut').textContent = logsData.value.logs ?? logsData.value.output ?? '';
-    else $('logsOut').textContent = logsData.reason?.message||'فشل';
-    S.preloaded = true;
-    toast('✅ تم تحميل جميع بيانات السيرفر');
-  } catch (e) { toast('⚠️ بعض البيانات لم تُحمّل', true); }
-  if (S.liveEnabled) startLive();
-  // جلب معلومات النظام إذا كانت علامة التبويب Console نشطة
-  const consoleTab = document.querySelector('[data-tab="console"]');
-  if (consoleTab && consoleTab.classList.contains('active')) fetchSystemInfo();
+    if(f.status==='fulfilled') renderFiles(Array.isArray(f.value)?f.value:(f.value.files||f.value.items||[]));
+    else $('fileList').innerHTML = `<div class="empty">${esc(f.reason?.message||'فشل')}</div>`;
+    if(c.status==='fulfilled') { $('consoleOut').textContent = c.value.output ?? c.value.console ?? ''; $('consoleState').textContent = 'Connected'; }
+    else $('consoleState').textContent = 'Unavailable';
+    if(p.status==='fulfilled') renderProcesses(Array.isArray(p.value)?p.value:(p.value.processes||[]));
+    else $('procList').innerHTML = `<div class="empty">${esc(p.reason?.message||'فشل')}</div>`;
+    if(l.status==='fulfilled') $('logsOut').textContent = l.value.logs ?? l.value.output ?? '';
+    else $('logsOut').textContent = l.reason?.message||'فشل';
+  } catch(e) { toast('⚠️ بعض البيانات لم تحمل', true); }
+  if(S.liveEnabled) startLive();
 }
 
 function renderStats(s) {
@@ -694,408 +447,273 @@ function renderStats(s) {
     ['Disk', s.disk_percent == null ? '—' : s.disk_percent + '%', s.disk_percent]
   ];
   $('stats').innerHTML = stats.map(([label,value,pct]) => `
-    <div class="stat" data-label="${label}">
-      <span>${label}</span>
-      <b>${esc(value)}</b>
-      <div class="bar-bg"><div class="bar-fill" style="width:${pct==null?0:Math.min(100,pct)}%"></div></div>
-    </div>
+    <div class="stat"><span>${label}</span><b>${esc(value)}</b>
+    <div class="bar-bg"><div class="bar-fill" style="width:${pct==null?0:Math.min(100,pct)}%"></div></div></div>
   `).join('');
 }
 
-// --- System Info (Copyable Cards) ---
-async function fetchSystemInfo() {
-  if (!S.server) return;
-  const grid = $('sysInfoGrid');
-  grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--muted);padding:16px">⏳ جلب معلومات النظام...</div>';
-  try {
-    const cmd = `
-echo "Hostname: $(hostname)" && \
-echo "IP Address: $(hostname -I | awk '{print $1}')" && \
-echo "OS: $(uname -s)" && \
-echo "Kernel: $(uname -r)" && \
-echo "Architecture: $(uname -m)" && \
-echo "CPU Model: $(lscpu | grep 'Model name' | head -1 | cut -d':' -f2 | xargs)" && \
-echo "CPU Cores: $(nproc)" && \
-echo "Memory Total: $(free -h | grep Mem | awk '{print $2}')" && \
-echo "Memory Used: $(free -h | grep Mem | awk '{print $3}')" && \
-echo "Memory Available: $(free -h | grep Mem | awk '{print $7}')" && \
-echo "Disk Total (/): $(df -h / | awk 'NR==2 {print $2}')" && \
-echo "Disk Used (/): $(df -h / | awk 'NR==2 {print $3}')" && \
-echo "Disk Available (/): $(df -h / | awk 'NR==2 {print $4}')" && \
-echo "Uptime: $(uptime -p)" && \
-echo "Load Average: $(uptime | awk -F'load average:' '{print $2}' | xargs)" && \
-echo "Processes: $(ps aux | wc -l)" && \
-echo "Python Version: $(python3 --version 2>/dev/null || echo 'Not installed')" && \
-echo "User: $(whoami)"`;
-    const result = await req(`/api/servers/${S.server.id}/run`, {
-      method: 'POST',
-      body: JSON.stringify({ command: cmd, cwd: S.cwd, timeout: 10 })
-    });
-    const output = result.output || result.stdout || '';
-    const lines = output.split('\n').filter(l => l.trim() !== '');
-    const data = {};
-    for (const line of lines) {
-      const idx = line.indexOf(':');
-      if (idx > 0) {
-        const key = line.substring(0, idx).trim();
-        const value = line.substring(idx + 1).trim();
-        data[key] = value || '—';
-      }
-    }
-    S.sysInfoData = data;
-    renderSysInfo(data);
-  } catch (e) {
-    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;color:var(--r);padding:16px">❌ Error: ${esc(e.message)}</div>`;
-  }
+// ============ Files ============
+function isArchive(name){return /\.(zip|tar|tar\.gz|tgz|tar\.bz2|tbz2)$/i.test(name);}
+function getFileIcon(name,dir){
+  if(dir)return{icon:'📁',cls:'icon-folder'};
+  if(name.endsWith('.py'))return{icon:'🐍',cls:'icon-py'};
+  if(isArchive(name))return{icon:'📦',cls:'icon-zip'};
+  return{icon:'📄',cls:'icon-file'};
+}
+function updateSelectedActions(){
+  const c=S.selectedFiles.size;
+  if(c>0){$('selectedActions').classList.remove('hidden');$('selectedCount').textContent=`${c} محدد`;}
+  else{$('selectedActions').classList.add('hidden');}
 }
 
-function renderSysInfo(data) {
-  const grid = $('sysInfoGrid');
-  if (!data || Object.keys(data).length === 0) {
-    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--muted);padding:16px">لا توجد معلومات</div>';
-    return;
-  }
-  const items = Object.entries(data).map(([label, value]) => `
-    <div class="sys-info-item" data-value="${esc(value)}" onclick="copySysInfoItem(this)">
-      <span class="label">${esc(label)}</span>
-      <span class="value">${esc(value)}</span>
-    </div>
-  `).join('');
-  grid.innerHTML = items;
+async function loadFiles(){
+  if(!S.currentServerId)return;
+  try{
+    const d=await req(`/api/servers/${S.currentServerId}/files?path=${encodeURIComponent(S.cwd)}`);
+    renderFiles(Array.isArray(d)?d:(d.files||d.items||[]));
+  }catch(e){$('fileList').innerHTML=`<div class="empty">${esc(e.message)}</div>`;}
 }
 
-function copySysInfoItem(el) {
-  const value = el.dataset.value;
-  if (!value) return;
-  navigator.clipboard.writeText(value).then(() => {
-    el.classList.add('copied');
-    toast('📋 تم نسخ: ' + value.substring(0, 30) + (value.length > 30 ? '...' : ''));
-    setTimeout(() => el.classList.remove('copied'), 2000);
-  }).catch(() => {
-    const range = document.createRange();
-    range.selectNode(el.querySelector('.value'));
-    window.getSelection().removeAllRanges();
-    window.getSelection().addRange(range);
-    document.execCommand('copy');
-    el.classList.add('copied');
-    toast('📋 تم النسخ');
-    setTimeout(() => el.classList.remove('copied'), 2000);
-  });
-}
-
-function copyAllSysInfo() {
-  const grid = $('sysInfoGrid');
-  const items = grid.querySelectorAll('.sys-info-item');
-  if (items.length === 0) { toast('⚠️ لا توجد معلومات لنسخها', true); return; }
-  let text = '';
-  items.forEach(el => {
-    const label = el.querySelector('.label')?.textContent || '';
-    const value = el.querySelector('.value')?.textContent || '';
-    text += `${label}: ${value}\n`;
-  });
-  navigator.clipboard.writeText(text).then(() => {
-    toast('📋 تم نسخ جميع المعلومات');
-  }).catch(() => {
-    const ta = document.createElement('textarea');
-    ta.value = text;
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    ta.remove();
-    toast('📋 تم النسخ');
-  });
-}
-
-$('fetchSysInfo').onclick = fetchSystemInfo;
-$('copyAllSysInfo').onclick = copyAllSysInfo;
-
-// --- Files ---
-function safe(p) {
-  p = (p||'.').replaceAll('\\','/').trim();
-  if (!p || p === '/') return '.';
-  const out = [];
-  for (const part of p.split('/')) {
-    if (!part || part === '.') continue;
-    if (part === '..') { if (!out.length) throw Error('Invalid path'); out.pop(); }
-    else out.push(part);
-  }
-  return out.join('/') || '.';
-}
-function join(a,b) { return safe(a === '.' ? b : a + '/' + b); }
-
-let fileLoadAbort = null;
-async function loadFiles() {
-  if (!S.server) return;
-  if (fileLoadAbort) { fileLoadAbort.abort(); fileLoadAbort = null; }
-  const controller = new AbortController();
-  fileLoadAbort = controller;
-  try {
-    const d = await req(`/api/servers/${S.server.id}/files?path=${encodeURIComponent(S.cwd)}`, { signal: controller.signal });
-    if (fileLoadAbort === controller) renderFiles(Array.isArray(d)?d:(d.files||d.items||[]));
-  } catch (e) {
-    if (e.name === 'AbortError') return;
-    if (fileLoadAbort === controller) $('fileList').innerHTML = `<div class="empty">${esc(e.message)}</div>`;
-  } finally { if (fileLoadAbort === controller) fileLoadAbort = null; }
-}
-
-function renderFiles(list) {
-  $('path').textContent = S.cwd === '.' ? '/' : '/' + S.cwd;
-  let html = '';
-  if (S.cwd !== '.') {
-    html += `<div class="file back-folder" id="parent"><span class="icon-large">↩</span> <span style="font-size:18px;">العودة إلى المجلد السابق</span></div>`;
-  }
-  html += list.length ? list.map(f => {
-    const name = f.name || f.filename || String(f.path||'').split('/').pop();
-    const dir = !!(f.is_dir || f.directory || String(f.type||'').toLowerCase() === 'directory');
-    const path = safe(f.path || join(S.cwd, name));
-    const isPy = name.endsWith('.py');
-    const isRunning = S.runningProcs[path] !== undefined && S.runningProcs[path] !== null;
-    const runLabel = isRunning ? '⏹ Stop' : '▶ Run';
-    const runClass = isRunning ? 'run-btn running' : 'run-btn';
-    const icon = dir ? '📁' : (isPy ? '🐍' : '📄');
-    const iconClass = dir ? 'icon-folder' : (isPy ? 'icon-py' : 'icon-file');
-    return `<div class="file">
-      <div class="${iconClass}">${icon}</div>
-      <div class="file-name ${dir?'click':''}" data-open="${encodeURIComponent(path)}" data-dir="${dir}">${esc(name)}${isRunning?'<span class="running-indicator"></span>':''}</div>
-      <div>${dir?'Folder':fmt(f.size)}</div>
-      <div class="act">
-        ${dir?'':`<button class="ghost edit" data-p="${esc(path)}">✏️ Edit</button>`}
-        ${isPy ? `<button class="${runClass}" data-p="${esc(path)}" data-running="${isRunning}">${runLabel}</button>` : ''}
-        <button class="ghost del-btn" data-p="${esc(path)}">🗑️ Delete</button>
+function renderFiles(list){
+  $('path').textContent = S.cwd==='.'?'/':'/'+S.cwd;
+  let html='';
+  if(S.cwd!=='.') html += `<div class="back-folder" id="parent"><span>↩️</span><span>العودة للمجلد السابق</span></div>`;
+  html += list.length ? list.map(f=>{
+    const name=f.name||f.filename||String(f.path||'').split('/').pop();
+    const dir=!!(f.is_dir||f.directory||String(f.type||'').toLowerCase()==='directory');
+    const path=safe(f.path||join(S.cwd,name));
+    const isPy=name.endsWith('.py');
+    const isRunning=S.runningProcs[path]!==undefined&&S.runningProcs[path]!==null;
+    const isArchiveFile=isArchive(name);
+    const isSelected=S.selectedFiles.has(path);
+    const {icon,cls}=getFileIcon(name,dir);
+    return `<div class="file-row ${isSelected?'selected':''}" data-path="${esc(path)}">
+      <input type="checkbox" class="file-checkbox" data-path="${esc(path)}" ${isSelected?'checked':''}>
+      <div class="file-icon ${cls}">${icon}</div>
+      <div class="file-info">
+        <div class="file-name ${dir?'click':''}" data-open="${encodeURIComponent(path)}" data-dir="${dir}">${esc(name)}${isRunning?'<span class="running-indicator"></span>':''}</div>
+        <div class="file-size">${dir?'📁 مجلد':fmt(f.size)}</div>
+      </div>
+      <div class="file-actions">
+        ${dir?'':`<button class="edit-btn" data-p="${esc(path)}">✏️ تعديل</button>`}
+        ${isPy?`<button class="run-btn ${isRunning?'running':''}" data-p="${esc(path)}" data-running="${isRunning}">${isRunning?'⏹ إيقاف':'▶ تشغيل'}</button>`:''}
+        ${isArchiveFile?`<button class="unzip-btn" data-p="${esc(path)}">📂 فك</button>`:''}
+        <button class="del-btn" data-p="${esc(path)}">🗑️</button>
       </div>
     </div>`;
-  }).join('') : '<div class="empty">Directory is empty.</div>';
-  $('fileList').innerHTML = html;
-  if ($('parent')) $('parent').onclick = () => { const a = S.cwd.split('/').filter(Boolean); a.pop(); S.cwd = a.join('/') || '.'; loadFiles(); };
-  document.querySelectorAll('[data-open]').forEach(x => x.onclick = () => {
-    if (x.dataset.dir === 'true') { S.cwd = safe(decodeURIComponent(x.dataset.open)); loadFiles(); }
-    else editFile(decodeURIComponent(x.dataset.open), x.textContent.trim());
+  }).join('') : '<div class="empty">📂 المجلد فارغ</div>';
+  $('fileList').innerHTML=html;
+  if($('parent'))$('parent').onclick=()=>{const a=S.cwd.split('/').filter(Boolean);a.pop();S.cwd=a.join('/')||'.';loadFiles();};
+  document.querySelectorAll('[data-open]').forEach(x=>x.onclick=()=>{
+    if(x.dataset.dir==='true'){S.cwd=safe(decodeURIComponent(x.dataset.open));loadFiles();}
+    else editFile(decodeURIComponent(x.dataset.open),x.textContent.trim());
   });
-  document.querySelectorAll('.edit').forEach(x => x.onclick = () => editFile(x.dataset.p, x.dataset.p.split('/').pop()));
-  document.querySelectorAll('.run-btn').forEach(x => x.onclick = () => { const p = x.dataset.p; const run = x.dataset.running === 'true'; run ? stopPythonFile(p,x) : runPythonFile(p,x); });
-  document.querySelectorAll('.del-btn').forEach(x => x.onclick = () => {
-    const path = x.dataset.p;
-    showConfirm('تأكيد الحذف', `هل أنت متأكد من حذف "${path}"؟ لا يمكن التراجع عن هذا الإجراء.`, (confirmed) => { if (confirmed) delPath(path); });
+  document.querySelectorAll('.file-checkbox').forEach(x=>x.onchange=(e)=>{
+    const p=x.dataset.path;
+    if(e.target.checked){S.selectedFiles.add(p);x.closest('.file-row').classList.add('selected');}
+    else{S.selectedFiles.delete(p);x.closest('.file-row').classList.remove('selected');}
+    updateSelectedActions();
   });
+  document.querySelectorAll('.edit-btn').forEach(x=>x.onclick=()=>editFile(x.dataset.p,x.dataset.p.split('/').pop()));
+  document.querySelectorAll('.run-btn').forEach(x=>x.onclick=()=>{const p=x.dataset.p;const run=x.dataset.running==='true';run?stopPythonFile(p,x):runPythonFile(p,x);});
+  document.querySelectorAll('.unzip-btn').forEach(x=>x.onclick=()=>openDecompressModal(x.dataset.p));
+  document.querySelectorAll('.del-btn').forEach(x=>x.onclick=()=>{
+    const p=x.dataset.p;
+    showConfirm('تأكيد الحذف',`هل تريد حذف "${p}"؟`,(ok)=>{if(ok)delPath(p);});
+  });
+  updateSelectedActions();
 }
 
-function fmt(n) { n = Number(n); if (!Number.isFinite(n)) return '—'; if (n<1024) return n+' B'; if (n<1048576) return (n/1024).toFixed(1)+' KB'; if (n<1073741824) return (n/1048576).toFixed(1)+' MB'; return (n/1073741824).toFixed(1)+' GB'; }
-
-async function editFile(path,name) {
-  try {
-    const d = await req(`/api/servers/${S.server.id}/file?path=${encodeURIComponent(path)}`);
-    S.editing = path;
-    $('modalTitle').textContent = 'Edit '+name;
+async function editFile(path,name){
+  try{
+    const d=await req(`/api/servers/${S.currentServerId}/file?path=${encodeURIComponent(path)}`);
+    S.editing=path;
+    $('modalTitle').textContent='تعديل '+name;
     $('modalInput').classList.add('hidden');
     $('editor').classList.remove('hidden');
-    $('editor').value = d.content ?? d.text ?? '';
+    $('editor').value=d.content??d.text??'';
     $('modal').classList.remove('hidden');
-    $('modalOk').onclick = async () => {
-      try { await req(`/api/servers/${S.server.id}/file?path=${encodeURIComponent(S.editing)}`, { method: 'PUT', body: JSON.stringify({ content: $('editor').value }) });
-        $('modal').classList.add('hidden'); toast('Saved'); loadFiles(); } catch (e) { toast(e.message, true); }
+    $('modalOk').onclick=async()=>{
+      try{
+        await req(`/api/servers/${S.currentServerId}/file?path=${encodeURIComponent(S.editing)}`,{method:'PUT',body:JSON.stringify({content:$('editor').value})});
+        $('modal').classList.add('hidden');toast('✅ تم الحفظ');loadFiles();
+      }catch(e){toast(e.message,true);}
     };
-  } catch (e) { toast(e.message, true); }
+  }catch(e){toast(e.message,true);}
 }
 
-async function runPythonFile(path, btn) {
-  if (!S.server) return;
-  if (S.runningProcs[path]) { toast('Already running', true); return; }
-  try {
-    const cmd = `python3 -u "${path}" > /tmp/py_out.log 2>&1 & echo $!`;
-    const result = await req(`/api/servers/${S.server.id}/run`, { method: 'POST', body: JSON.stringify({ command: cmd, cwd: S.cwd, timeout: 5 }) });
-    const output = (result.output || result.stdout || '').trim();
-    const lines = output.split('\n').filter(Boolean);
-    let pid = null;
-    for (const line of lines) { const m = line.match(/^(\d+)$/); if (m) pid = parseInt(m[1],10); }
-    if (!pid) S.runningProcs[path] = 'unknown';
-    else S.runningProcs[path] = pid;
-    toast(`✅ ${path} started ${pid?'(PID '+pid+')':''}`);
-    document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
-    const consoleTab = document.querySelector('[data-tab="console"]');
-    consoleTab.classList.add('active');
-    ['files','console','processes','packages','logs'].forEach(x => $(`${x}`).classList.toggle('hidden', x !== 'console'));
-    const outMsg = result.output || result.stdout || result.stderr || 'Process started.';
-    $('consoleOut').textContent = `$ ${cmd}\n${outMsg}\n\n✅ Running in background (PID: ${pid || 'unknown'})\n`;
-    $('consoleState').textContent = '▶ Running';
-    btn.textContent = '⏹ Stop';
-    btn.dataset.running = 'true';
-    btn.classList.add('running');
-    loadFiles(); loadProc();
-  } catch (e) { toast('Run failed: '+e.message, true); document.querySelector('[data-tab="console"]').click(); $('consoleOut').textContent = `$ python3 "${path}"\n❌ Error: ${e.message}\n`; $('consoleState').textContent = '❌ Failed'; }
+async function runPythonFile(path,btn){
+  if(S.runningProcs[path]){toast('يعمل بالفعل',true);return;}
+  try{
+    const cmd=`python3 -u "${path}" > /tmp/py_out.log 2>&1 & echo $!`;
+    const r=await req(`/api/servers/${S.currentServerId}/run`,{method:'POST',body:JSON.stringify({command:cmd,cwd:S.cwd,timeout:5})});
+    const out=(r.output||r.stdout||'').trim();
+    const lines=out.split('\n').filter(Boolean);
+    let pid=null;
+    for(const line of lines){const m=line.match(/^(\d+)$/);if(m)pid=parseInt(m[1]);}
+    S.runningProcs[path]=pid||'unknown';
+    toast(`✅ بدأ ${path} ${pid?'(PID '+pid+')':''}`);
+    btn.textContent='⏹ إيقاف';btn.dataset.running='true';btn.classList.add('running');
+    loadFiles();
+  }catch(e){toast('فشل: '+e.message,true);}
 }
 
-async function stopPythonFile(path, btn) {
-  const pid = S.runningProcs[path];
-  if (!pid || pid === 'unknown') { toast('Cannot stop: PID unknown', true); delete S.runningProcs[path]; btn.textContent = '▶ Run'; btn.dataset.running = 'false'; btn.classList.remove('running'); loadFiles(); return; }
-  try {
-    await req(`/api/servers/${S.server.id}/processes/${pid}`, { method: 'DELETE' });
-    toast(`Stopped ${path} (PID ${pid})`);
+async function stopPythonFile(path,btn){
+  const pid=S.runningProcs[path];
+  if(!pid||pid==='unknown'){delete S.runningProcs[path];btn.textContent='▶ تشغيل';btn.dataset.running='false';btn.classList.remove('running');loadFiles();return;}
+  try{
+    await req(`/api/servers/${S.currentServerId}/processes/${pid}`,{method:'DELETE'});
+    toast(`✅ توقف ${path}`);
     delete S.runningProcs[path];
-    btn.textContent = '▶ Run';
-    btn.dataset.running = 'false';
-    btn.classList.remove('running');
-    loadFiles(); loadProc();
-    $('consoleOut').textContent += `\n⏹ Stopped process ${pid}\n`;
-    $('consoleState').textContent = '⏹ Stopped';
-  } catch (e) { toast('Stop failed: '+e.message, true); delete S.runningProcs[path]; btn.textContent = '▶ Run'; btn.dataset.running = 'false'; btn.classList.remove('running'); loadFiles(); loadProc(); }
+    btn.textContent='▶ تشغيل';btn.dataset.running='false';btn.classList.remove('running');
+    loadFiles();
+  }catch(e){toast('فشل: '+e.message,true);}
 }
 
-async function delPath(path) {
-  if (S.runningProcs[path]) { try { await req(`/api/servers/${S.server.id}/processes/${S.runningProcs[path]}`, { method: 'DELETE' }); } catch(e) {} delete S.runningProcs[path]; }
-  try { await req(`/api/servers/${S.server.id}/file?path=${encodeURIComponent(path)}`, { method: 'DELETE' }); toast('🗑️ Deleted'); loadFiles(); } catch (e) { toast(e.message, true); }
+async function delPath(path){
+  try{
+    await req(`/api/servers/${S.currentServerId}/file?path=${encodeURIComponent(path)}`,{method:'DELETE'});
+    toast('🗑️ تم الحذف');S.selectedFiles.delete(path);loadFiles();
+  }catch(e){toast(e.message,true);}
 }
 
-function createModal(title, cb) {
-  $('modalTitle').textContent = title;
-  $('modalInput').value = '';
-  $('modalInput').classList.remove('hidden');
-  $('editor').classList.add('hidden');
+function showConfirm(title,msg,cb){
+  $('confirmTitle').textContent=title;$('confirmMessage').textContent=msg;
+  $('confirmModal').classList.remove('hidden');S.confirmCallback=cb;
+}
+$('confirmOk').onclick=()=>{if(S.confirmCallback)S.confirmCallback(true);S.confirmCallback=null;$('confirmModal').classList.add('hidden');};
+$('confirmCancel').onclick=()=>{if(S.confirmCallback)S.confirmCallback(false);S.confirmCallback=null;$('confirmModal').classList.add('hidden');};
+
+function createModal(title,cb){
+  $('modalTitle').textContent=title;$('modalInput').value='';
+  $('modalInput').classList.remove('hidden');$('editor').classList.add('hidden');
   $('modal').classList.remove('hidden');
-  $('modalOk').onclick = async () => {
-    const n = $('modalInput').value.trim();
-    if (!n) return;
-    try { await cb(n); $('modal').classList.add('hidden'); toast('✅ Done'); loadFiles(); } catch (e) { toast(e.message, true); }
+  $('modalOk').onclick=async()=>{
+    const n=$('modalInput').value.trim();
+    if(!n)return;
+    try{await cb(n);$('modal').classList.add('hidden');toast('✅ تم');loadFiles();}catch(e){toast(e.message,true);}
   };
 }
-$('newFile').onclick = () => createModal('Create file', n => req(`/api/servers/${S.server.id}/file?path=${encodeURIComponent(join(S.cwd,n))}`, { method: 'PUT', body: JSON.stringify({ content: '' }) }));
-$('newDir').onclick = () => createModal('Create folder', n => req(`/api/servers/${S.server.id}/mkdir?path=${encodeURIComponent(join(S.cwd,n))}`, { method: 'POST' }));
-$('reloadFiles').onclick = loadFiles;
-$('modalClose').onclick = $('modalCancel').onclick = () => $('modal').classList.add('hidden');
-$('upload').onchange = async e => {
-  for (const f of [...e.target.files]) {
-    try { const c = await f.text(); await req(`/api/servers/${S.server.id}/file?path=${encodeURIComponent(join(S.cwd,f.name))}`, { method: 'PUT', body: JSON.stringify({ content: c }) }); }
-    catch (x) { toast(`${f.name}: ${x.message}`, true); }
+$('newFile').onclick=()=>createModal('ملف جديد',n=>req(`/api/servers/${S.currentServerId}/file?path=${encodeURIComponent(join(S.cwd,n))}`,{method:'PUT',body:JSON.stringify({content:''})}));
+$('newDir').onclick=()=>createModal('مجلد جديد',n=>req(`/api/servers/${S.currentServerId}/mkdir?path=${encodeURIComponent(join(S.cwd,n))}`,{method:'POST'}));
+$('reloadFiles').onclick=loadFiles;
+$('modalClose').onclick=$('modalCancel').onclick=()=>$('modal').classList.add('hidden');
+$('upload').onchange=async e=>{
+  for(const f of [...e.target.files]){
+    try{const c=await f.text();await req(`/api/servers/${S.currentServerId}/file?path=${encodeURIComponent(join(S.cwd,f.name))}`,{method:'PUT',body:JSON.stringify({content:c})});}catch(x){toast(`${f.name}: ${x.message}`,true);}
   }
-  e.target.value = '';
-  loadFiles();
+  e.target.value='';loadFiles();
+};
+
+// Selection
+$('selectAll').onclick=()=>{document.querySelectorAll('.file-checkbox').forEach(x=>{x.checked=true;S.selectedFiles.add(x.dataset.path);x.closest('.file-row').classList.add('selected');});updateSelectedActions();};
+$('deselectAll').onclick=()=>{document.querySelectorAll('.file-checkbox').forEach(x=>{x.checked=false;S.selectedFiles.delete(x.dataset.path);x.closest('.file-row').classList.remove('selected');});updateSelectedActions();};
+$('clearSelected').onclick=()=>{S.selectedFiles.clear();document.querySelectorAll('.file-checkbox').forEach(x=>{x.checked=false;x.closest('.file-row').classList.remove('selected');});updateSelectedActions();};
+
+// Compress
+$('compressSelected').onclick=()=>{
+  if(S.selectedFiles.size===0){toast('⚠️ اختر ملفات',true);return;}
+  $('compressOutput').value='archive.zip';$('compressFormat').value='zip';
+  $('compressModal').classList.remove('hidden');
+};
+$('compressCancel').onclick=()=>$('compressModal').classList.add('hidden');
+$('compressOk').onclick=async()=>{
+  const output=$('compressOutput').value.trim();
+  const format=$('compressFormat').value;
+  if(!output){toast('❌ أدخل اسم',true);return;}
+  try{
+    await req(`/api/servers/${S.currentServerId}/compress`,{method:'POST',body:JSON.stringify({paths:Array.from(S.selectedFiles),output:join(S.cwd,output),format})});
+    toast('✅ تم الضغط');$('compressModal').classList.add('hidden');S.selectedFiles.clear();loadFiles();
+  }catch(e){toast('❌ '+e.message,true);}
+};
+
+// Decompress
+function openDecompressModal(path){S.decompressTarget=path;$('decompressTo').value='.';$('decompressModal').classList.remove('hidden');}
+$('decompressCancel').onclick=()=>$('decompressModal').classList.add('hidden');
+$('decompressOk').onclick=async()=>{
+  if(!S.decompressTarget)return;
+  const to=$('decompressTo').value.trim()||'.';
+  try{
+    await req(`/api/servers/${S.currentServerId}/decompress`,{method:'POST',body:JSON.stringify({path:S.decompressTarget,extract_to:to})});
+    toast('✅ تم فك الضغط');$('decompressModal').classList.add('hidden');S.decompressTarget=null;loadFiles();
+  }catch(e){toast('❌ '+e.message,true);}
 };
 
 // Console
-async function loadConsole() {
-  if (!S.server) return;
-  $('consoleState').textContent = 'Loading';
-  try { const d = await req(`/api/servers/${S.server.id}/console`); $('consoleOut').textContent = d.output ?? d.console ?? ''; $('consoleState').textContent = 'Connected'; }
-  catch (e) { $('consoleOut').textContent = '[Manager] '+e.message; $('consoleState').textContent = 'Unavailable'; }
-}
-$('cmd').onsubmit = async e => {
+$('cmd').onsubmit=async e=>{
   e.preventDefault();
-  const c = $('cmdInput').value.trim();
-  if (!c) return;
-  $('cmdInput').value = '';
-  $('consoleOut').textContent += `$ ${c}\n`;
-  try { const d = await req(`/api/servers/${S.server.id}/run`, { method: 'POST', body: JSON.stringify({ command: c, cwd: S.cwd, timeout: 60 }) }); $('consoleOut').textContent += (d.output ?? d.stdout ?? JSON.stringify(d)) + '\n'; }
-  catch (x) { $('consoleOut').textContent += '[ERROR] '+x.message+'\n'; }
-  $('consoleOut').scrollTop = $('consoleOut').scrollHeight;
+  const c=$('cmdInput').value.trim();if(!c)return;
+  $('cmdInput').value='';$('consoleOut').textContent+=`$ ${c}\n`;
+  try{const d=await req(`/api/servers/${S.currentServerId}/run`,{method:'POST',body:JSON.stringify({command:c,cwd:S.cwd,timeout:60})});$('consoleOut').textContent+=(d.output??d.stdout??JSON.stringify(d))+'\n';}
+  catch(x){$('consoleOut').textContent+='[ERROR] '+x.message+'\n';}
+  $('consoleOut').scrollTop=$('consoleOut').scrollHeight;
 };
 
 // Processes
-async function loadProc() {
-  try {
-    const d = await req(`/api/servers/${S.server.id}/processes`);
-    const a = Array.isArray(d) ? d : (d.processes || []);
-    // Update runningProcs map: remove dead processes
-    for (const [path, pid] of Object.entries(S.runningProcs)) {
-      if (pid === 'unknown') continue;
-      const stillAlive = a.some(p => String(p.pid) === String(pid));
-      if (!stillAlive) { delete S.runningProcs[path]; loadFiles(); }
-    }
+async function loadProc(){
+  try{
+    const d=await req(`/api/servers/${S.currentServerId}/processes`);
+    const a=Array.isArray(d)?d:(d.processes||[]);
     renderProcesses(a);
-  } catch (e) { $('procList').innerHTML = `<div class="empty">${esc(e.message)}</div>`; }
+  }catch(e){$('procList').innerHTML=`<div class="empty">${esc(e.message)}</div>`;}
 }
-
-function renderProcesses(a) {
-  $('procList').innerHTML = a.length ? a.map(p => `
-    <div class="file"><div class="icon-process">⚙️</div><div>${esc(p.command||p.name)}</div><div>PID ${esc(p.pid)}</div><div class="act"><button class="ghost kill" data-pid="${p.pid}">⏹ Stop</button></div></div>
-  `).join('') : '<div class="empty">No running processes.</div>';
-  document.querySelectorAll('.kill').forEach(x => x.onclick = async () => {
-    const pid = Number(x.dataset.pid);
-    await req(`/api/servers/${S.server.id}/processes/${pid}`, { method: 'DELETE' });
-    for (const [path, p] of Object.entries(S.runningProcs)) { if (p === pid) delete S.runningProcs[path]; }
-    loadProc(); loadFiles();
+function renderProcesses(a){
+  $('procList').innerHTML=a.length?a.map(p=>`
+    <div class="file-row"><div class="file-icon icon-py">⚙️</div><div class="file-info"><div class="file-name">${esc(p.command||p.name)}</div><div class="file-size">PID ${esc(p.pid)}</div></div>
+    <div class="file-actions"><button class="del-btn" data-pid="${p.pid}">⏹ إيقاف</button></div></div>
+  `).join(''):'<div class="empty">لا توجد عمليات</div>';
+  document.querySelectorAll('.kill-btn, [data-pid]').forEach(x=>x.onclick=async()=>{
+    await req(`/api/servers/${S.currentServerId}/processes/${x.dataset.pid}`,{method:'DELETE'});
+    loadProc();loadFiles();
   });
 }
-$('reloadProc').onclick = loadProc;
+$('reloadProc').onclick=loadProc;
 
 // Packages
-$('pkg').onsubmit = async e => {
+$('pkg').onsubmit=async e=>{
   e.preventDefault();
-  try { const d = await req(`/api/servers/${S.server.id}/packages/install`, { method: 'POST', body: JSON.stringify({ package: $('pkgName').value.trim() }) }); $('pkgOut').textContent = d.output ?? JSON.stringify(d); }
-  catch (x) { $('pkgOut').textContent = x.message; }
+  try{const d=await req(`/api/servers/${S.currentServerId}/packages/install`,{method:'POST',body:JSON.stringify({package:$('pkgName').value.trim()})});$('pkgOut').textContent=d.output??JSON.stringify(d);}
+  catch(x){$('pkgOut').textContent=x.message;}
 };
 
 // Logs
-async function logs() {
-  try { const d = await req(`/api/servers/${S.server.id}/logs`); $('logsOut').textContent = d.logs ?? d.output ?? ''; }
-  catch (e) { $('logsOut').textContent = e.message; }
+async function logs(){
+  try{const d=await req(`/api/servers/${S.currentServerId}/logs`);$('logsOut').textContent=d.logs??d.output??'';}
+  catch(e){$('logsOut').textContent=e.message;}
 }
-$('reloadLogs').onclick = logs;
+$('reloadLogs').onclick=logs;
 
 // Tabs
-document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
-  document.querySelectorAll('.tab').forEach(x => x.classList.toggle('active', x === t));
-  ['files','console','processes','packages','logs'].forEach(x => $(`${x}`).classList.toggle('hidden', x !== t.dataset.tab));
-  if (t.dataset.tab === 'files') loadFiles();
-  if (t.dataset.tab === 'console') { loadConsole(); fetchSystemInfo(); }
-  if (t.dataset.tab === 'processes') loadProc();
-  if (t.dataset.tab === 'logs') logs();
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===t));
+  ['files','console','processes','packages','logs'].forEach(x=>$(x).classList.toggle('hidden',x!==t.dataset.tab));
+  if(t.dataset.tab==='files')loadFiles();
+  if(t.dataset.tab==='console'){/*loadConsole*/}
+  if(t.dataset.tab==='processes')loadProc();
+  if(t.dataset.tab==='logs')logs();
 });
 
-// --- LIVE updates ---
-let lastStats = {};
-function updateStatsWithFlash(s) {
-  s = s || S.server || {};
-  const statEls = $('stats').querySelectorAll('.stat');
-  const labels = ['Status','CPU','RAM','Disk'];
-  const values = [online(s)?'🟢 Online':'🔴 Offline', s.cpu_percent==null?'—':s.cpu_percent+'%', s.ram_percent==null?'—':s.ram_percent+'%', s.disk_percent==null?'—':s.disk_percent+'%'];
-  const pcts = [null, s.cpu_percent, s.ram_percent, s.disk_percent];
-  statEls.forEach((el,i) => {
-    const old = lastStats[labels[i]];
-    const newVal = values[i];
-    if (old !== undefined && old !== newVal) { el.classList.add('flash'); setTimeout(() => el.classList.remove('flash'), 400); }
-    const b = el.querySelector('b'); if (b) b.textContent = newVal;
-    const fill = el.querySelector('.bar-fill'); if (fill && pcts[i] != null) { fill.style.width = Math.min(100, pcts[i]) + '%'; }
-    lastStats[labels[i]] = newVal;
-  });
-  $('dot').className = 'dot ' + (online(s) ? 'on' : '');
-}
-
-function startLive() {
+// Live
+function startLive(){
   stopLive();
-  if (!S.server || !S.liveEnabled) return;
-  S.liveRetries = 0;
-  lastStats = {};
-  liveUpdate();
-  S.liveInterval = setInterval(liveUpdate, S.intervalMs);
+  if(!S.server||!S.liveEnabled)return;
+  S.liveInterval=setInterval(async()=>{
+    try{
+      const d=await req(`/api/servers/${S.currentServerId}`,{},1);
+      S.server={...S.server,...d};
+      renderStats(S.server);
+    }catch(e){}
+  },S.intervalMs);
 }
-function stopLive() { S.liveEnabled = false; if (S.liveInterval) { clearInterval(S.liveInterval); S.liveInterval = null; } }
-async function liveUpdate() {
-  if (!S.liveEnabled || !S.server) return;
-  try {
-    const d = await req(`/api/servers/${S.server.id}`, {}, 2);
-    S.server = { ...S.server, ...d };
-    $('serverName').textContent = S.server.name;
-    $('serverMeta').textContent = S.server.hostname || S.server.base_url || '';
-    updateStatsWithFlash(S.server);
-    setApiStatus(true);
-    S.liveRetries = 0;
-    const procTab = document.querySelector('[data-tab="processes"]');
-    if (procTab && procTab.classList.contains('active')) loadProc();
-  } catch (e) {
-    S.liveRetries++;
-    setApiStatus(false);
-    if (S.liveRetries >= 3) { stopLive(); toast('⚠️ توقف التحديث التلقائي بعد ٣ محاولات فاشلة.', true); }
-  }
+function stopLive(){if(S.liveInterval){clearInterval(S.liveInterval);S.liveInterval=null;}}
+
+// Init
+if(S.token&&S.api){
+  $('loginApi').value=S.api;$('loginToken').value=S.token;
+  req('/api/auth/check').then(()=>showApp()).catch(()=>{sessionStorage.removeItem('zone_token');S.token='';});
+}else{
+  $('loginApi').value=S.api;
 }
-
-// --- Auto-login ---
-if (S.token && S.api) {
-  req('/api/auth/check', {}, 2)
-    .then(() => { showApp(); setApiStatus(true); })
-    .catch(() => { sessionStorage.removeItem('zone_token'); S.token = ''; showLogin(); setApiStatus(false); });
-} else { showLogin(); setApiStatus(false); }
-
-window.addEventListener('resize', () => { if (window.innerWidth >= 768) closeSidebar(); });
-window.addEventListener('beforeunload', () => { stopLive(); });
 </script>
 </body>
 </html>
