@@ -372,6 +372,19 @@
             padding: 6px 8px;
             font-size: 11px
         }
+        .run-btn {
+            background: #32d58322;
+            border-color: var(--g);
+            color: var(--g);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            transition: all 0.2s;
+        }
+        .run-btn:hover {
+            background: #32d58344;
+            box-shadow: 0 0 20px #32d58333;
+        }
         .empty {
             text-align: center;
             padding: 36px;
@@ -607,7 +620,14 @@
         </div>
     </div>
     <script>
-        const S = { api: localStorage.getItem('zone_api') || '', token: sessionStorage.getItem('zone_token') || '', servers: [], server: null, cwd: '.', editing: null };
+        const S = {
+            api: localStorage.getItem('zone_api') || '',
+            token: sessionStorage.getItem('zone_token') || '',
+            servers: [],
+            server: null,
+            cwd: '.',
+            editing: null
+        };
         const $ = id => document.getElementById(id),
             api = () => S.api.replace(/\/+$/, '');
 
@@ -772,7 +792,7 @@
                 const name = f.name || f.filename || String(f.path || '').split('/').pop();
                 const dir = !!(f.is_dir || f.directory || String(f.type || '').toLowerCase() === 'directory');
                 const path = safe(f.path || join(S.cwd, name));
-                return `<div class="file"><div>${dir?'📁':'📄'}</div><div class="file-name ${dir?'click':''}" data-open="${encodeURIComponent(path)}" data-dir="${dir}">${esc(name)}</div><div>${dir?'Folder':fmt(f.size)}</div><div class="act">${dir?'':`<button class="ghost edit" data-p="${esc(path)}">Edit</button>`}<button class="ghost del" data-p="${esc(path)}">Delete</button></div></div>`
+                return `<div class="file"><div>${dir?'📁':'📄'}</div><div class="file-name ${dir?'click':''}" data-open="${encodeURIComponent(path)}" data-dir="${dir}">${esc(name)}</div><div>${dir?'Folder':fmt(f.size)}</div><div class="act">${dir?'':`<button class="ghost edit" data-p="${esc(path)}">Edit</button>${name.endsWith('.py')?`<button class="ghost run-btn" data-p="${esc(path)}">▶ Run</button>`:''}`}<button class="ghost del" data-p="${esc(path)}">Delete</button></div></div>`
             }).join('') : '<div class="empty">Directory is empty.</div>';
             $('fileList').innerHTML = html;
             if ($('parent')) $('parent').onclick = () => { const a = S.cwd.split('/').filter(Boolean);
@@ -781,6 +801,7 @@
                 loadFiles() };
             document.querySelectorAll('[data-open]').forEach(x => x.onclick = () => x.dataset.dir === 'true' ? (S.cwd = safe(decodeURIComponent(x.dataset.open)), loadFiles()) : editFile(decodeURIComponent(x.dataset.open), x.textContent.trim()));
             document.querySelectorAll('.edit').forEach(x => x.onclick = () => editFile(x.dataset.p, x.dataset.p.split('/').pop()));
+            document.querySelectorAll('.run-btn').forEach(x => x.onclick = () => runPythonFile(x.dataset.p));
             document.querySelectorAll('.del').forEach(x => x.onclick = () => delPath(x.dataset.p))
         }
 
@@ -811,6 +832,37 @@
                     } catch (e) { toast(e.message, true) }
                 }
             } catch (e) { toast(e.message, true) }
+        }
+
+        async function runPythonFile(path) {
+            if (!S.server) return;
+            try {
+                const result = await req(`/api/servers/${S.server.id}/run`, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        command: `python3 ${path}`,
+                        cwd: S.cwd,
+                        timeout: 60
+                    })
+                });
+                
+                document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+                const consoleTab = document.querySelector('[data-tab="console"]');
+                consoleTab.classList.add('active');
+                ['files','console','processes','packages','logs'].forEach(x => 
+                    $(`${x}`).classList.toggle('hidden', x !== 'console')
+                );
+                
+                const output = result.output || result.stdout || result.stderr || JSON.stringify(result);
+                $('consoleOut').textContent = `$ python3 ${path}\n${output}\n`;
+                $('consoleState').textContent = '✅ Executed';
+                toast(`✅ ${path} executed successfully`);
+            } catch (e) {
+                document.querySelector('[data-tab="console"]').click();
+                $('consoleOut').textContent = `$ python3 ${path}\n❌ Error: ${e.message}\n`;
+                $('consoleState').textContent = '❌ Failed';
+                toast(e.message, true);
+            }
         }
 
         async function delPath(path) {
