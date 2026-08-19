@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>ZONE HOSTING</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>ZONE HOSTING · v2</title>
     <style>
+        /* --- RESET & ROOT --- */
         :root {
             --bg: #080a0f;
             --panel: #10131a;
@@ -14,504 +15,442 @@
             --muted: #9199a8;
             --a: #7c5cff;
             --g: #32d583;
-            --r: #ff6c82
+            --r: #ff6c82;
+            --radius: 14px;
+            --shadow: 0 8px 24px rgba(0,0,0,0.6);
         }
-        * {
-            box-sizing: border-box
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             margin: 0;
             background: radial-gradient(circle at 90% 0, #21184a, #080a0f 35%);
             color: var(--txt);
-            font-family: Inter, system-ui, sans-serif
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-size: 15px;
+            line-height: 1.5;
+            overflow-x: hidden;
         }
-        button,
-        input,
-        textarea {
-            font: inherit
+        button, input, textarea { font: inherit; }
+        button { cursor: pointer; background: none; border: none; color: inherit; }
+        a { color: var(--a); }
+        .hidden { display: none !important; }
+        .flex { display: flex; align-items: center; gap: 8px; }
+        .grow { flex: 1; }
+        .muted, small { color: var(--muted); }
+
+        /* --- TOAST --- */
+        #toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            max-width: 90%;
         }
-        button {
-            cursor: pointer
+        .toast {
+            background: var(--panel2);
+            border: 1px solid var(--bd);
+            padding: 10px 16px;
+            border-radius: 10px;
+            backdrop-filter: blur(6px);
+            box-shadow: var(--shadow);
+            animation: slideIn 0.25s ease;
         }
-        label {
-            display: block;
-            color: #c8ced9;
-            font-size: 13px;
-            margin: 12px 0 7px
+        .toast.err { border-color: var(--r); color: #ffadba; }
+        @keyframes slideIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+
+        /* --- LOGIN --- */
+        .auth {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 20px;
         }
-        input,
-        textarea {
+        .auth-card {
+            width: min(400px, 100%);
+            background: var(--panel);
+            border: 1px solid var(--bd);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            box-shadow: var(--shadow);
+        }
+        .auth-card h1 { font-size: 24px; margin: 4px 0 6px; letter-spacing: -0.5px; }
+        .auth-card p { color: var(--muted); margin-bottom: 18px; }
+        .logo {
+            width: 52px; height: 52px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, var(--a), #4b35d8);
+            font-size: 26px; font-weight: 900;
+            margin-bottom: 16px;
+        }
+        .logo.sm { width: 36px; height: 36px; font-size: 18px; }
+        label { display: block; color: #c8ced9; font-size: 13px; margin: 14px 0 6px; }
+        input, textarea {
             width: 100%;
             border: 1px solid var(--bd);
             background: #0b0e14;
             color: var(--txt);
             border-radius: 10px;
-            padding: 11px;
-            outline: none
+            padding: 12px 14px;
+            outline: none;
+            transition: border 0.2s;
         }
-        input:focus,
-        textarea:focus {
-            border-color: var(--a)
-        }
-        .hidden {
-            display: none !important
-        }
-        .grow {
-            flex: 1
-        }
-        .muted,
-        small {
-            color: var(--muted)
-        }
-        .primary,
-        .ghost,
-        .icon {
+        input:focus, textarea:focus { border-color: var(--a); }
+        .primary, .ghost, .icon {
             border: 1px solid var(--bd);
             background: var(--panel2);
             color: var(--txt);
-            padding: 10px 14px;
-            border-radius: 10px
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: 500;
+            transition: 0.15s;
         }
-        .primary {
-            background: var(--a);
-            border-color: var(--a);
-            font-weight: 700
-        }
-        .full {
-            width: 100%;
-            margin-top: 16px
-        }
-        .auth {
-            min-height: 100vh;
-            display: grid;
-            place-items: center;
-            padding: 20px
-        }
-        .auth-card {
-            width: min(430px, 100%);
-            background: #11141b;
-            border: 1px solid var(--bd);
-            border-radius: 20px;
-            padding: 36px
-        }
-        .auth-card h1 {
-            margin: 0 0 6px
-        }
-        .auth-card p {
-            color: var(--muted)
-        }
-        .logo {
-            width: 52px;
-            height: 52px;
-            border-radius: 14px;
-            display: grid;
-            place-items: center;
-            background: linear-gradient(135deg, var(--a), #4b35d8);
-            font-size: 25px;
-            font-weight: 900;
-            margin-bottom: 18px
-        }
-        .logo.sm {
-            width: 36px;
-            height: 36px;
-            font-size: 17px;
-            margin: 0
-        }
+        .primary { background: var(--a); border-color: var(--a); font-weight: 600; }
+        .full { width: 100%; margin-top: 14px; }
+
+        /* --- LAYOUT (mobile first) --- */
+        #app { display: flex; flex-direction: column; min-height: 100vh; }
+
+        /* --- SIDEBAR (hamburger) --- */
         aside {
             position: fixed;
-            inset: 0 auto 0 0;
-            width: 240px;
+            top: 0; left: 0; bottom: 0;
+            width: 260px;
             background: #0b0d12ee;
+            backdrop-filter: blur(12px);
             border-right: 1px solid var(--bd);
-            padding: 18px 12px;
+            padding: 18px 14px;
             display: flex;
-            flex-direction: column
+            flex-direction: column;
+            transform: translateX(-100%);
+            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+            box-shadow: 4px 0 30px rgba(0,0,0,0.5);
         }
+        aside.open { transform: translateX(0); }
         .brand {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 5px 8px 25px
+            gap: 12px;
+            padding: 6px 6px 24px;
         }
-        .brand b {
-            display: block;
-            font-size: 13px
-        }
-        .brand small {
-            font-size: 10px
-        }
+        .brand b { display: block; font-size: 15px; }
+        .brand small { font-size: 11px; }
         .nav {
             width: 100%;
             text-align: left;
             border: 1px solid transparent;
             background: transparent;
             color: #9ea6b6;
-            padding: 12px;
+            padding: 12px 14px;
             border-radius: 10px;
-            margin: 2px 0
+            margin: 2px 0;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .nav.active,
-        .nav:hover {
-            background: #181c26;
-            border-color: var(--bd);
-            color: #fff
+        .nav.active, .nav:hover { background: #181c26; border-color: var(--bd); color: #fff; }
+        .danger { color: #ff8b9a; }
+
+        /* overlay for mobile */
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 99;
+            display: none;
         }
-        .danger {
-            color: #ff8b9a
-        }
+        .overlay.active { display: block; }
+
+        /* --- MAIN --- */
         main {
-            margin-left: 240px;
-            padding: 28px 32px;
-            min-height: 100vh
+            flex: 1;
+            padding: 16px 14px 30px;
+            margin-left: 0;
+            min-height: 100vh;
         }
-        header,
-        .section,
-        .serverbar {
+        /* header */
+        header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 12px
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
-        .section h3,
-        header h2,
-        .serverbar h2 {
-            margin: 3px 0
+        header h2 { font-size: 20px; margin: 0; }
+        header small { font-size: 11px; display: block; color: var(--muted); }
+        .header-left { display: flex; align-items: center; gap: 8px; }
+        .hamburger {
+            font-size: 26px;
+            background: var(--panel2);
+            border: 1px solid var(--bd);
+            border-radius: 10px;
+            padding: 4px 10px;
+            line-height: 1;
         }
-        header {
-            margin-bottom: 25px
-        }
+        .header-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
         .pill {
-            padding: 7px 10px;
+            padding: 5px 12px;
             border-radius: 999px;
             border: 1px solid var(--bd);
-            font-size: 11px
+            font-size: 11px;
+            font-weight: 500;
         }
-        .pill.on {
-            color: #9cf0bf;
-            border-color: #245d42;
-            background: #102219
-        }
-        .pill.off {
-            color: #ff9cac
-        }
+        .pill.on { color: #9cf0bf; border-color: #245d42; background: #102219; }
+        .pill.off { color: #ff9cac; }
+        .icon { font-size: 20px; width: 40px; height: 40px; padding: 0; display: grid; place-items: center; }
+
+        /* --- SECTIONS --- */
+        .page { animation: fade 0.2s ease; }
+        @keyframes fade { from { opacity:0.4; } to { opacity:1; } }
+
         .hero {
             display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            align-items: end;
+            flex-direction: column;
+            gap: 16px;
             background: linear-gradient(120deg, #17152a, #11141c 60%);
             border: 1px solid var(--bd);
-            padding: 28px;
-            border-radius: 18px;
-            margin-bottom: 20px
+            padding: 20px 18px;
+            border-radius: var(--radius);
+            margin-bottom: 20px;
         }
-        .hero h1 {
-            font-size: 30px;
-            margin: 6px 0
-        }
-        .hero p {
-            color: var(--muted)
-        }
+        .hero h1 { font-size: 26px; margin: 4px 0; }
+        .hero p { color: var(--muted); margin: 0; }
+
         .grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px
-        }
-        .server-card,
-        .panel,
-        .stat {
-            background: var(--panel);
-            border: 1px solid var(--bd);
-            border-radius: 15px
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
         }
         .server-card {
-            padding: 20px;
-            cursor: pointer
+            background: var(--panel);
+            border: 1px solid var(--bd);
+            border-radius: var(--radius);
+            padding: 16px;
+            cursor: pointer;
+            transition: 0.15s;
         }
-        .server-card:hover {
-            border-color: #414856
-        }
-        .server-card h3 {
-            margin: 14px 0 5px
-        }
+        .server-card:hover { border-color: #414856; }
+        .server-card h3 { font-size: 15px; margin: 10px 0 2px; }
         .server-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 11px;
+            width: 40px; height: 40px;
+            border-radius: 10px;
             background: #1a1e28;
             display: grid;
-            place-items: center
+            place-items: center;
+            font-size: 20px;
         }
         .meta {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-top: 16px
+            gap: 6px;
+            margin-top: 12px;
         }
         .mini {
             background: #0b0e14;
             border: 1px solid var(--bd);
-            border-radius: 9px;
-            padding: 9px
+            border-radius: 8px;
+            padding: 6px 10px;
         }
-        .mini span {
-            display: block;
-            font-size: 10px;
-            color: var(--muted)
-        }
-        .mini b {
-            font-size: 13px
-        }
+        .mini span { display: block; font-size: 10px; color: var(--muted); }
+        .mini b { font-size: 14px; }
+
         .panel {
-            overflow: hidden
+            background: var(--panel);
+            border: 1px solid var(--bd);
+            border-radius: var(--radius);
+            overflow: hidden;
         }
         .table {
             width: 100%;
-            border-collapse: collapse
+            border-collapse: collapse;
+            font-size: 13px;
         }
-        .table th,
-        .table td {
-            text-align: left;
-            padding: 14px;
-            border-bottom: 1px solid var(--bd);
-            font-size: 13px
-        }
-        .table th {
-            font-size: 10px;
-            color: var(--muted)
-        }
+        .table th, .table td { padding: 10px 12px; border-bottom: 1px solid var(--bd); text-align: left; }
+        .table th { font-size: 10px; color: var(--muted); text-transform: uppercase; }
+
+        /* server detail */
         .serverbar {
-            margin-bottom: 18px
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
         }
+        .serverbar h2 { font-size: 20px; margin: 0; }
         .dot {
-            width: 9px;
-            height: 9px;
+            width: 10px; height: 10px;
             border-radius: 50%;
-            background: #667085
+            background: #667085;
+            display: inline-block;
         }
-        .dot.on {
-            background: var(--g);
-            box-shadow: 0 0 12px #32d58366
-        }
+        .dot.on { background: var(--g); box-shadow: 0 0 14px #32d58377; }
+
         .stats {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-bottom: 18px
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 16px;
         }
         .stat {
-            padding: 16px
+            background: var(--panel);
+            border: 1px solid var(--bd);
+            border-radius: 10px;
+            padding: 12px 14px;
         }
-        .stat span {
-            display: block;
-            color: var(--muted);
-            font-size: 11px
-        }
-        .stat b {
-            display: block;
-            margin-top: 5px;
-            font-size: 19px
-        }
+        .stat span { display: block; font-size: 11px; color: var(--muted); }
+        .stat b { display: block; font-size: 18px; margin-top: 2px; }
+
         .tabs {
             display: flex;
-            gap: 4px;
+            gap: 2px;
             border-bottom: 1px solid var(--bd);
             margin-bottom: 14px;
-            overflow: auto
+            overflow-x: auto;
+            padding-bottom: 2px;
         }
         .tab {
-            padding: 11px 14px;
+            padding: 10px 14px;
             background: none;
             border: 0;
             border-bottom: 2px solid transparent;
-            color: var(--muted)
+            color: var(--muted);
+            font-weight: 500;
+            white-space: nowrap;
         }
-        .tab.active {
-            color: #fff;
-            border-color: var(--a)
-        }
+        .tab.active { color: #fff; border-color: var(--a); }
+
         .toolbar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 12px;
+            padding: 10px 14px;
             border-bottom: 1px solid var(--bd);
-            gap: 10px
+            flex-wrap: wrap;
+            gap: 8px;
         }
-        .toolbar>div {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap
-        }
+        .toolbar>div { display: flex; gap: 4px; flex-wrap: wrap; }
+
         .file {
             display: grid;
-            grid-template-columns: 30px 1fr 90px 140px;
-            gap: 8px;
+            grid-template-columns: 28px 1fr 70px auto;
+            gap: 6px;
             align-items: center;
-            padding: 12px;
-            border-bottom: 1px solid var(--bd)
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--bd);
+            font-size: 14px;
         }
-        .file:last-child {
-            border: 0
-        }
-        .file:hover {
-            background: #141821
-        }
-        .file-name {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap
-        }
-        .click {
-            cursor: pointer
-        }
-        .act {
-            text-align: right
-        }
-        .act button {
-            padding: 6px 8px;
-            font-size: 11px
-        }
+        .file:last-child { border: 0; }
+        .file:hover { background: #141821; }
+        .file-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .click { cursor: pointer; }
+        .act { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
+        .act button { padding: 4px 8px; font-size: 11px; border-radius: 6px; }
         .run-btn {
             background: #32d58322;
             border-color: var(--g);
             color: var(--g);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 11px;
-            transition: all 0.2s;
         }
-        .run-btn:hover {
-            background: #32d58344;
-            box-shadow: 0 0 20px #32d58333;
-        }
-        .empty {
-            text-align: center;
-            padding: 36px;
-            color: var(--muted)
-        }
+        .run-btn:hover { background: #32d58344; }
+
+        .empty { text-align: center; padding: 30px; color: var(--muted); }
+
         pre {
             margin: 0;
             white-space: pre-wrap;
             background: #06080c;
             color: #cad2e1;
-            padding: 16px;
-            min-height: 350px;
+            padding: 14px;
+            min-height: 200px;
+            max-height: 400px;
             overflow: auto;
-            font: 12px/1.6 Consolas, monospace
+            font: 13px/1.5 'Consolas', monospace;
         }
-        .console-form,
-        #cmd,
-        .inline {
-            display: flex;
-            gap: 8px;
-            padding: 10px;
-            border-top: 1px solid var(--bd)
-        }
-        .console-form input,
-        #cmd input {
-            border: 0;
-            background: transparent
-        }
-        .right {
-            display: flex;
-            justify-content: flex-end;
-            gap: 8px;
-            margin-top: 14px
-        }
+
+        #cmd { display: flex; gap: 6px; padding: 10px; border-top: 1px solid var(--bd); }
+        #cmd input { border: 0; background: transparent; flex: 1; padding: 8px 0; }
+        #cmd button { flex-shrink: 0; }
+
         .modal {
             position: fixed;
             inset: 0;
-            background: #000b;
+            background: rgba(0,0,0,0.7);
             display: grid;
             place-items: center;
-            padding: 20px;
-            z-index: 20
+            padding: 16px;
+            z-index: 200;
+            backdrop-filter: blur(6px);
         }
         .modal-card {
-            width: min(800px, 100%);
+            width: min(600px, 100%);
             background: #11141b;
             border: 1px solid var(--bd);
-            border-radius: 16px;
-            padding: 18px
+            border-radius: var(--radius);
+            padding: 20px;
+            max-height: 90vh;
+            overflow-y: auto;
         }
-        .modal-card textarea {
-            height: 55vh;
-            font: 12px/1.55 Consolas, monospace
-        }
-        .toast {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            background: #171b24;
-            border: 1px solid var(--bd);
-            padding: 11px 14px;
-            border-radius: 10px;
-            z-index: 100
-        }
-        .toast.err {
-            color: #ffadba
-        }
-        .upload {
-            display: inline-flex;
-            align-items: center
-        }
-        .icon {
-            font-size: 20px;
-            width: 42px;
-            height: 42px;
-            padding: 0
-        }
-        @media(max-width:900px) {
+        .modal-card textarea { height: 50vh; font: 13px/1.5 monospace; }
+        .right { display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px; }
+
+        /* --- RESPONSIVE TWEAKS --- */
+        @media (min-width: 768px) {
             aside {
-                width: 70px
+                transform: translateX(0) !important;
+                position: fixed;
+                width: 220px;
+                backdrop-filter: none;
+                background: #0b0d12ee;
             }
-            .brand>div:last-child,
-            .nav {
-                font-size: 0
-            }
-            .nav:before {
-                font-size: 17px
-            }
-            .brand {
-                justify-content: center
-            }
-            main {
-                margin-left: 70px;
-                padding: 18px
-            }
-            .grid {
-                grid-template-columns: 1fr 1fr
-            }
-            .stats {
-                grid-template-columns: 1fr 1fr
-            }
+            .overlay { display: none !important; }
+            .hamburger { display: none !important; }
+            main { margin-left: 220px; padding: 24px 28px; }
+            .grid { grid-template-columns: repeat(3,1fr); }
+            .stats { grid-template-columns: repeat(4,1fr); }
         }
-        @media(max-width:650px) {
-            .grid,
-            .stats {
-                grid-template-columns: 1fr
-            }
-            .hero {
-                display: block
-            }
-            .hero button {
-                margin-top: 15px
-            }
-            .file {
-                grid-template-columns: 25px 1fr 70px
-            }
-            .act {
-                display: none
-            }
-            .main {
-                padding: 13px
-            }
+        @media (max-width: 480px) {
+            .grid { grid-template-columns: 1fr 1fr; }
+            .stats { grid-template-columns: 1fr 1fr; }
+            .file { grid-template-columns: 24px 1fr 60px; }
+            .act { grid-column: span 3; justify-content: flex-start; }
+            .hero h1 { font-size: 22px; }
+            .table th, .table td { padding: 8px 10px; font-size: 12px; }
         }
+        @media (max-width: 380px) {
+            .grid { grid-template-columns: 1fr; }
+        }
+
+        /* live indicator */
+        .live-badge {
+            background: #32d58322;
+            border: 1px solid var(--g);
+            color: var(--g);
+            font-size: 10px;
+            padding: 2px 10px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .live-badge .pulse {
+            width: 6px; height: 6px;
+            background: var(--g);
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 0.8s infinite;
+        }
+        @keyframes pulse { 0% { opacity:0.4; } 50% { opacity:1; } 100% { opacity:0.4; } }
     </style>
 </head>
 <body>
     <div id="toast"></div>
+
+    <!-- LOGIN -->
     <section id="loginView" class="auth">
         <div class="auth-card">
             <div class="logo">Z</div>
@@ -525,8 +464,14 @@
             <small>The secret stays in this browser session.</small>
         </div>
     </section>
+
+    <!-- APP -->
     <div id="app" class="hidden">
-        <aside>
+        <!-- overlay -->
+        <div id="overlay" class="overlay"></div>
+
+        <!-- sidebar -->
+        <aside id="sidebar">
             <div class="brand">
                 <div class="logo sm">Z</div>
                 <div><b>ZONE HOSTING</b><small>Private Panel</small></div>
@@ -537,30 +482,58 @@
             <button id="settingsBtn" class="nav">⚙ Settings</button>
             <button id="logout" class="nav danger">↪ Disconnect</button>
         </aside>
+
         <main>
             <header>
-                <div><small>CONTROL PANEL</small><h2 id="title">Dashboard</h2></div>
-                <div><span id="apiState" class="pill off">API offline</span><button id="refresh" class="icon">↻</button></div>
+                <div class="header-left">
+                    <button class="hamburger" id="menuToggle">☰</button>
+                    <div>
+                        <small>CONTROL PANEL</small>
+                        <h2 id="title">Dashboard</h2>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <span id="apiState" class="pill off">API offline</span>
+                    <button id="refresh" class="icon">↻</button>
+                </div>
             </header>
+
+            <!-- Dashboard -->
             <section id="dashboard" class="page">
                 <div class="hero">
-                    <div><small>ZONE HOSTING</small><h1>Your servers, one place.</h1><p>Manage your private Workers from one dashboard.</p></div>
+                    <div>
+                        <small>ZONE HOSTING</small>
+                        <h1>Your servers, one place.</h1>
+                        <p>Manage your private Workers from one dashboard.</p>
+                    </div>
                     <button id="dashRefresh" class="primary">Refresh</button>
                 </div>
                 <div id="cards" class="grid"></div>
             </section>
+
+            <!-- Servers list -->
             <section id="servers" class="page hidden">
-                <div class="section"><div><small>INFRASTRUCTURE</small><h3>Servers</h3></div><button id="serverRefresh" class="primary">Refresh</button></div>
+                <div class="section flex" style="justify-content:space-between; margin-bottom:14px;">
+                    <div><small>INFRASTRUCTURE</small><h3>Servers</h3></div>
+                    <button id="serverRefresh" class="primary">Refresh</button>
+                </div>
                 <div id="table" class="panel"></div>
             </section>
+
+            <!-- Single server detail -->
             <section id="server" class="page hidden">
                 <div class="serverbar">
                     <button id="back" class="ghost">← Servers</button>
                     <span id="dot" class="dot"></span>
-                    <div class="grow"><h2 id="serverName">Server</h2><small id="serverMeta">Worker</small></div>
+                    <div class="grow">
+                        <h2 id="serverName">Server</h2>
+                        <small id="serverMeta">Worker</small>
+                    </div>
+                    <span class="live-badge"><span class="pulse"></span> LIVE</span>
                     <button id="openRefresh" class="ghost">↻</button>
                 </div>
                 <div id="stats" class="stats"></div>
+
                 <div class="tabs">
                     <button class="tab active" data-tab="files">Files</button>
                     <button class="tab" data-tab="console">Console</button>
@@ -568,81 +541,132 @@
                     <button class="tab" data-tab="packages">Packages</button>
                     <button class="tab" data-tab="logs">Logs</button>
                 </div>
+
+                <!-- Files -->
                 <div id="files" class="tabpanel">
                     <div class="panel">
-                        <div class="toolbar"><span id="path">/</span><div><button id="newFile" class="ghost">+ File</button><button id="newDir" class="ghost">+ Folder</button><label class="ghost upload">↑ Upload<input id="upload" type="file" multiple hidden></label><button id="reloadFiles" class="ghost">↻</button></div></div>
+                        <div class="toolbar">
+                            <span id="path">/</span>
+                            <div>
+                                <button id="newFile" class="ghost">+ File</button>
+                                <button id="newDir" class="ghost">+ Folder</button>
+                                <label class="ghost upload">↑ Upload<input id="upload" type="file" multiple hidden></label>
+                                <button id="reloadFiles" class="ghost">↻</button>
+                            </div>
+                        </div>
                         <div id="fileList"></div>
                     </div>
                 </div>
+
+                <!-- Console -->
                 <div id="console" class="tabpanel hidden">
                     <div class="panel">
                         <div class="toolbar"><span>Console</span><span id="consoleState">—</span></div>
                         <pre id="consoleOut"></pre>
-                        <form id="cmd"><input id="cmdInput" placeholder="Type a command..."><button class="primary">Send</button></form>
+                        <form id="cmd">
+                            <input id="cmdInput" placeholder="Type a command...">
+                            <button class="primary">Send</button>
+                        </form>
                     </div>
                 </div>
+
+                <!-- Processes -->
                 <div id="processes" class="tabpanel hidden">
                     <div class="panel">
-                        <div class="section"><h3>Running processes</h3><button id="reloadProc" class="ghost">Refresh</button></div>
+                        <div class="flex" style="justify-content:space-between; padding:10px 14px; border-bottom:1px solid var(--bd);">
+                            <h3 style="margin:0;">Running processes</h3>
+                            <button id="reloadProc" class="ghost">Refresh</button>
+                        </div>
                         <div id="procList" class="empty">No process data.</div>
                     </div>
                 </div>
+
+                <!-- Packages -->
                 <div id="packages" class="tabpanel hidden">
-                    <div class="panel">
+                    <div class="panel" style="padding:16px;">
                         <h3>Install package</h3>
-                        <form id="pkg"><input id="pkgName" placeholder="requests"><button class="primary">Install</button></form>
+                        <form id="pkg" style="display:flex; gap:8px; margin:10px 0;">
+                            <input id="pkgName" placeholder="requests" style="flex:1;">
+                            <button class="primary">Install</button>
+                        </form>
                         <pre id="pkgOut"></pre>
                     </div>
                 </div>
+
+                <!-- Logs -->
                 <div id="logs" class="tabpanel hidden">
                     <div class="panel">
-                        <div class="section"><h3>Logs</h3><button id="reloadLogs" class="ghost">Refresh</button></div>
+                        <div class="flex" style="justify-content:space-between; padding:10px 14px; border-bottom:1px solid var(--bd);">
+                            <h3 style="margin:0;">Logs</h3>
+                            <button id="reloadLogs" class="ghost">Refresh</button>
+                        </div>
                         <pre id="logsOut"></pre>
                     </div>
                 </div>
             </section>
         </main>
     </div>
+
+    <!-- Modals -->
     <div id="modal" class="modal hidden">
         <div class="modal-card">
-            <div class="section"><h3 id="modalTitle">Create</h3><button id="modalClose" class="ghost">×</button></div>
+            <div class="flex" style="justify-content:space-between; margin-bottom:10px;">
+                <h3 id="modalTitle">Create</h3>
+                <button id="modalClose" class="ghost">×</button>
+            </div>
             <input id="modalInput" placeholder="Name">
             <textarea id="editor" class="hidden"></textarea>
-            <div class="right"><button id="modalCancel" class="ghost">Cancel</button><button id="modalOk" class="primary">OK</button></div>
+            <div class="right">
+                <button id="modalCancel" class="ghost">Cancel</button>
+                <button id="modalOk" class="primary">OK</button>
+            </div>
         </div>
     </div>
+
     <div id="settings" class="modal hidden">
         <div class="modal-card">
-            <div class="section"><h3>Connection</h3><button id="setClose" class="ghost">×</button></div>
+            <div class="flex" style="justify-content:space-between; margin-bottom:10px;">
+                <h3>Connection</h3>
+                <button id="setClose" class="ghost">×</button>
+            </div>
             <label>Manager API URL</label>
             <input id="setApi">
-            <div class="right"><button id="setCancel" class="ghost">Cancel</button><button id="setSave" class="primary">Save</button></div>
+            <div class="right">
+                <button id="setCancel" class="ghost">Cancel</button>
+                <button id="setSave" class="primary">Save</button>
+            </div>
         </div>
     </div>
+
     <script>
+        // ============================================================
+        //  ZONE HOSTING - Enhanced Mobile + Live Refresh (0.5s)
+        // ============================================================
         const S = {
             api: localStorage.getItem('zone_api') || '',
             token: sessionStorage.getItem('zone_token') || '',
             servers: [],
             server: null,
             cwd: '.',
-            editing: null
+            editing: null,
+            liveInterval: null,
+            liveEnabled: false
         };
-        const $ = id => document.getElementById(id),
-            api = () => S.api.replace(/\/+$/, '');
+        const $ = id => document.getElementById(id);
+        const api = () => S.api.replace(/\/+$/, '');
 
+        // --- Helpers ---
         function toast(msg, err = false) {
             const x = document.createElement('div');
             x.className = 'toast' + (err ? ' err' : '');
             x.textContent = msg;
             $('toast').appendChild(x);
-            setTimeout(() => x.remove(), 3500)
+            setTimeout(() => x.remove(), 3500);
         }
+        function esc(v) { return String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[c])); }
+        function online(s) { return ['online', 'connected', 'ready', 'running'].includes(String(s?.status || '').toLowerCase()); }
 
-        function esc(v) { return String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' } [c])) }
-
-        function online(s) { return ['online', 'connected', 'ready', 'running'].includes(String(s.status || '').toLowerCase()) }
-
+        // --- API ---
         async function req(path, opt = {}) {
             if (!api()) throw Error('Manager API URL is empty.');
             const h = new Headers(opt.headers || {});
@@ -651,90 +675,137 @@
             if (S.token) h.set('Authorization', 'Bearer ' + S.token);
             if (opt.body && !(opt.body instanceof FormData)) h.set('Content-Type', 'application/json');
             let r;
-            try { r = await fetch(api() + path, { ...opt, headers: h }) } catch (e) { $('apiState').textContent = 'API unreachable';
-                $('apiState').className = 'pill off'; throw Error('Cannot connect to Manager API. Check URL, CORS, ngrok and the browser console.') }
+            try {
+                r = await fetch(api() + path, { ...opt, headers: h });
+            } catch (e) {
+                $('apiState').textContent = 'API unreachable';
+                $('apiState').className = 'pill off';
+                throw Error('Cannot connect to Manager API. Check URL, CORS, ngrok and the browser console.');
+            }
             const t = await r.text();
             let d = {};
-            try { d = t ? JSON.parse(t) : {} } catch { d = { raw: t } }
+            try { d = t ? JSON.parse(t) : {}; } catch { d = { raw: t }; }
             if (!r.ok) {
                 const m = typeof d.detail === 'string' ? d.detail : d.detail ? JSON.stringify(d.detail) : d.raw || ('HTTP ' + r.status);
-                if (r.status === 401) { sessionStorage.removeItem('zone_token');
-                    S.token = '' }
-                throw Error(m)
+                if (r.status === 401) { sessionStorage.removeItem('zone_token'); S.token = ''; }
+                throw Error(m);
             }
             $('apiState').textContent = 'API online';
             $('apiState').className = 'pill on';
-            return d
+            return d;
         }
 
-        function showApp() { $('loginView').classList.add('hidden');
-            $('app').classList.remove('hidden');
-            loadServers() }
+        // --- Navigation ---
+        function showApp() { $('loginView').classList.add('hidden'); $('app').classList.remove('hidden'); loadServers(); }
+        function showLogin() { $('app').classList.add('hidden'); $('loginView').classList.remove('hidden'); $('loginApi').value = S.api; }
 
-        function showLogin() { $('app').classList.add('hidden');
-            $('loginView').classList.remove('hidden');
-            $('loginApi').value = S.api }
         $('loginBtn').onclick = async () => {
             const u = $('loginApi').value.trim().replace(/\/+$/, '');
             const t = $('loginToken').value.trim();
             if (!/^https?:\/\//i.test(u) || !t) return toast('Enter a valid API URL and secret.', true);
-            S.api = u;
-            S.token = t;
+            S.api = u; S.token = t;
             localStorage.setItem('zone_api', u);
             sessionStorage.setItem('zone_token', t);
-            try { await req('/api/auth/check');
-                showApp() } catch (e) { sessionStorage.removeItem('zone_token');
-                S.token = '';
-                toast(e.message, true) }
+            try { await req('/api/auth/check'); showApp(); } catch (e) { sessionStorage.removeItem('zone_token'); S.token = ''; toast(e.message, true); }
         };
-        $('logout').onclick = () => { sessionStorage.removeItem('zone_token');
-            S.token = '';
-            showLogin() };
-        $('settingsBtn').onclick = () => { $('setApi').value = S.api;
-            $('settings').classList.remove('hidden') };
+        $('logout').onclick = () => { sessionStorage.removeItem('zone_token'); S.token = ''; showLogin(); stopLive(); };
+
+        // Settings
+        $('settingsBtn').onclick = () => { $('setApi').value = S.api; $('settings').classList.remove('hidden'); };
         $('setClose').onclick = $('setCancel').onclick = () => $('settings').classList.add('hidden');
         $('setSave').onclick = async () => {
             const u = $('setApi').value.trim().replace(/\/+$/, '');
             if (!/^https?:\/\//i.test(u)) return toast('Invalid API URL', true);
-            S.api = u;
-            localStorage.setItem('zone_api', u);
+            S.api = u; localStorage.setItem('zone_api', u);
             $('settings').classList.add('hidden');
-            try { await req('/api/auth/check');
-                await loadServers();
-                toast('Connection updated.') } catch (e) { toast(e.message, true) }
+            try { await req('/api/auth/check'); await loadServers(); toast('Connection updated.'); } catch (e) { toast(e.message, true); }
         };
-        $('refresh').onclick = () => S.server ? loadServer(S.server.id) : loadServers();
+
+        // Refresh button
+        $('refresh').onclick = () => { if (S.server) loadServer(S.server.id); else loadServers(); };
         $('dashRefresh').onclick = loadServers;
         $('serverRefresh').onclick = loadServers;
-        $('back').onclick = () => page('servers');
+        $('back').onclick = () => { page('servers'); stopLive(); };
 
+        // Page switching
         function page(p) {
             document.querySelectorAll('.page').forEach(x => x.classList.add('hidden'));
-            if (p === 'dashboard') { $('dashboard').classList.remove('hidden');
-                $('title').textContent = 'Dashboard' } else if (p === 'servers') { $('servers').classList.remove('hidden');
+            if (p === 'dashboard') {
+                $('dashboard').classList.remove('hidden');
+                $('title').textContent = 'Dashboard';
+                stopLive();
+            } else if (p === 'servers') {
+                $('servers').classList.remove('hidden');
                 $('title').textContent = 'Servers';
-                renderTable() } else { $('server').classList.remove('hidden');
-                $('title').textContent = S.server?.name || 'Server' }
-            document.querySelectorAll('.nav[data-page]').forEach(x => x.classList.toggle('active', x.dataset.page === p))
+                renderTable();
+                stopLive();
+            } else {
+                $('server').classList.remove('hidden');
+                $('title').textContent = S.server?.name || 'Server';
+                startLive(); // start live updates
+            }
+            document.querySelectorAll('.nav[data-page]').forEach(x => x.classList.toggle('active', x.dataset.page === p));
+            // close sidebar on mobile
+            closeSidebar();
         }
         document.querySelectorAll('.nav[data-page]').forEach(x => x.onclick = () => page(x.dataset.page));
 
+        // --- Sidebar toggle (mobile) ---
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('open');
+            document.getElementById('overlay').classList.toggle('active');
+        }
+        function closeSidebar() {
+            document.getElementById('sidebar').classList.remove('open');
+            document.getElementById('overlay').classList.remove('active');
+        }
+        document.getElementById('menuToggle').onclick = toggleSidebar;
+        document.getElementById('overlay').onclick = closeSidebar;
+
+        // --- Servers ---
         async function loadServers() {
-            try { S.servers = await req('/api/servers');
+            try {
+                S.servers = await req('/api/servers');
                 renderCards();
-                renderTable() } catch (e) { toast(e.message, true) }
+                renderTable();
+            } catch (e) { toast(e.message, true); }
         }
 
         function renderCards() {
-            $('cards').innerHTML = S.servers.length ? S.servers.map(s => `<article class="server-card" data-id="${s.id}"><div class="server-icon">▣</div><h3>${esc(s.name)}</h3><small>${esc(s.hostname||'Worker')}</small><div class="meta"><div class="mini"><span>Status</span><b>${online(s)?'Online':'Offline'}</b></div><div class="mini"><span>CPU</span><b>${s.cpu_percent==null?'—':s.cpu_percent+'%'}</b></div></div></article>`).join('') : `<div class="panel empty">No Workers registered yet.</div>`;
-            document.querySelectorAll('.server-card').forEach(x => x.onclick = () => loadServer(Number(x.dataset.id)))
+            $('cards').innerHTML = S.servers.length ? S.servers.map(s => `
+                <article class="server-card" data-id="${s.id}">
+                    <div class="server-icon">▣</div>
+                    <h3>${esc(s.name)}</h3>
+                    <small>${esc(s.hostname||'Worker')}</small>
+                    <div class="meta">
+                        <div class="mini"><span>Status</span><b>${online(s)?'Online':'Offline'}</b></div>
+                        <div class="mini"><span>CPU</span><b>${s.cpu_percent==null?'—':s.cpu_percent+'%'}</b></div>
+                    </div>
+                </article>
+            `).join('') : `<div class="panel empty">No Workers registered yet.</div>`;
+            document.querySelectorAll('.server-card').forEach(x => x.onclick = () => loadServer(Number(x.dataset.id)));
         }
 
         function renderTable() {
-            $('table').innerHTML = S.servers.length ? `<table class="table"><thead><tr><th>SERVER</th><th>STATUS</th><th>CPU</th><th>RAM</th><th>DISK</th><th></th></tr></thead><tbody>${S.servers.map(s=>`<tr><td><b>${esc(s.name)}</b><br><small>${esc(s.hostname||'')}</small></td><td>${online(s)?'🟢 Online':'🔴 Offline'}</td><td>${s.cpu_percent==null?'—':s.cpu_percent+'%'}</td><td>${s.ram_percent==null?'—':s.ram_percent+'%'}</td><td>${s.disk_percent==null?'—':s.disk_percent+'%'}</td><td><button class="ghost open" data-id="${s.id}">Open</button></td></tr>`).join('')}</tbody></table>` : `<div class="empty">No Workers registered.</div>`;
-            document.querySelectorAll('.open').forEach(x => x.onclick = () => loadServer(Number(x.dataset.id)))
+            $('table').innerHTML = S.servers.length ? `
+                <table class="table">
+                    <thead><tr><th>SERVER</th><th>STATUS</th><th>CPU</th><th>RAM</th><th>DISK</th><th></th></tr></thead>
+                    <tbody>${S.servers.map(s => `
+                        <tr>
+                            <td><b>${esc(s.name)}</b><br><small>${esc(s.hostname||'')}</small></td>
+                            <td>${online(s)?'🟢 Online':'🔴 Offline'}</td>
+                            <td>${s.cpu_percent==null?'—':s.cpu_percent+'%'}</td>
+                            <td>${s.ram_percent==null?'—':s.ram_percent+'%'}</td>
+                            <td>${s.disk_percent==null?'—':s.disk_percent+'%'}</td>
+                            <td><button class="ghost open" data-id="${s.id}">Open</button></td>
+                        </tr>
+                    `).join('')}</tbody>
+                </table>
+            ` : `<div class="empty">No Workers registered.</div>`;
+            document.querySelectorAll('.open').forEach(x => x.onclick = () => loadServer(Number(x.dataset.id)));
         }
 
+        // --- Load single server ---
         async function loadServer(id) {
             S.server = S.servers.find(x => Number(x.id) === id) || { id };
             S.cwd = '.';
@@ -747,42 +818,76 @@
                 S.server = { ...S.server, ...d };
                 $('serverName').textContent = S.server.name;
                 $('serverMeta').textContent = S.server.hostname || S.server.base_url || '';
-                $('dot').className = 'dot ' + (online(S.server) ? 'on' : '')
-            } catch (e) { toast(e.message, true) }
+                $('dot').className = 'dot ' + (online(S.server) ? 'on' : '');
+            } catch (e) { toast(e.message, true); }
             renderStats();
-            await Promise.allSettled([loadFiles(), loadConsole()])
+            await Promise.allSettled([loadFiles(), loadConsole()]);
+            // start live updates if on server page
+            startLive();
         }
 
         function renderStats() {
             const s = S.server || {};
             $('stats').innerHTML = [
-                ['Status', online(s) ? 'Online' : 'Offline'],
+                ['Status', online(s) ? '🟢 Online' : '🔴 Offline'],
                 ['CPU', s.cpu_percent == null ? '—' : s.cpu_percent + '%'],
                 ['RAM', s.ram_percent == null ? '—' : s.ram_percent + '%'],
                 ['Disk', s.disk_percent == null ? '—' : s.disk_percent + '%']
-            ].map(x => `<div class="stat"><span>${x[0]}</span><b>${esc(x[1])}</b></div>`).join('')
+            ].map(x => `<div class="stat"><span>${x[0]}</span><b>${esc(x[1])}</b></div>`).join('');
         }
 
+        // --- LIVE updates (0.5s) ---
+        function startLive() {
+            stopLive();
+            if (!S.server) return;
+            S.liveEnabled = true;
+            // immediate update
+            liveUpdate();
+            S.liveInterval = setInterval(liveUpdate, 500);
+        }
+
+        function stopLive() {
+            S.liveEnabled = false;
+            if (S.liveInterval) { clearInterval(S.liveInterval); S.liveInterval = null; }
+        }
+
+        async function liveUpdate() {
+            if (!S.liveEnabled || !S.server) return;
+            try {
+                const d = await req(`/api/servers/${S.server.id}`);
+                // merge new data
+                S.server = { ...S.server, ...d };
+                // update UI
+                $('serverName').textContent = S.server.name;
+                $('serverMeta').textContent = S.server.hostname || S.server.base_url || '';
+                $('dot').className = 'dot ' + (online(S.server) ? 'on' : '');
+                renderStats();
+                // also update cards/table if needed? we can refresh lists but that's heavy.
+                // we'll just update the single server view.
+            } catch (e) {
+                // ignore errors silently to avoid spamming
+            }
+        }
+
+        // --- Files ---
         function safe(p) {
             p = (p || '.').replaceAll('\\', '/').trim();
             if (!p || p === '/') return '.';
             const out = [];
             for (const part of p.split('/')) {
                 if (!part || part === '.') continue;
-                if (part === '..') { if (!out.length) throw Error('Invalid path');
-                    out.pop() } else out.push(part)
+                if (part === '..') { if (!out.length) throw Error('Invalid path'); out.pop(); } else out.push(part);
             }
-            return out.join('/') || '.'
+            return out.join('/') || '.';
         }
-
-        function join(a, b) { return safe(a === '.' ? b : a + '/' + b) }
+        function join(a, b) { return safe(a === '.' ? b : a + '/' + b); }
 
         async function loadFiles() {
             if (!S.server) return;
             try {
                 const d = await req(`/api/servers/${S.server.id}/files?path=${encodeURIComponent(S.cwd)}`);
-                renderFiles(Array.isArray(d) ? d : (d.files || d.items || []))
-            } catch (e) { $('fileList').innerHTML = `<div class="empty">${esc(e.message)}</div>` }
+                renderFiles(Array.isArray(d) ? d : (d.files || d.items || []));
+            } catch (e) { $('fileList').innerHTML = `<div class="empty">${esc(e.message)}</div>`; }
         }
 
         function renderFiles(list) {
@@ -792,26 +897,31 @@
                 const name = f.name || f.filename || String(f.path || '').split('/').pop();
                 const dir = !!(f.is_dir || f.directory || String(f.type || '').toLowerCase() === 'directory');
                 const path = safe(f.path || join(S.cwd, name));
-                return `<div class="file"><div>${dir?'📁':'📄'}</div><div class="file-name ${dir?'click':''}" data-open="${encodeURIComponent(path)}" data-dir="${dir}">${esc(name)}</div><div>${dir?'Folder':fmt(f.size)}</div><div class="act">${dir?'':`<button class="ghost edit" data-p="${esc(path)}">Edit</button>${name.endsWith('.py')?`<button class="ghost run-btn" data-p="${esc(path)}">▶ Run</button>`:''}`}<button class="ghost del" data-p="${esc(path)}">Delete</button></div></div>`
+                return `<div class="file">
+                    <div>${dir?'📁':'📄'}</div>
+                    <div class="file-name ${dir?'click':''}" data-open="${encodeURIComponent(path)}" data-dir="${dir}">${esc(name)}</div>
+                    <div>${dir?'Folder':fmt(f.size)}</div>
+                    <div class="act">
+                        ${dir?'':`<button class="ghost edit" data-p="${esc(path)}">Edit</button>${name.endsWith('.py')?`<button class="ghost run-btn" data-p="${esc(path)}">▶ Run</button>`:''}`}
+                        <button class="ghost del" data-p="${esc(path)}">Delete</button>
+                    </div>
+                </div>`;
             }).join('') : '<div class="empty">Directory is empty.</div>';
             $('fileList').innerHTML = html;
-            if ($('parent')) $('parent').onclick = () => { const a = S.cwd.split('/').filter(Boolean);
-                a.pop();
-                S.cwd = a.join('/') || '.';
-                loadFiles() };
+            if ($('parent')) $('parent').onclick = () => { const a = S.cwd.split('/').filter(Boolean); a.pop(); S.cwd = a.join('/') || '.'; loadFiles(); };
             document.querySelectorAll('[data-open]').forEach(x => x.onclick = () => x.dataset.dir === 'true' ? (S.cwd = safe(decodeURIComponent(x.dataset.open)), loadFiles()) : editFile(decodeURIComponent(x.dataset.open), x.textContent.trim()));
             document.querySelectorAll('.edit').forEach(x => x.onclick = () => editFile(x.dataset.p, x.dataset.p.split('/').pop()));
             document.querySelectorAll('.run-btn').forEach(x => x.onclick = () => runPythonFile(x.dataset.p));
-            document.querySelectorAll('.del').forEach(x => x.onclick = () => delPath(x.dataset.p))
+            document.querySelectorAll('.del').forEach(x => x.onclick = () => delPath(x.dataset.p));
         }
 
         function fmt(n) {
             n = Number(n);
             if (!Number.isFinite(n)) return '—';
             if (n < 1024) return n + ' B';
-            if (n < 1048576) return (n / 1024).toFixed(1) + ' KB';
-            if (n < 1073741824) return (n / 1048576).toFixed(1) + ' MB';
-            return (n / 1073741824).toFixed(1) + ' GB'
+            if (n < 1048576) return (n/1024).toFixed(1) + ' KB';
+            if (n < 1073741824) return (n/1048576).toFixed(1) + ' MB';
+            return (n/1073741824).toFixed(1) + ' GB';
         }
 
         async function editFile(path, name) {
@@ -828,10 +938,10 @@
                         await req(`/api/servers/${S.server.id}/file?path=${encodeURIComponent(S.editing)}`, { method: 'PUT', body: JSON.stringify({ content: $('editor').value }) });
                         $('modal').classList.add('hidden');
                         toast('Saved');
-                        loadFiles()
-                    } catch (e) { toast(e.message, true) }
-                }
-            } catch (e) { toast(e.message, true) }
+                        loadFiles();
+                    } catch (e) { toast(e.message, true); }
+                };
+            } catch (e) { toast(e.message, true); }
         }
 
         async function runPythonFile(path) {
@@ -839,24 +949,17 @@
             try {
                 const result = await req(`/api/servers/${S.server.id}/run`, {
                     method: 'POST',
-                    body: JSON.stringify({
-                        command: `python3 ${path}`,
-                        cwd: S.cwd,
-                        timeout: 60
-                    })
+                    body: JSON.stringify({ command: `python3 ${path}`, cwd: S.cwd, timeout: 60 })
                 });
-                
+                // switch to console tab
                 document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
                 const consoleTab = document.querySelector('[data-tab="console"]');
                 consoleTab.classList.add('active');
-                ['files','console','processes','packages','logs'].forEach(x => 
-                    $(`${x}`).classList.toggle('hidden', x !== 'console')
-                );
-                
+                ['files','console','processes','packages','logs'].forEach(x => $(`${x}`).classList.toggle('hidden', x !== 'console'));
                 const output = result.output || result.stdout || result.stderr || JSON.stringify(result);
                 $('consoleOut').textContent = `$ python3 ${path}\n${output}\n`;
                 $('consoleState').textContent = '✅ Executed';
-                toast(`✅ ${path} executed successfully`);
+                toast(`✅ ${path} executed`);
             } catch (e) {
                 document.querySelector('[data-tab="console"]').click();
                 $('consoleOut').textContent = `$ python3 ${path}\n❌ Error: ${e.message}\n`;
@@ -867,9 +970,11 @@
 
         async function delPath(path) {
             if (!confirm('Delete ' + path + '?')) return;
-            try { await req(`/api/servers/${S.server.id}/file?path=${encodeURIComponent(path)}`, { method: 'DELETE' });
+            try {
+                await req(`/api/servers/${S.server.id}/file?path=${encodeURIComponent(path)}`, { method: 'DELETE' });
                 toast('Deleted');
-                loadFiles() } catch (e) { toast(e.message, true) }
+                loadFiles();
+            } catch (e) { toast(e.message, true); }
         }
 
         function createModal(title, cb) {
@@ -881,11 +986,8 @@
             $('modalOk').onclick = async () => {
                 const n = $('modalInput').value.trim();
                 if (!n) return;
-                try { await cb(n);
-                    $('modal').classList.add('hidden');
-                    toast('Done');
-                    loadFiles() } catch (e) { toast(e.message, true) }
-            }
+                try { await cb(n); $('modal').classList.add('hidden'); toast('Done'); loadFiles(); } catch (e) { toast(e.message, true); }
+            };
         }
         $('newFile').onclick = () => createModal('Create file', n => req(`/api/servers/${S.server.id}/file?path=${encodeURIComponent(join(S.cwd,n))}`, { method: 'PUT', body: JSON.stringify({ content: '' }) }));
         $('newDir').onclick = () => createModal('Create folder', n => req(`/api/servers/${S.server.id}/mkdir?path=${encodeURIComponent(join(S.cwd,n))}`, { method: 'POST' }));
@@ -893,22 +995,21 @@
         $('modalClose').onclick = $('modalCancel').onclick = () => $('modal').classList.add('hidden');
         $('upload').onchange = async e => {
             for (const f of [...e.target.files]) {
-                try { const c = await f.text();
-                    await req(`/api/servers/${S.server.id}/file?path=${encodeURIComponent(join(S.cwd,f.name))}`, { method: 'PUT', body: JSON.stringify({ content: c }) }) } catch (x) { toast(`${f.name}: ${x.message}`, true) }
+                try { const c = await f.text(); await req(`/api/servers/${S.server.id}/file?path=${encodeURIComponent(join(S.cwd,f.name))}`, { method: 'PUT', body: JSON.stringify({ content: c }) }); } catch (x) { toast(`${f.name}: ${x.message}`, true); }
             }
             e.target.value = '';
-            loadFiles()
+            loadFiles();
         };
 
+        // --- Console ---
         async function loadConsole() {
             if (!S.server) return;
             $('consoleState').textContent = 'Loading';
             try {
                 const d = await req(`/api/servers/${S.server.id}/console`);
                 $('consoleOut').textContent = d.output ?? d.console ?? '';
-                $('consoleState').textContent = 'Connected'
-            } catch (e) { $('consoleOut').textContent = '[Manager] ' + e.message;
-                $('consoleState').textContent = 'Worker unavailable' }
+                $('consoleState').textContent = 'Connected';
+            } catch (e) { $('consoleOut').textContent = '[Manager] ' + e.message; $('consoleState').textContent = 'Worker unavailable'; }
         }
         $('cmd').onsubmit = async e => {
             e.preventDefault();
@@ -918,49 +1019,68 @@
             $('consoleOut').textContent += `$ ${c}\n`;
             try {
                 const d = await req(`/api/servers/${S.server.id}/run`, { method: 'POST', body: JSON.stringify({ command: c, cwd: S.cwd, timeout: 60 }) });
-                $('consoleOut').textContent += (d.output ?? d.stdout ?? JSON.stringify(d)) + '\n'
-            } catch (x) { $('consoleOut').textContent += '[ERROR] ' + x.message + '\n' }
-            $('consoleOut').scrollTop = $('consoleOut').scrollHeight
+                $('consoleOut').textContent += (d.output ?? d.stdout ?? JSON.stringify(d)) + '\n';
+            } catch (x) { $('consoleOut').textContent += '[ERROR] ' + x.message + '\n'; }
+            $('consoleOut').scrollTop = $('consoleOut').scrollHeight;
         };
 
+        // --- Processes ---
         async function loadProc() {
             try {
                 const d = await req(`/api/servers/${S.server.id}/processes`);
                 const a = Array.isArray(d) ? d : (d.processes || []);
-                $('procList').innerHTML = a.length ? a.map(p => `<div class="file"><div>⚙</div><div>${esc(p.command||p.name)}</div><div>PID ${esc(p.pid)}</div><div class="act"><button class="ghost kill" data-pid="${p.pid}">Stop</button></div></div>`).join('') : '<div class="empty">No running processes.</div>';
-                document.querySelectorAll('.kill').forEach(x => x.onclick = async () => { await req(`/api/servers/${S.server.id}/processes/${x.dataset.pid}`, { method: 'DELETE' });
-                    loadProc() })
-            } catch (e) { $('procList').innerHTML = `<div class="empty">${esc(e.message)}</div>` }
+                $('procList').innerHTML = a.length ? a.map(p => `
+                    <div class="file">
+                        <div>⚙</div>
+                        <div>${esc(p.command||p.name)}</div>
+                        <div>PID ${esc(p.pid)}</div>
+                        <div class="act"><button class="ghost kill" data-pid="${p.pid}">Stop</button></div>
+                    </div>
+                `).join('') : '<div class="empty">No running processes.</div>';
+                document.querySelectorAll('.kill').forEach(x => x.onclick = async () => { await req(`/api/servers/${S.server.id}/processes/${x.dataset.pid}`, { method: 'DELETE' }); loadProc(); });
+            } catch (e) { $('procList').innerHTML = `<div class="empty">${esc(e.message)}</div>`; }
         }
         $('reloadProc').onclick = loadProc;
+
+        // --- Packages ---
         $('pkg').onsubmit = async e => {
             e.preventDefault();
             try {
                 const d = await req(`/api/servers/${S.server.id}/packages/install`, { method: 'POST', body: JSON.stringify({ package: $('pkgName').value.trim() }) });
-                $('pkgOut').textContent = d.output ?? JSON.stringify(d)
-            } catch (x) { $('pkgOut').textContent = x.message }
+                $('pkgOut').textContent = d.output ?? JSON.stringify(d);
+            } catch (x) { $('pkgOut').textContent = x.message; }
         };
 
+        // --- Logs ---
         async function logs() {
             try {
                 const d = await req(`/api/servers/${S.server.id}/logs`);
-                $('logsOut').textContent = d.logs ?? d.output ?? ''
-            } catch (e) { $('logsOut').textContent = e.message }
+                $('logsOut').textContent = d.logs ?? d.output ?? '';
+            } catch (e) { $('logsOut').textContent = e.message; }
         }
         $('reloadLogs').onclick = logs;
+
+        // --- Tabs ---
         document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
             document.querySelectorAll('.tab').forEach(x => x.classList.toggle('active', x === t));
-            ['files', 'console', 'processes', 'packages', 'logs'].forEach(x => $(`${x}`).classList.toggle('hidden', x !== t.dataset.tab));
+            ['files','console','processes','packages','logs'].forEach(x => $(`${x}`).classList.toggle('hidden', x !== t.dataset.tab));
             if (t.dataset.tab === 'files') loadFiles();
             if (t.dataset.tab === 'console') loadConsole();
             if (t.dataset.tab === 'processes') loadProc();
-            if (t.dataset.tab === 'logs') logs()
+            if (t.dataset.tab === 'logs') logs();
         });
+
+        // --- Auto-login ---
         if (S.token && S.api) {
-            req('/api/auth/check').then(showApp).catch(() => { sessionStorage.removeItem('zone_token');
-                S.token = '';
-                showLogin() })
-        } else showLogin();
+            req('/api/auth/check').then(showApp).catch(() => { sessionStorage.removeItem('zone_token'); S.token = ''; showLogin(); });
+        } else {
+            showLogin();
+        }
+
+        // close sidebar on resize to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) closeSidebar();
+        });
     </script>
 </body>
 </html>
