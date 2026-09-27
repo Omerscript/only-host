@@ -15,8 +15,21 @@ svg.i{width:17px;height:17px;display:block;fill:none;stroke:currentColor;stroke-
 .page{width:100%}.server-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}.server-card,.panel,.stat,.modal-box{background:var(--surface);border:1px solid var(--border)}.server-card{border-radius:16px;padding:18px;cursor:pointer;transition:.15s}.server-card:hover{border-color:var(--accent);transform:translateY(-3px)}.server-top{display:flex;align-items:center;gap:12px}.server-avatar{width:40px;height:40px;border-radius:10px;overflow:hidden;background:var(--surface2)}.server-name{font-weight:700}.server-sub{font-size:12px;color:var(--sub)}.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;font-size:11px}.meta span{background:var(--input);padding:5px 9px;border:1px solid var(--border);border-radius:8px}
 .server-head{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;margin-bottom:16px;position:relative}.server-more-wrap{position:relative;z-index:35}.server-more-btn{border-radius:10px;width:40px;height:40px;padding:0;background:var(--surface);}.server-more-btn:hover{color:var(--accent);background:var(--surface2)}.server-more-menu{position:absolute;top:46px;right:0;z-index:100;min-width:185px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:6px;box-shadow:var(--shadow);display:none}.server-more-menu.show{display:block}.server-more-menu button{width:100%;display:flex;align-items:center;gap:9px;padding:10px 11px;border-radius:9px;text-align:right;color:var(--sub)}.server-more-menu button:hover{background:var(--surface2);color:var(--text)}.desktop-settings{display:inline-flex}.mobile-more{display:none}.back-btn{width:40px;height:40px;border:1px solid var(--border);background:var(--surface);border-radius:11px;display:grid;place-items:center}.back-btn:hover{background:var(--surface2);color:var(--accent)}.server-main-title h1{font-size:21px}.server-main-title small{font-size:12px;color:var(--sub)}.server-actions{display:flex;gap:7px;align-items:center}.server-actions .home-btn{background:var(--surface);border:1px solid var(--border)}.dot{width:10px;height:10px;border-radius:50%;background:#4a5568;display:block}.dot.on{background:var(--ok);box-shadow:0 0 12px #34d39977}.dot.off{background:var(--danger);box-shadow:0 0 12px #f8717177}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px}.stat{border-radius:14px;padding:14px 16px}.stat-label{font-size:11px;color:var(--muted);text-transform:uppercase}.stat-val{font-size:22px;font-weight:700;margin-top:4px}.bar{height:4px;background:var(--surface2);border-radius:99px;overflow:hidden;margin-top:8px}.fill{height:100%;background:var(--accent)}.fill.high{background:var(--danger)}
-.tabs{display:flex;gap:3px;border-bottom:1px solid var(--border);margin-bottom:15px;overflow:auto}.tab{padding:10px 15px;border-bottom:2px solid transparent;color:var(--sub);white-space:nowrap;display:flex;align-items:center;gap:7px}.tab.active,.tab:hover{color:var(--accent)}.tab.active{border-color:var(--accent)}.panel{border-radius:14px;overflow:hidden}.panel-head{padding:12px 17px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}.path{font-family:monospace;font-size:13px;color:var(--sub);display:flex;align-items:center;gap:3px;flex-wrap:wrap}.path button{color:var(--accent);padding:2px 5px;border-radius:6px}.path button:hover{background:var(--surface2)}.panel-body{padding:4px 0}
-.file-row{display:flex;align-items:center;gap:12px;padding:10px 17px;border-bottom:1px solid var(--border);position:relative}.file-row:hover{background:var(--surface2)}.file-row.selected{background:var(--surface3);border-left:3px solid var(--accent)}.ck{width:16px;height:16px;accent-color:var(--accent)}.file-icon{width:32px;height:32px;display:grid;place-items:center;border-radius:8px;background:var(--surface2);flex:none}.file-icon.folder{color:var(--folder)}.file-icon.py{color:var(--py)}.file-icon.file{color:var(--file)}.file-info{flex:1;min-width:0}.file-name{font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}.file-meta{font-size:11px;color:var(--muted)}.run-dot{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:pulse 1.4s infinite}.more{width:34px;height:34px;border-radius:8px;display:grid;place-items:center}.more:hover{background:var(--surface3)}.menu{position:absolute;right:10px;top:calc(100% + 4px);display:none;min-width:170px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:6px 0;box-shadow:var(--shadow);z-index:20}.menu.show{display:block}.menu button{width:100%;padding:9px 13px;display:flex;align-items:center;gap:9px;text-align:right;color:var(--sub)}.menu button:hover{background:var(--surface2);color:var(--text)}.menu .danger{color:var(--danger)}.bulk{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:8px 17px;background:var(--surface2);border-bottom:1px solid var(--border)}.bulk .count{margin-right:auto;color:var(--accent);font-weight:700}
+
+/* ============ إصلاح مشكلة القائمة المنسدلة ============ */
+.tabs{display:flex;gap:3px;border-bottom:1px solid var(--border);margin-bottom:15px;overflow:auto}.tab{padding:10px 15px;border-bottom:2px solid transparent;color:var(--sub);white-space:nowrap;display:flex;align-items:center;gap:7px}.tab.active,.tab:hover{color:var(--accent)}.tab.active{border-color:var(--accent)}
+.panel{border-radius:14px;overflow:visible;position:relative}
+.panel-head{padding:12px 17px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;border-radius:14px 14px 0 0}
+.path{font-family:monospace;font-size:13px;color:var(--sub);display:flex;align-items:center;gap:3px;flex-wrap:wrap}.path button{color:var(--accent);padding:2px 5px;border-radius:6px}.path button:hover{background:var(--surface2)}
+.panel-body{padding:4px 0;overflow:visible;border-radius:0 0 14px 14px}
+.file-row{display:flex;align-items:center;gap:12px;padding:10px 17px;border-bottom:1px solid var(--border);position:relative}.file-row:hover{background:var(--surface2)}.file-row.selected{background:var(--surface3);border-left:3px solid var(--accent)}.ck{width:16px;height:16px;accent-color:var(--accent)}.file-icon{width:32px;height:32px;display:grid;place-items:center;border-radius:8px;background:var(--surface2);flex:none}.file-icon.folder{color:var(--folder)}.file-icon.py{color:var(--py)}.file-icon.file{color:var(--file)}.file-info{flex:1;min-width:0}.file-name{font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}.file-meta{font-size:11px;color:var(--muted)}.run-dot{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:pulse 1.4s infinite}.more{width:34px;height:34px;border-radius:8px;display:grid;place-items:center}.more:hover{background:var(--surface3)}
+/* القائمة المنسدلة الآن fixed عشان ما تتقطع */
+.menu{position:fixed;display:none;min-width:175px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:6px 0;box-shadow:var(--shadow);z-index:99999}
+.menu.show{display:block}
+.menu button{width:100%;padding:9px 13px;display:flex;align-items:center;gap:9px;text-align:right;color:var(--sub)}.menu button:hover{background:var(--surface2);color:var(--text)}.menu .danger{color:var(--danger)}
+/* ==================================================== */
+
+.bulk{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:8px 17px;background:var(--surface2);border-bottom:1px solid var(--border)}.bulk .count{margin-right:auto;color:var(--accent);font-weight:700}
 .console{background:#0a0d13;color:#cdd7e5;padding:15px;font-family:monospace;font-size:13px;line-height:1.6;min-height:240px;max-height:400px;overflow:auto;white-space:pre-wrap;word-break:break-word;direction:ltr;text-align:left}.cmd{display:flex;gap:8px;padding:10px 15px;background:var(--surface);border-top:1px solid var(--border);align-items:center}.cmd .prompt{font-family:monospace;color:var(--accent)}.cmd input{flex:1;border:0;outline:0;background:transparent;font-family:monospace}.pkg-wrap{padding:16px}.pkg-row{display:flex;gap:8px;flex-wrap:wrap}.pkg-input{flex:1;min-width:150px}.pkg-select{width:120px}
 .empty{text-align:center;padding:40px 20px;color:var(--muted)}.modal-overlay{position:fixed;inset:0;background:#000b;backdrop-filter:blur(5px);display:grid;place-items:center;padding:18px;z-index:100}.modal-box{width:100%;max-width:520px;border-radius:20px;padding:24px;box-shadow:var(--shadow)}.modal-box h3{font-size:19px;margin-bottom:7px}.modal-box p{color:var(--sub);font-size:13px;margin-bottom:14px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:17px}.settings-list{display:grid;gap:9px;margin-top:13px}.setting-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 13px;border:1px solid var(--border);border-radius:12px;background:var(--surface2)}.setting-item .label{font-weight:700;font-size:13px}.setting-item .desc{font-size:11px;color:var(--muted);margin-top:2px}.switch{position:relative;width:42px;height:24px;flex:none}.switch input{display:none}.slider{position:absolute;inset:0;background:#394154;border-radius:30px}.slider:before{content:"";position:absolute;width:18px;height:18px;top:3px;right:3px;background:#fff;border-radius:50%;transition:.2s}.switch input:checked+.slider{background:var(--accent)}.switch input:checked+.slider:before{transform:translateX(-18px)}.setting-select{width:120px;padding:7px 9px;border-radius:8px;border:1px solid var(--border);background:var(--input)}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.82)}}@media(max-width:768px) and (pointer:coarse){.desktop-settings{display:none}.mobile-more{display:inline-flex}.server-actions{gap:6px}}
@@ -44,7 +57,8 @@ svg.i{width:17px;height:17px;display:block;fill:none;stroke:currentColor;stroke-
 <symbol id="plug" viewBox="0 0 24 24"><path d="M8 12V4M16 12V4M6 8h12M5 8v3a7 7 0 0 0 14 0V8M12 18v3"/></symbol>
 <symbol id="trash" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2M8 10v8M12 10v8M16 10v8M5 6v14a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6"/></symbol>
 <symbol id="archive" viewBox="0 0 24 24"><path d="M4 7h16v13H4zM3 4h18v3H3zM10 11h4"/></symbol><symbol id="unarchive" viewBox="0 0 24 24"><path d="M4 7h16v13H4zM3 4h18v3H3zM10 12h4M12 10v5"/></symbol>
-<symbol id="settings" viewBox="0 0 24 24"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"/><path d="m19.4 15 .1.2a2 2 0 0 1-2.8 2.8l-.2-.1a2 2 0 0 0-2.1-.3l-.2.1a2 2 0 0 0-1.2 1.8v.2a2 2 0 0 1-4 0v-.2a2 2 0 0 0-1.2-1.8l-.2-.1a2 2 0 0 0-2.1.3l-.2.1a2 2 0 0 1-2.8-2.8l.1-.2a2 2 0 0 0 .3-2.1l-.1-.2A2 2 0 0 0 3 11.5h-.2a2 2 0 0 1 0-4H3a2 2 0 0 0 1.8-1.2l.1-.2a2 2 0 0 0-.3-2.1l-.1-.2A2 2 0 0 1 7.3 1l.2.1a2 2 0 0 0 2.1.3l.2-.1A2 2 0 0 0 11 .-1"/></symbol>
+<!-- ✅ إصلاح أيقونة الإعدادات -->
+<symbol id="settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1A1.7 1.7 0 0 0 9 19.4a1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></symbol>
 <symbol id="package" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9Z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></symbol>
 <symbol id="logs" viewBox="0 0 24 24"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5"/></symbol>
 <symbol id="back" viewBox="0 0 24 24"><path d="M19 12H5M10 7l-5 5 5 5"/></symbol>
@@ -68,9 +82,9 @@ svg.i{width:17px;height:17px;display:block;fill:none;stroke:currentColor;stroke-
 </section></main></div><div id="modal-root"></div>
 <script>
 'use strict';
-const S={url:localStorage.getItem('zone_api')||sessionStorage.getItem('zh_url')||'',token:localStorage.getItem('zone_token')||sessionStorage.getItem('zh_token')||'',servers:[],currentServerId:null,cwd:'.',selected:new Set(),runningProcs:{},liveInterval:null,intervalMs:Number(localStorage.getItem('zh_poll')||3000),isConnected:false,theme:localStorage.getItem('zh_theme')||'dark',autoRefresh:localStorage.getItem('zh_auto')!=='0'};
+const S={url:localStorage.getItem('zone_api')||sessionStorage.getItem('zh_url')||'',token:localStorage.getItem('zone_token')||sessionStorage.getItem('zh_token')||'',servers:[],currentServerId:null,cwd:'.',selected:new Set(),runningProcs:{},liveInterval:null,intervalMs:Number(localStorage.getItem('zh_poll')||3000),isConnected:false,theme:localStorage.getItem('zh_theme')||'dark',autoRefresh:localStorage.getItem('zh_auto')!=='0',viewLoaded:{logs:false,console:false},loadedServerId:null};
 const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelectorAll(s)];
-function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function fmtBytes(n){if(n==null)return'—';n=Number(n);if(n<1024)return n+' B';if(n<1048576)return(n/1024).toFixed(1)+' KB';if(n<1073741824)return(n/1048576).toFixed(1)+' MB';return(n/1073741824).toFixed(1)+' GB'}function joinPath(a,b){a=a.replace(/\/+$/,'');b=(b||'').replace(/^\/+/, '');return b?a+'/'+b:a}function safePath(p){p=(p||'.').replace(/\\/g,'/').trim();if(!p||p==='/')return'.';const o=[];for(const x of p.split('/').filter(Boolean)){if(x==='..'){if(!o.length)throw Error('Invalid path');o.pop()}else o.push(x)}return o.join('/')||'.'}function isDir(f){return!!(f.is_dir||f.directory)}function isArchive(n){return/\.(zip|tar|tar\.gz|tgz|tar\.bz2|tbz2|rar|7z)$/i.test(n)}function isPy(n){return/\.py$/i.test(n)}function icon(n){return`<svg class="i"><use href="#${n}"/></svg>`}
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function fmtBytes(n){if(n==null)return'—';n=Number(n);if(n<1024)return n+' B';if(n<1048576)return(n/1024).toFixed(1)+' KB';if(n<1073741824)return(n/1048576).toFixed(1)+' MB';return(n/1073741824).toFixed(1)+' GB'}function joinPath(a,b){a=a.replace(/\/+$/,'');b=(b||'').replace(/^\/+/,'');return b?a+'/'+b:a}function safePath(p){p=(p||'.').replace(/\\/g,'/').trim();if(!p||p==='/')return'.';const o=[];for(const x of p.split('/').filter(Boolean)){if(x==='..'){if(!o.length)throw Error('Invalid path');o.pop()}else o.push(x)}return o.join('/')||'.'}function isDir(f){return!!(f.is_dir||f.directory)}function isArchive(n){return/\.(zip|tar|tar\.gz|tgz|tar\.bz2|tbz2|rar|7z)$/i.test(n)}function isPy(n){return/\.py$/i.test(n)}function icon(n){return`<svg class="i"><use href="#${n}"/></svg>`}
 function toast(msg,type='info'){const x=document.createElement('div');x.className='toast '+type;x.textContent=msg;Object.assign(x.style,{position:'fixed',bottom:'24px',right:'24px',zIndex:9999,maxWidth:'340px',padding:'12px 16px',border:'1px solid var(--border)',borderRadius:'12px',background:'var(--surface)',boxShadow:'var(--shadow)',color:type==='error'?'var(--danger)':type==='success'?'var(--ok)':'var(--accent)'});document.getElementById('toasts').appendChild(x);setTimeout(()=>x.remove(),3500)}
 function modal(html,onOk){const root=$('#modal-root');root.innerHTML=`<div class="modal-overlay"><div class="modal-box">${html}<div class="modal-actions"><button class="btn" data-close>${icon('x')}إلغاء</button><button class="btn primary" data-ok>${icon('check')}تأكيد</button></div></div></div>`;const close=()=>root.innerHTML='';$('[data-close]',root).onclick=close;$('[data-ok]',root).onclick=async()=>{const b=$('[data-ok]',root);b.disabled=true;try{await onOk?.(root);close()}catch(e){toast(e.message,'error');b.disabled=false}};root.addEventListener('click',e=>{if(e.target===root.firstElementChild)close()});return close}
 function applyTheme(t){S.theme=t;localStorage.setItem('zh_theme',t);document.documentElement.setAttribute('data-theme',t);$('#theme-toggle use').setAttribute('href',t==='dark'?'#moon':'#sun')}
@@ -78,21 +92,152 @@ function getApi(){return S.url.replace(/\/+$/,'')}
 async function req(path,opt={}){if(!S.url||!S.token)throw Error('الرابط أو المفتاح غير موجود');const h={'Authorization':'Bearer '+S.token,'Accept':'application/json','ngrok-skip-browser-warning':'1'};if(opt.body&&!(opt.body instanceof FormData)){h['Content-Type']='application/json';opt.body=JSON.stringify(opt.body)}const r=await fetch(getApi()+path,{...opt,headers:h});if(!r.ok){let m=`${r.status} ${r.statusText}`;try{const j=await r.json();m=j.detail||j.error||j.message||m}catch{}throw Error(m)}const ct=r.headers.get('content-type')||'';return ct.includes('json')?r.json():r.text()}
 function setApiStatus(ok,msg){S.isConnected=ok;$('#api-status').className='badge '+(ok?'on':'off');$('#api-status').innerHTML=`<span class="sdot ${ok?'on':'off'}"></span><span>${esc(ok?'متصل':(msg||'غير متصل'))}</span>`}
 function stopPolling(){if(S.liveInterval){clearInterval(S.liveInterval);S.liveInterval=null}}
-function startPolling(){stopPolling();if(!S.currentServerId||!S.isConnected||!S.autoRefresh)return;S.liveInterval=setInterval(async()=>{try{const d=await req(`/api/servers/${S.currentServerId}`);renderStats(d);$('#server-dot').className='dot '+(d.status==='online'?'on':'off');if(!$('#tab-processes').classList.contains('hidden'))loadProcesses();if(!$('#tab-logs').classList.contains('hidden'))loadLogs()}catch{}} ,S.intervalMs)}
+
+/* ============ بناء خريطة العمليات الشغالة من الـ API ============ */
+function buildRunningMap(procs){
+  const map = {};
+  (procs||[]).forEach(p=>{
+    const cmd = String(p.command || p.cmdline || p.name || '');
+    // ابحث عن أي مسار .py داخل الأمر
+    const matches = cmd.match(/[\w./\-]+\.py/g) || [];
+    matches.forEach(found=>{
+      const normalized = safePath(found.replace(/^\.\//,''));
+      map[normalized] = p.pid;
+    });
+  });
+  return map;
+}
+
+/* ============ جلب العمليات الشغالة فقط ============ */
+async function fetchRunningProcs(){
+  if(!S.currentServerId) return {};
+  try{
+    const d = await req(`/api/servers/${S.currentServerId}/processes`);
+    const list = Array.isArray(d) ? d : (d.processes||[]);
+    return buildRunningMap(list);
+  }catch{ return {} }
+}
+
+function startPolling(){
+  stopPolling();
+  if(!S.currentServerId || !S.isConnected || !S.autoRefresh) return;
+  S.liveInterval = setInterval(async ()=>{
+    try{
+      const d = await req(`/api/servers/${S.currentServerId}`);
+      renderStats(d);
+      $('#server-dot').className='dot '+(d.status==='online'?'on':'off');
+      
+      // حدّث خريطة العمليات الشغالة
+      const newMap = await fetchRunningProcs();
+      const changed = JSON.stringify(newMap) !== JSON.stringify(S.runningProcs);
+      S.runningProcs = newMap;
+      
+      // لو في تغيير وفي تبويب الملفات مفتوح، أعد الرندر
+      if(changed && !$('#tab-files').classList.contains('hidden')) loadFiles();
+      
+      if(!$('#tab-processes').classList.contains('hidden')) loadProcesses();
+      if(!$('#tab-logs').classList.contains('hidden')) loadLogs();
+    }catch{}
+  }, S.intervalMs);
+}
 function showPage(which){$('#dashboard-view').classList.toggle('hidden',which!=='dashboard');$('#server-view').classList.toggle('hidden',which!=='server');if(which==='dashboard'){stopPolling();$('#page-title').textContent='الرئيسية';$('#page-sub').textContent='اختر سيرفراً للتحكم';$('#home-nav').classList.add('active')}else{$('#home-nav').classList.remove('active');$('#page-title').textContent=`سيرفر #${S.currentServerId??'—'}`;$('#page-sub').textContent='تفاصيل وإدارة';startPolling()}}
 async function loadServers(){const g=$('#server-grid');g.innerHTML='<div class="empty">جاري التحميل…</div>';try{const d=await req('/api/servers'),a=Array.isArray(d)?d:(d.servers||[]);S.servers=a;if(!a.length){g.innerHTML='<div class="empty">لا توجد سيرفرات مسجلة</div>';return}g.innerHTML=a.map(s=>`<div class="server-card" data-id="${esc(s.id)}"><div class="server-top"><div class="server-avatar"><img src="https://i.pinimg.com/1200x/40/a1/0f/40a10f73530c5dc94b9a07c12e5e3510.jpg" alt="server"></div><div><div class="server-name">${esc(s.name)}</div><div class="server-sub">${esc(s.hostname||'Worker')}</div></div></div><div class="meta"><span><span class="sdot ${s.status==='online'?'on':'off'}"></span>${s.status==='online'?'متصلة':'غير متصلة'}</span><span>CPU ${s.cpu_percent!=null?s.cpu_percent+'%':'—'}</span><span>RAM ${s.ram_percent!=null?s.ram_percent+'%':'—'}</span></div></div>`).join('');$$('.server-card').forEach(c=>c.onclick=()=>{S.currentServerId=parseInt(c.dataset.id,10);S.cwd='.';S.selected.clear();showPage('server');loadServerDetails(S.currentServerId)})}catch(e){g.innerHTML=`<div class="empty">فشل التحميل: ${esc(e.message)}</div>`;setApiStatus(false)}}
 async function loadServerDetails(id){const isNewServer=S.loadedServerId!==id;if(isNewServer){S.viewLoaded={logs:false,console:false};$('#logs-output').textContent='';$('#console-output').textContent='';S.selected.clear();S.cwd='.';S.loadedServerId=id}try{const d=await req(`/api/servers/${id}`);$('#server-title-number').textContent=`سيرفر #${id}`;$('#server-name').textContent=d.name||'—';$('#server-meta').textContent=d.hostname||'Worker';$('#server-dot').className='dot '+(d.status==='online'?'on':'off');renderStats(d);showTab('files');await Promise.allSettled([loadFiles(),loadProcesses(),loadLogs()]);if(!S.viewLoaded.console && !$('#console-output').textContent.trim()){$('#console-output').textContent='';S.viewLoaded.console=true}$('#console-state').textContent='جاهز';$('#console-state').className='badge on';startPolling()}catch(e){toast(e.message,'error')}}
 function renderStats(d){const g=$('#stats-grid');const a=[['الحالة',d.status==='online'?'متصلة':'غير متصلة',null],['CPU',d.cpu_percent!=null?d.cpu_percent+'%':'—',d.cpu_percent],['RAM',d.ram_percent!=null?d.ram_percent+'%':'—',d.ram_percent],['القرص',d.disk_percent!=null?d.disk_percent+'%':'—',d.disk_percent]];g.innerHTML=a.map(x=>`<div class="stat"><div class="stat-label">${esc(x[0])}</div><div class="stat-val">${esc(x[1])}</div>${x[2]!=null?`<div class="bar"><div class="fill ${x[2]>85?'high':''}" style="width:${Math.min(100,x[2])}%"></div></div>`:''}</div>`).join('')}
-function showTab(n){$$('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===n));['files','console','processes','packages','logs'].forEach(x=>$('#tab-'+x).classList.toggle('hidden',x!==n));if(n==='files')loadFiles();if(n==='processes')loadProcesses();if(n==='logs')loadLogs();if(n==='console'){S.viewLoaded.console=true;$('#console-state').textContent=$('#console-output').textContent.trim()?'جاهز':'جاهز';$('#console-state').className='badge on'}}
-async function loadFiles(){if(!S.currentServerId)return;const l=$('#file-list');l.innerHTML='<div class="empty">جاري التحميل…</div>';try{const d=await req(`/api/servers/${S.currentServerId}/files?path=${encodeURIComponent(S.cwd)}`);renderFiles(Array.isArray(d)?d:(d.files||d.items||[]))}catch(e){l.innerHTML=`<div class="empty">فشل التحميل: ${esc(e.message)}</div>`}}
-function renderFiles(files){const p=$('#path-breadcrumb'),parts=S.cwd.split('/').filter(Boolean);let b=`<button data-p=".">${icon('home')}</button>`;let a='';parts.forEach((x,i)=>{a+='/'+x;b+=i===parts.length-1?`<span> / <b>${esc(x)}</b></span>`:`<span> / <button data-p="${esc(a)}">${esc(x)}</button></span>`});p.innerHTML=b;$$('[data-p]',p).forEach(x=>x.onclick=()=>{S.cwd=x.dataset.p==='.'?'.':safePath(x.dataset.p);loadFiles()});if(!files.length){$('#file-list').innerHTML='<div class="empty">المجلد فارغ</div>';updateBulk();return}files.sort((x,y)=>{const a=isDir(x),b=isDir(y);if(a&&!b)return-1;if(!a&&b)return 1;return(x.name||'').localeCompare(y.name||'')});let html=S.cwd!=='.'?`<div class="file-row" data-up><span></span><div class="file-icon folder">${icon('folder')}</div><div class="file-info"><div class="file-name">..</div></div></div>`:'';for(const f of files){const n=f.name||f.filename||String(f.path||'').split('/').pop(),dir=isDir(f),path=safePath(joinPath(S.cwd,n)),py=isPy(n),arch=isArchive(n),run=S.runningProcs[path]!=null,sel=S.selected.has(path);html+=`<div class="file-row ${sel?'selected':''}" data-path="${esc(path)}"><input class="ck" type="checkbox" ${sel?'checked':''}><div class="file-icon ${dir?'folder':py?'py':arch?'py':'file'}">${icon(dir?'folder':arch?'archive':'file')}</div><div class="file-info"><div class="file-name">${esc(n)}${run?'<span class="run-dot"></span>':''}</div><div class="file-meta">${dir?'مجلد':fmtBytes(f.size)}${f.modified?' · '+esc(String(f.modified).slice(0,16)):''}</div></div><button class="more" data-more="${esc(path)}" aria-label="الخيارات">${icon('more')}</button><div class="menu" data-menu="${esc(path)}">${!dir?`<button data-act="download">${icon('download')}تحميل</button><button data-act="edit">${icon('edit')}تعديل</button>`:''}${py?`<button data-act="run" class="${run?'danger':''}">${icon(run?'stop':'play')}${run?'إيقاف':'تشغيل'}</button>`:''}${arch?`<button data-act="unzip">${icon('unarchive')}فك الضغط</button>`:`${!dir?`<button data-act="compress">${icon('archive')}ضغط</button>`:''}`}${dir?`<button data-act="compress">${icon('archive')}ضغط المجلد</button>`:''}<button data-act="delete" class="danger">${icon('trash')}حذف</button></div></div>`}$('#file-list').innerHTML=html;const up=$('[data-up]');if(up)up.onclick=()=>{const q=S.cwd.split('/').filter(Boolean);q.pop();S.cwd=q.join('/')||'.';loadFiles()};$$('.ck').forEach(c=>c.onchange=()=>{const p=c.closest('.file-row').dataset.path;c.checked?S.selected.add(p):S.selected.delete(p);c.closest('.file-row').classList.toggle('selected',c.checked);updateBulk()});$$('.file-info .file-name').forEach(el=>{const row=el.closest('.file-row'),path=row.dataset.path,f=files.find(x=>safePath(joinPath(S.cwd,x.name))===path);el.onclick=()=>f&&isDir(f)?(S.cwd=path,loadFiles()):openEditor(path)});$$('.more').forEach(m=>m.onclick=e=>{e.stopPropagation();closeMenus();const x=document.querySelector(`[data-menu="${CSS.escape(m.dataset.more)}"]`);if(x)x.classList.add('show')});$$('.menu').forEach(m=>$$('[data-act]',m).forEach(btn=>btn.onclick=e=>{e.stopPropagation();closeMenus();const path=m.dataset.menu,a=btn.dataset.act;if(a==='download')downloadFile(path);if(a==='edit')openEditor(path);if(a==='run')toggleRun(path);if(a==='unzip')openDecompress(path);if(a==='compress')compressSingle(path);if(a==='delete')confirmDelete([path])}));updateBulk()}
-function closeMenus(){$$('.menu.show').forEach(x=>x.classList.remove('show'))}document.addEventListener('click',closeMenus);function updateBulk(){const n=S.selected.size;$('#bulk-count').textContent=n+' محدد';$('#bulk-bar').classList.toggle('hidden',n===0)}
+function showTab(n){$$('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===n));['files','console','processes','packages','logs'].forEach(x=>$('#tab-'+x).classList.toggle('hidden',x!==n));if(n==='files')loadFiles();if(n==='processes')loadProcesses();if(n==='logs')loadLogs();if(n==='console'){S.viewLoaded.console=true;$('#console-state').textContent='جاهز';$('#console-state').className='badge on'}}
+
+/* ============ تحميل الملفات + العمليات مع بعض ============ */
+async function loadFiles(){
+  if(!S.currentServerId) return;
+  const l = $('#file-list');
+  l.innerHTML = '<div class="empty">جاري التحميل…</div>';
+  try{
+    const [filesData, procsData] = await Promise.all([
+      req(`/api/servers/${S.currentServerId}/files?path=${encodeURIComponent(S.cwd)}`),
+      req(`/api/servers/${S.currentServerId}/processes`).catch(()=>({processes:[]}))
+    ]);
+    const files = Array.isArray(filesData) ? filesData : (filesData.files||filesData.items||[]);
+    const procs = Array.isArray(procsData) ? procsData : (procsData.processes||[]);
+    S.runningProcs = buildRunningMap(procs);
+    renderFiles(files);
+  }catch(e){
+    l.innerHTML = `<div class="empty">فشل التحميل: ${esc(e.message)}</div>`;
+  }
+}
+
+function renderFiles(files){const p=$('#path-breadcrumb'),parts=S.cwd.split('/').filter(Boolean);let b=`<button data-p=".">${icon('home')}</button>`;let a='';parts.forEach((x,i)=>{a+='/'+x;b+=i===parts.length-1?`<span> / <b>${esc(x)}</b></span>`:`<span> / <button data-p="${esc(a)}">${esc(x)}</button></span>`});p.innerHTML=b;$$('[data-p]',p).forEach(x=>x.onclick=()=>{S.cwd=x.dataset.p==='.'?'.':safePath(x.dataset.p);loadFiles()});if(!files.length){$('#file-list').innerHTML='<div class="empty">المجلد فارغ</div>';updateBulk();return}files.sort((x,y)=>{const a=isDir(x),b=isDir(y);if(a&&!b)return-1;if(!a&&b)return 1;return(x.name||'').localeCompare(y.name||'')});let html=S.cwd!=='.'?`<div class="file-row" data-up><span></span><div class="file-icon folder">${icon('folder')}</div><div class="file-info"><div class="file-name">..</div></div></div>`:'';for(const f of files){const n=f.name||f.filename||String(f.path||'').split('/').pop(),dir=isDir(f),path=safePath(joinPath(S.cwd,n)),py=isPy(n),arch=isArchive(n);
+    // ✅ فحص العمليات الشغالة بالطريقتين (مع ./ وبدونها)
+    const run = S.runningProcs[path] != null || S.runningProcs[path.replace(/^\.\//,'')] != null;
+    const sel=S.selected.has(path);html+=`<div class="file-row ${sel?'selected':''}" data-path="${esc(path)}"><input class="ck" type="checkbox" ${sel?'checked':''}><div class="file-icon ${dir?'folder':py?'py':arch?'py':'file'}">${icon(dir?'folder':arch?'archive':'file')}</div><div class="file-info"><div class="file-name">${esc(n)}${run?'<span class="run-dot"></span>':''}</div><div class="file-meta">${dir?'مجلد':fmtBytes(f.size)}${f.modified?' · '+esc(String(f.modified).slice(0,16)):''}</div></div><button class="more" data-more="${esc(path)}" aria-label="الخيارات">${icon('more')}</button><div class="menu" data-menu="${esc(path)}">${!dir?`<button data-act="download">${icon('download')}تحميل</button><button data-act="edit">${icon('edit')}تعديل</button>`:''}${py?`<button data-act="run" class="${run?'danger':''}">${icon(run?'stop':'play')}${run?'إيقاف':'تشغيل'}</button>`:''}${arch?`<button data-act="unzip">${icon('unarchive')}فك الضغط</button>`:`${!dir?`<button data-act="compress">${icon('archive')}ضغط</button>`:''}`}${dir?`<button data-act="compress">${icon('archive')}ضغط المجلد</button>`:''}<button data-act="delete" class="danger">${icon('trash')}حذف</button></div></div>`}$('#file-list').innerHTML=html;const up=$('[data-up]');if(up)up.onclick=()=>{const q=S.cwd.split('/').filter(Boolean);q.pop();S.cwd=q.join('/')||'.';loadFiles()};$$('.ck').forEach(c=>c.onchange=()=>{const p=c.closest('.file-row').dataset.path;c.checked?S.selected.add(p):S.selected.delete(p);c.closest('.file-row').classList.toggle('selected',c.checked);updateBulk()});$$('.file-info .file-name').forEach(el=>{const row=el.closest('.file-row'),path=row.dataset.path,f=files.find(x=>safePath(joinPath(S.cwd,x.name))===path);el.onclick=()=>f&&isDir(f)?(S.cwd=path,loadFiles()):openEditor(path)});
+
+/* ✅ إصلاح فتح القائمة - fixed position */
+$$('.more').forEach(m=>m.onclick=e=>{
+  e.stopPropagation();
+  closeMenus();
+  const menu = document.querySelector(`[data-menu="${CSS.escape(m.dataset.more)}"]`);
+  if(!menu) return;
+  const rect = m.getBoundingClientRect();
+  menu.style.top = (rect.bottom + 6) + 'px';
+  // لو القائمة رح تطلع برّا الشاشة من تحت
+  const estimatedHeight = menu.children.length * 40 + 12;
+  const spaceBelow = window.innerHeight - rect.bottom;
+  if(spaceBelow < estimatedHeight && rect.top > estimatedHeight){
+    menu.style.top = (rect.top - estimatedHeight - 6) + 'px';
+  }
+  menu.style.left = 'auto';
+  menu.style.right = Math.max(8, window.innerWidth - rect.right) + 'px';
+  menu.classList.add('show');
+});
+
+$$('.menu').forEach(m=>$$('[data-act]',m).forEach(btn=>btn.onclick=e=>{e.stopPropagation();closeMenus();const path=m.dataset.menu,a=btn.dataset.act;if(a==='download')downloadFile(path);if(a==='edit')openEditor(path);if(a==='run')toggleRun(path);if(a==='unzip')openDecompress(path);if(a==='compress')compressSingle(path);if(a==='delete')confirmDelete([path])}));updateBulk()}
+function closeMenus(){$$('.menu.show').forEach(x=>x.classList.remove('show'))}document.addEventListener('click',closeMenus);
+window.addEventListener('scroll',closeMenus,true);
+window.addEventListener('resize',closeMenus);
+function updateBulk(){const n=S.selected.size;$('#bulk-count').textContent=n+' محدد';$('#bulk-bar').classList.toggle('hidden',n===0)}
 async function downloadFile(path){try{const d=await req(`/api/servers/${S.currentServerId}/file?path=${encodeURIComponent(path)}`),c=typeof d==='string'?d:JSON.stringify(d,null,2),u=URL.createObjectURL(new Blob([c],{type:'text/plain;charset=utf-8'})),a=document.createElement('a');a.href=u;a.download=path.split('/').pop();document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(u);toast('تم التحميل','success')}catch(e){toast('فشل التحميل: '+e.message,'error')}}
 async function openEditor(path){try{const d=await req(`/api/servers/${S.currentServerId}/file?path=${encodeURIComponent(path)}`);modal(`<h3>تعديل ${esc(path.split('/').pop())}</h3><textarea id="edit-area" dir="ltr" spellcheck="false" style="min-height:280px">${esc(d.content||d.text||'')}</textarea>`,async root=>{await req(`/api/servers/${S.currentServerId}/file?path=${encodeURIComponent(path)}`,{method:'PUT',body:{content:$('#edit-area',root).value}});toast('تم الحفظ','success');loadFiles()})}catch(e){toast(e.message,'error')}}
 function createItem(type){modal(`<h3>${type==='file'?'ملف جديد':'مجلد جديد'}</h3><label>الاسم</label><input id="new-name" dir="ltr" placeholder="${type==='file'?'main.py':'my-folder'}">`,async root=>{const n=$('#new-name',root).value.trim();if(!n)throw Error('الاسم مطلوب');const p=joinPath(S.cwd,n);if(type==='file')await req(`/api/servers/${S.currentServerId}/file?path=${encodeURIComponent(p)}`,{method:'PUT',body:{content:''}});else await req(`/api/servers/${S.currentServerId}/mkdir?path=${encodeURIComponent(p)}`,{method:'POST',body:{}});toast('تم الإنشاء','success');loadFiles()})}
 function confirmDelete(paths){modal(`<h3>تأكيد الحذف</h3><p>سيتم حذف ${paths.length} عنصر نهائياً.</p><pre style="background:var(--input);padding:10px;border-radius:9px;max-height:200px;overflow:auto;color:#fca5a5">${esc(paths.join('\n'))}</pre>`,async()=>{for(const p of paths){await req(`/api/servers/${S.currentServerId}/file?path=${encodeURIComponent(p)}`,{method:'DELETE'});S.selected.delete(p)}toast('تم الحذف','success');loadFiles()})}
 function compressSingle(path){compressPaths([path],path.split('/').pop()+'.zip')};function openBulkCompress(){compressPaths([...S.selected],'archive.zip')};function compressPaths(paths,def){modal(`<h3>ضغط ${paths.length} عنصر</h3><label>اسم الملف الناتج</label><input id="zip-name" dir="ltr" value="${esc(def)}"><label>الصيغة</label><select id="zip-format"><option value="zip">ZIP</option><option value="tar">TAR</option><option value="tar.gz">TAR.GZ</option><option value="tar.bz2">TAR.BZ2</option></select>`,async root=>{const out=$('#zip-name',root).value.trim()||'archive.zip';await req(`/api/servers/${S.currentServerId}/compress`,{method:'POST',body:{paths,output:joinPath(S.cwd,out),format:$('#zip-format',root).value}});S.selected.clear();toast('تم الضغط','success');loadFiles()})};function openDecompress(path){modal(`<h3>فك ضغط ${esc(path.split('/').pop())}</h3><label>استخراج إلى</label><input id="extract-to" dir="ltr" value="${esc(S.cwd)}">`,async root=>{await req(`/api/servers/${S.currentServerId}/decompress`,{method:'POST',body:{path,extract_to:$('#extract-to',root).value.trim()||'.'}});toast('تم فك الضغط','success');loadFiles()})}
-async function toggleRun(path){if(S.runningProcs[path]){try{await req(`/api/servers/${S.currentServerId}/processes/${S.runningProcs[path]}`,{method:'DELETE'});delete S.runningProcs[path];toast('تم الإيقاف','success');loadFiles()}catch(e){toast(e.message,'error')}return}try{const d=await req(`/api/servers/${S.currentServerId}/run`,{method:'POST',body:{command:`python3 -u "${path}" > /tmp/py_out.log 2>&1 & echo $!`,cwd:S.cwd,timeout:5}}),m=(d.output||d.stdout||'').trim().match(/^(\d+)$/);S.runningProcs[path]=m?Number(m[1]):'unknown';toast('بدأ التشغيل','success');loadFiles()}catch(e){toast(e.message,'error')}}
+
+/* ============ تشغيل/إيقاف السكربت مع فحص حقيقي ============ */
+async function toggleRun(path){
+  // اجلب العمليات الحقيقية من السيرفر أول شي
+  const realMap = await fetchRunningProcs();
+  S.runningProcs = realMap;
+  const realPid = realMap[path];
+  
+  if(realPid){
+    // أوقف العملية
+    try{
+      await req(`/api/servers/${S.currentServerId}/processes/${realPid}`,{method:'DELETE'});
+      delete S.runningProcs[path];
+      toast('تم الإيقاف','success');
+      setTimeout(loadFiles, 600);
+    }catch(e){
+      toast(e.message,'error');
+      setTimeout(loadFiles, 400);
+    }
+    return;
+  }
+  
+  // شغّل السكربت
+  try{
+    const d = await req(`/api/servers/${S.currentServerId}/run`,{method:'POST',body:{command:`python3 -u "${path}" > /tmp/py_out.log 2>&1 & echo $!`,cwd:S.cwd,timeout:5}});
+    const out = (d.output||d.stdout||'');
+    const m = out.match(/(\d+)/);
+    if(m) S.runningProcs[path] = Number(m[1]);
+    toast('بدأ التشغيل','success');
+    // انتظر ثانية وبعدين أعد الرندر عشان نتأكد من الـ PID الحقيقي
+    setTimeout(async ()=>{
+      S.runningProcs = await fetchRunningProcs();
+      loadFiles();
+    }, 1200);
+  }catch(e){
+    toast(e.message,'error');
+  }
+}
+
 $('#cmd-form').onsubmit=async e=>{e.preventDefault();const inp=$('#cmd-input'),cmd=inp.value.trim();if(!cmd)return;inp.value='';const out=$('#console-output'),state=$('#console-state');out.textContent+=`$ ${cmd}\n`;state.textContent='جاري التنفيذ…';state.className='badge warn';try{const d=await req(`/api/servers/${S.currentServerId}/run`,{method:'POST',body:{command:cmd,cwd:S.cwd,timeout:60}});out.textContent+=(d.output||d.stdout||JSON.stringify(d,null,2))+'\n';state.textContent='تم التنفيذ';state.className='badge on'}catch(err){out.textContent+='[ERROR] '+err.message+'\n';state.textContent='فشل';state.className='badge off'}out.scrollTop=out.scrollHeight}
 async function loadProcesses(){const l=$('#proc-list');l.innerHTML='<div class="empty">جاري التحميل…</div>';try{const d=await req(`/api/servers/${S.currentServerId}/processes`),a=Array.isArray(d)?d:(d.processes||[]);l.innerHTML=a.length?a.map(p=>`<div class="file-row"><div class="file-icon">${icon('settings')}</div><div class="file-info"><div class="file-name">${esc(p.command||p.name||'Process')}</div><div class="file-meta">PID ${esc(p.pid)} · CPU ${p.cpu!=null?esc(p.cpu+'%'):'—'} · MEM ${p.memory!=null?esc(fmtBytes(p.memory)):'—'}</div></div><button class="btn sm danger" data-pid="${esc(p.pid)}">${icon('stop')}إيقاف</button></div>`).join(''):'<div class="empty">لا توجد عمليات</div>';$$('[data-pid]',l).forEach(b=>b.onclick=async()=>{try{await req(`/api/servers/${S.currentServerId}/processes/${b.dataset.pid}`,{method:'DELETE'});toast('تم إيقاف العملية','success');loadProcesses();loadFiles()}catch(e){toast(e.message,'error')}})}catch(e){l.innerHTML=`<div class="empty">فشل التحميل: ${esc(e.message)}</div>`}}
 $('#pkg-form').onsubmit=async e=>{e.preventDefault();const n=$('#pkg-name').value.trim(),mgr=$('#pkg-mgr').value;if(!n)return;$('#pkg-output').textContent=`جاري تثبيت ${n} باستخدام ${mgr}…`;try{const d=await req(`/api/servers/${S.currentServerId}/packages/install`,{method:'POST',body:{package:n,manager:mgr}});$('#pkg-output').textContent=d.output||JSON.stringify(d,null,2);toast('تم تثبيت '+n,'success')}catch(err){$('#pkg-output').textContent=err.message;toast(err.message,'error')}}
@@ -100,32 +245,9 @@ async function loadLogs(){const o=$('#logs-output');const first=!S.viewLoaded.lo
 function openSettings(scope='global'){modal(`<h3>الإعدادات</h3><p>تحكم بالمظهر والتحديث وسلوك اللوحة${scope==='server'?' لهذا السيرفر':' بشكل عام'}.</p><div class="settings-list"><div class="setting-item"><div><div class="label">التحديث التلقائي</div><div class="desc">تحديث حالة السيرفر والعمليات والسجلات تلقائياً</div></div><label class="switch"><input id="set-auto" type="checkbox" ${S.autoRefresh?'checked':''}><span class="slider"></span></label></div><div class="setting-item"><div><div class="label">المظهر</div><div class="desc">الوضع الحالي للوحة</div></div><select id="set-theme" class="setting-select"><option value="dark" ${S.theme==='dark'?'selected':''}>داكن</option><option value="light" ${S.theme==='light'?'selected':''}>فاتح</option></select></div><div class="setting-item"><div><div class="label">فترة التحديث</div><div class="desc">زمن التحديث بالمللي ثانية</div></div><select id="set-poll" class="setting-select"><option value="1500">1.5 ثانية</option><option value="3000">3 ثواني</option><option value="5000">5 ثواني</option><option value="10000">10 ثواني</option></select></div><div class="setting-item"><div><div class="label">معرّف السيرفر</div><div class="desc">الرقم المستخدم في طلبات API</div></div><b>#${esc(S.currentServerId??'—')}</b></div></div>`,async root=>{S.autoRefresh=$('#set-auto',root).checked;S.intervalMs=Number($('#set-poll',root).value);S.theme=$('#set-theme',root).value;localStorage.setItem('zh_auto',S.autoRefresh?'1':'0');localStorage.setItem('zh_poll',String(S.intervalMs));applyTheme(S.theme);startPolling();toast('تم حفظ الإعدادات','success')});setTimeout(()=>{const s=$('#set-poll');if(s)s.value=String(S.intervalMs)},0)}
 $('#new-file').onclick=()=>createItem('file');$('#new-dir').onclick=()=>createItem('dir');$('#upload-btn').onclick=()=>$('#file-input').click();$('#bulk-clear').onclick=()=>{S.selected.clear();loadFiles()};$('#bulk-del').onclick=()=>S.selected.size&&confirmDelete([...S.selected]);$('#bulk-zip').onclick=()=>S.selected.size&&openBulkCompress();$('#file-input').onchange=async e=>{const fs=[...e.target.files];let ok=0;for(const f of fs){try{await req(`/api/servers/${S.currentServerId}/file?path=${encodeURIComponent(joinPath(S.cwd,f.name))}`,{method:'PUT',body:{content:await f.text()}});ok++}catch(err){toast(f.name+': '+err.message,'error')}}e.target.value='';loadFiles();toast(`تم رفع ${ok} ملف`,ok===fs.length?'success':'info')};
 $$('.tab').forEach(t=>t.onclick=()=>showTab(t.dataset.tab));$('#home-nav').onclick=()=>{S.currentServerId=null;showPage('dashboard');loadServers()};$('#server-back').onclick=()=>{$('#home-nav').click()};$('#server-home').onclick=()=>{$('#home-nav').click()};$('#settings-nav').onclick=()=>openSettings('global');$('#server-settings').onclick=()=>openSettings('server');$('#theme-toggle').onclick=()=>applyTheme(S.theme==='dark'?'light':'dark');
-
-const moreBtn=$('#server-more');
-const moreMenu=$('#server-more-menu');
-if(moreBtn&&moreMenu){
-  const toggleMore=(e)=>{
-    if(e){e.preventDefault();e.stopPropagation();}
-    moreMenu.classList.toggle('show');
-  };
-  moreBtn.addEventListener('click',toggleMore);
-  $$('[data-menu-action]',moreMenu).forEach(b=>b.addEventListener('click',()=>{
-    const a=b.dataset.menuAction;
-    moreMenu.classList.remove('show');
-    if(a==='settings')openSettings('server');
-    if(a==='theme')applyTheme(S.theme==='dark'?'light':'dark');
-    if(a==='refresh'&&S.currentServerId)loadServerDetails(S.currentServerId);
-  }));
-}
-document.addEventListener('click',e=>{
-  const wrap=$('.server-more-wrap');
-  if(wrap&&!wrap.contains(e.target)&&moreMenu)moreMenu.classList.remove('show');
-});
-document.addEventListener('touchend',e=>{
-  const wrap=$('.server-more-wrap');
-  if(wrap&&!wrap.contains(e.target)&&moreMenu)moreMenu.classList.remove('show');
-},{passive:true});
-
+const moreBtn=$('#server-more');const moreMenu=$('#server-more-menu');if(moreBtn&&moreMenu){const toggleMore=(e)=>{if(e){e.preventDefault();e.stopPropagation();}moreMenu.classList.toggle('show');};moreBtn.addEventListener('click',toggleMore);$$('[data-menu-action]',moreMenu).forEach(b=>b.addEventListener('click',()=>{const a=b.dataset.menuAction;moreMenu.classList.remove('show');if(a==='settings')openSettings('server');if(a==='theme')applyTheme(S.theme==='dark'?'light':'dark');if(a==='refresh'&&S.currentServerId)loadServerDetails(S.currentServerId);}));}
+document.addEventListener('click',e=>{const wrap=$('.server-more-wrap');if(wrap&&!wrap.contains(e.target)&&moreMenu)moreMenu.classList.remove('show');});
+document.addEventListener('touchend',e=>{const wrap=$('.server-more-wrap');if(wrap&&!wrap.contains(e.target)&&moreMenu)moreMenu.classList.remove('show');},{passive:true});
 $('#reconnect-btn').onclick=async()=>{if(!S.url||!S.token)return toast('لا توجد بيانات اتصال','error');try{await req('/api/auth/check');setApiStatus(true);toast('تم إعادة الاتصال','success');S.currentServerId?loadServerDetails(S.currentServerId):loadServers()}catch(e){setApiStatus(false,e.message);toast(e.message,'error')}};
 $('#logout-btn').onclick=()=>{localStorage.removeItem('zone_api');localStorage.removeItem('zone_token');sessionStorage.removeItem('zh_url');sessionStorage.removeItem('zh_token');stopPolling();S.url='';S.token='';S.currentServerId=null;S.isConnected=false;$('#app-view').classList.add('hidden');$('#auth-view').classList.remove('hidden');setApiStatus(false);toast('تم تسجيل الخروج','info')};
 $('#auth-form').addEventListener('submit',async e=>{e.preventDefault();e.stopPropagation();const urlEl=$('#api-url'),keyEl=$('#api-key'),u=urlEl.value.trim().replace(/\/+$/,''),t=keyEl.value.trim();if(!/^https?:\/\//i.test(u)){toast('رابط غير صحيح','error');return}if(!t){toast('أدخل المفتاح','error');return}const b=$('#auth-btn');S.url=u;S.token=t;b.disabled=true;b.innerHTML='<span>جاري الاتصال…</span>';try{await req('/api/auth/check');localStorage.setItem('zone_api',u);localStorage.setItem('zone_token',t);sessionStorage.setItem('zh_url',u);sessionStorage.setItem('zh_token',t);setApiStatus(true);enterApp();toast('تم الاتصال بنجاح','success')}catch(err){setApiStatus(false,err.message);toast('فشل الاتصال: '+err.message,'error');urlEl.value=u;keyEl.value=t}finally{b.disabled=false;b.innerHTML=icon('plug')+'<span>اتصال</span>'}});
